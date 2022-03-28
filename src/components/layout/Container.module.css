@@ -1,0 +1,22 @@
+.container {
+        width:90%;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        flex-wrap:wrap;
+}
+
+.min-height {
+    min-height: 80%;
+}
+
+.start {
+    justify-content: flex-start;
+    width: auto;
+}
+
+.column {
+    flex-direction:column;
+    justify-content:flex-end;
+    width: auto;
+}

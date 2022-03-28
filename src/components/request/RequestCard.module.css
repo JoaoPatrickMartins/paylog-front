@@ -1,0 +1,85 @@
+.request_card {
+    padding: 1.5em;
+    border: 1px solid #596677;
+    border-radius: 10px;
+    width: auto;
+    min-width: 24%;
+    margin: .5%;
+}
+
+.request_card h4 {
+    background-color: #2e353f;
+    color: #fff;
+    border-radius: 5px;
+    padding: .4em;
+    margin-bottom: 1.3em;
+    font-size: 1.3em;
+}
+
+.request_card p {
+    color: #596677;
+    margin-bottom: .5em;
+}
+
+.request_card p span {
+    font-weight: bold;
+}
+
+.status_text {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.status_text span{
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-right: 5px;
+}
+
+.status_text .aprovado {
+    background-color: #3bb659;
+}
+
+.status_text .reprovado {
+    background-color: #b9453a;
+}
+
+.request_card_actions {
+    margin-top: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.request_card_actions a,
+.request_card_actions button{
+    text-decoration: none;
+    border: none;
+    color: #596677;
+    border-radius: 5px;
+    border: 1px solid #596677 ;
+    font-size: 0.9em;
+    padding: 0.6em 1em;
+    margin-right: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .1s;
+    cursor: pointer;
+}
+
+.request_card_actions svg {
+    margin-right: .5em;
+}
+
+.request_card_actions a:hover,
+.request_card_actions button:hover{
+    color: #fff;
+    background-color: #2e353f;
+}
+
