@@ -10,6 +10,9 @@ import Loading from "../layout/Loading"
 import RequestCard from "../request/RequestCard"
 
 import styles from "./Requests.module.css"
+import InputSearch from "../form/InputSearch"
+
+import { BsSearch } from "react-icons/bs"
 
 
 function Requests (){
@@ -56,11 +59,26 @@ function Requests (){
         })  
     }
 
+    function handleSearch(){
+        console.log("Pesquisado");
+    }
+
     return(
        <div className = { styles.request_container }>
+
            <div className = { styles.title_container } >
                 <h1>Minhas Solicitações</h1>
                 <LinkButton to="/newrequest" text="Criar Registro" />
+           </div>
+
+           <div className={styles.search}>
+               <InputSearch type="search" name="query" placeholder="Pesquisar" />
+               <button 
+                    onClick={handleSearch} 
+                    className={styles.btnSearch}>
+                    <BsSearch className={styles.btnSvg}/>
+               </button>
+
            </div>
             {message && <Message type="success" msg={message} />}
             {requestMessage && <Message type="success" msg={requestMessage} />}
@@ -75,6 +93,7 @@ function Requests (){
                     <p>Não há Solicitações cadastradas!</p>
                 )}
             </Container>
+            
        </div>
     )
 }

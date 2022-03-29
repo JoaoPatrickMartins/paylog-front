@@ -5,14 +5,10 @@ import styles from './NavBar.module.css'
 
 import logo from '../../img/payLog_logo.png'
 import { BsFillPersonFill } from "react-icons/bs"
-import ButtonLogout from "../ui/ButtonLogout"
+import LogoutButton from "../ui/LogoutButton"
 
-import { useContext } from 'react'
-
-import StoreContext from '../store/Context'
 
 function NavBar() {
-    const { token } = useContext(StoreContext)
     
     return(
         <nav className={styles.navbar}>
@@ -35,10 +31,10 @@ function NavBar() {
                 </ul>
                 <div>
                         <Link className={styles.user_container} to='/login'>
-                            {token === null ? <p>Fazer Login</p> : <p>UserName</p>}
+                            <p>User name</p>
                             <BsFillPersonFill />
+                            <LogoutButton/>
                         </Link>
-                        <ButtonLogout/>
                     </div>
             </Container>     
         </nav>

@@ -92,6 +92,11 @@
       "birthDate": "23/08/1990",
       "email": "joao@santosholding.com.br",
       "password": "jbersot23"
+    },
+    {
+      "email": "teste2@santosholding.com.br",
+      "password": "joao",
+      "id": 3
     }
   ]
 }
