@@ -33,7 +33,7 @@ function RequestForm({ handleSubmit, btnText, requestData }){
         handleSubmit(request)
     }
 
-    function handleChange(e){
+    async function handleChange(e){
         setRequest({ ...request, [e.target.name]: e.target.value })
     }
 

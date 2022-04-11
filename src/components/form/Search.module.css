@@ -1,0 +1,20 @@
+.search {
+    display: flex;
+    width: 100%;
+}
+
+.btnSearch {
+    max-height: 37px;
+    min-width: 50px;
+    border: none;
+    background-color: #2e353f;
+    border-radius: 0 0.5em 0.5em 0;
+}
+
+.btnSearch:hover{
+    background-color: #333941;
+}
+
+.btnSvg{
+    color: #fff;
+}

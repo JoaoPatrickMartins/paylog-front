@@ -6,62 +6,44 @@ import Message from "../layout/Message"
 import Container from "../layout/Container"
 import LinkButton from "../layout/LinkButton"
 import Loading from "../layout/Loading"
+import LoadingError from "../layout/LoadingError"
 
 import RequestCard from "../request/RequestCard"
 
 import styles from "./Requests.module.css"
-import InputSearch from "../form/InputSearch"
 
-import { BsSearch } from "react-icons/bs"
+import { getRequests } from "../../services/api"
 
+
+const userId = '623cc0bae948ad0a29081d06';
 
 function Requests (){
     const [requests, setRequests] = useState([])
     const [removeLoading, setRemoveLoading] = useState(true)
-    const [requestMessage, setRequestMessage] = useState('')
+    const [loadingError, setLoadingError] = useState(false)
+    const [requestMessage, setRequestMessage] = useState('') //set mensagem de solicitação excluída
 
     const location = useLocation()
     let message = ''
     if(location.state){
         message = location.state.message
     }
-    
-    useEffect(() => {
-       setTimeout(() => {
-            fetch('http://localhost:5000/requests', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then((resp) => resp.json())
-            .then((data) => {
-                console.log(data)
-                setRequests(data)
-                setRemoveLoading(false)
-            })
-            .catch((err) => console.log(err))
-       },300)
-    },[])
 
-    function removeRequest(id){
-        fetch(`http://localhost:5000/requests/${id}`, {
-            method:"DELETE",
-            headers: {
-                'Content-Type' : 'application/json' ,
-            },
-        })
-        .then((resp) => resp.json())
-        .then((data) => {
-            setRequests(requests.filter((request) => request.id !== id))
-            //message
-            setRequestMessage('Solicitação de pagamento removida com sucesso!')
-        })  
+    const loadData = async(query = '') => {
+        try {
+            const response = await getRequests(userId);
+            setRequests(response.data);
+            setRemoveLoading(false);
+        } catch (err) {
+            setLoadingError(true);
+        }
+
+        
     }
 
-    function handleSearch(){
-        console.log("Pesquisado");
-    }
+    useEffect( () => {
+        (async () => await loadData())();
+    }, []);
 
     return(
        <div className = { styles.request_container }>
@@ -71,29 +53,22 @@ function Requests (){
                 <LinkButton to="/newrequest" text="Criar Registro" />
            </div>
 
-           <div className={styles.search}>
-               <InputSearch type="search" name="query" placeholder="Pesquisar" />
-               <button 
-                    onClick={handleSearch} 
-                    className={styles.btnSearch}>
-                    <BsSearch className={styles.btnSvg}/>
-               </button>
-
-           </div>
             {message && <Message type="success" msg={message} />}
             {requestMessage && <Message type="success" msg={requestMessage} />}
+
             <Container customClass= "start">
                 {requests.length > 0 &&
                     requests.map((request) => (
-                        <RequestCard request={request} handleRemove={removeRequest}/>
+                        <RequestCard request={request} key={request._id} msg={setRequestMessage} />
                     ))
                 }
+
                 {removeLoading && <Loading />}
+                {loadingError && <LoadingError/>}
                 {!removeLoading && requests.length === 0 && (
                     <p>Não há Solicitações cadastradas!</p>
                 )}
             </Container>
-            
        </div>
     )
 }

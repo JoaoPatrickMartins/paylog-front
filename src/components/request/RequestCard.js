@@ -4,11 +4,15 @@ import { Link } from 'react-router-dom'
 
 import { BsReceipt, BsFillTrashFill } from 'react-icons/bs'
 
-function RequestCard( {request, handleRemove  } ) {
+function RequestCard( { request, handleRemove, msg  } ) {
 
     const remove = (e) => {
-        e.preventDefault()
-        handleRemove(request.id)
+        e.preventDefault();
+        //handleRemove(request._id);
+        console.log('delete request');
+        console.log(request);
+        msg('Solicitação excluida com sucesso!');
+
     }
 
     return(
