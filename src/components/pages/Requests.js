@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom" 
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 
 import Message from "../layout/Message"
 import Container from "../layout/Container"
@@ -14,14 +14,16 @@ import styles from "./Requests.module.css"
 
 import { getRequests } from "../../services/api"
 
+import { AuthContext } from "../../context/auth"
 
-const userId = '623cc0bae948ad0a29081d06';
+
 
 function Requests (){
-    const [requests, setRequests] = useState([])
-    const [removeLoading, setRemoveLoading] = useState(true)
-    const [loadingError, setLoadingError] = useState(false)
-    const [requestMessage, setRequestMessage] = useState('') //set mensagem de solicitação excluída
+    const { user } = useContext(AuthContext);
+    const [requests, setRequests] = useState([]);
+    const [removeLoading, setRemoveLoading] = useState(true);
+    const [loadingError, setLoadingError] = useState(false);
+    const [requestMessage, setRequestMessage] = useState(''); //set mensagem de solicitação excluída
 
     const location = useLocation()
     let message = ''
@@ -31,7 +33,7 @@ function Requests (){
 
     const loadData = async(query = '') => {
         try {
-            const response = await getRequests(userId);
+            const response = await getRequests(user?.id);
             setRequests(response.data);
             setRemoveLoading(false);
         } catch (err) {
@@ -44,6 +46,7 @@ function Requests (){
     useEffect( () => {
         (async () => await loadData())();
     }, []);
+
 
     return(
        <div className = { styles.request_container }>
@@ -59,7 +62,7 @@ function Requests (){
             <Container customClass= "start">
                 {requests.length > 0 &&
                     requests.map((request) => (
-                        <RequestCard request={request} key={request._id} msg={setRequestMessage} />
+                        <RequestCard request={request} key={request._id} loadRequests={loadData} msg={setRequestMessage} />
                     ))
                 }
 

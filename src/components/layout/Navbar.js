@@ -5,7 +5,7 @@ import styles from './NavBar.module.css'
 
 import logo from '../../img/payLog_logo.png'
 import { BsFillPersonFill } from "react-icons/bs"
-import LogoutButton from "../ui/LogoutButton"
+import LogoutButton from "./LogoutButton"
 
 
 function NavBar() {

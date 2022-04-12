@@ -4,13 +4,22 @@ import { Link } from 'react-router-dom'
 
 import { BsReceipt, BsFillTrashFill } from 'react-icons/bs'
 
-function RequestCard( { request, handleRemove, msg  } ) {
+import { destroyRequest } from '../../services/api'
 
-    const remove = (e) => {
-        e.preventDefault();
-        //handleRemove(request._id);
+import { useContext } from 'react'
+
+import { AuthContext } from '../../context/auth'
+
+
+
+function RequestCard( { request, loadRequests, msg } ) {
+    const { user } = useContext(AuthContext);
+
+    const remove = async (e) => {
+        //e.preventDefault();
+        await destroyRequest(user?.id, request._id);
+        await loadRequests();
         console.log('delete request');
-        console.log(request);
         msg('Solicitação excluida com sucesso!');
 
     }
@@ -32,7 +41,7 @@ function RequestCard( { request, handleRemove, msg  } ) {
            </p>
 
            <div className={styles.request_card_actions}>
-               <Link to={`/request/${request.id}`}>
+               <Link to={`/request/${request._id}`}>
                    <BsReceipt/>Detalhar 
                 </Link>
                <button onClick={remove}>

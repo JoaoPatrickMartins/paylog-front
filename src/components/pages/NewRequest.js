@@ -5,10 +5,13 @@ import styles from './NewRequest.module.css'
 
 import { createRequest } from '../../services/api'
 
-const userId = '623cc0bae948ad0a29081d06';
+import { useContext } from 'react'
+
+import { AuthContext } from '../../context/auth'
+
 
 function NewRequest(){
-
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate()
 
     async function createPost(request){
@@ -17,9 +20,9 @@ function NewRequest(){
         request.job_position = "Tecnico de TI"
         request.company = ["Santos Holding"]
 
-        console.log('new request', request);
         try {
-            await createRequest(userId, request.title, request.value, request.origin_id, request.request_date, request.due_date, request.class_dre, request.subclass_dre, request.request_observation, request.requester_name, request.job_position, request.company);
+            await createRequest(user?.id, request.title, request.value, request.origin_id, request.request_date, request.due_date, request.class_dre, request.subclass_dre, request.request_observation, request.requester_name, request.job_position, request.company);
+            console.log("new request created with sucess.")
             navigate('/requests', { state: {message: 'Solicitação de pagamento criada com sucesso!'} });
         } catch (err) {
             console.error(err);

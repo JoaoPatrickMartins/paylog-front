@@ -4,6 +4,10 @@ export const api = axios.create({
     baseURL: 'http://localhost:5000',
 });
 
+export const createSession = async (email, password) => {
+    return api.post("/sessions", { email, password });
+}
+
 export const getRequests = async(userId, query) => {
     let url = `/users/${userId}/requests/`
 
@@ -32,4 +36,10 @@ export const createRequest = async(userId, title, value, origin_id, request_date
         status: "Pendente",
         approver_name: approver_name
     })
+}
+
+export const destroyRequest = async (userId, id) => {
+    const url = `/users/${userId}/requests/${id}`;
+    
+    return api.delete(url);
 }

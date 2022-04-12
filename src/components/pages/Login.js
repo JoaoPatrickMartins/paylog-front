@@ -3,8 +3,9 @@ import styles from './Login.module.css'
 import Input from '../form/Input'
 import SubmitButtonLogin from '../form/SubmitButtonLogin'
 
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 
+import { AuthContext } from '../../context/auth'
 
 
 function initialState(){
@@ -12,23 +13,23 @@ function initialState(){
 }
 
 function Login(){
-
-    const [user, setUser] = useState(initialState)
+    const { authenticated, user, login } = useContext(AuthContext);
+    const [userAttempt, setUserAttempt] = useState(initialState);
 
     function onChange(e){
         const { value, name } = e.target;
 
-        setUser({
-            ...user,
+        setUserAttempt({
+            ...userAttempt,
             [name] : value
         });
     }
 
-    function onSubmit(e){
+    async function onSubmit(e){
         e.preventDefault()
-        console.log(user.email, user.password)
-
-        setUser(initialState)
+        console.log(userAttempt.email, userAttempt.password);
+        login(userAttempt.email, userAttempt.password);
+        setUserAttempt(initialState);
     }
 
     return(
@@ -36,20 +37,22 @@ function Login(){
             <div className={styles.card_login}>
                 <h1>Login</h1>
                 <p>Insira seu email e senha para acessar</p>
+                <p>Authenticated: { JSON.stringify(authenticated) }</p>
+                <p>Email: { JSON.stringify(user) }</p>
                 <form onSubmit={onSubmit} className={styles.form}>
                     <Input
                          type="email"
                          name="email"
                          placeholder="Endereço de Email"
                          handleOnChange={onChange}
-                         value={user.email}
+                         value={userAttempt.email}
                     />
                      <Input
                          type="password"
                          name="password"
                          placeholder="Senha"
                          handleOnChange={onChange}
-                         value={user.password}
+                         value={userAttempt.password}
                          
                     />
                     <SubmitButtonLogin text="Acessar"/>
