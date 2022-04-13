@@ -12,7 +12,7 @@ import { AuthContext } from '../../context/auth'
 
 function NewRequest(){
     const { user } = useContext(AuthContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     async function createPost(request){
         //initialize info.requester, status and approver name

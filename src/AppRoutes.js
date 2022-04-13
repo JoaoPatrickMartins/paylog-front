@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Navigate, Route, Routes, } from 'react-router-dom'
+import React, { useContext }  from 'react'
 
 import Home from './components/pages/Home'
 import Contact from './components/pages/Contact'
@@ -11,23 +12,43 @@ import Container from './components/layout/Container'
 import NavBar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 
+import { AuthProvider, AuthContext } from "./context/auth";
+import Loading from './components/layout/Loading'
+
+
 function AppRoutes() {
-    return (
-        <Router>
+  const Private = ({ children }) => {
+    const { authenticated } = useContext(AuthContext);
+
+    if (!Loading){
+      return <Loading/>
+    }
+
+    if (!authenticated) {
+      return <Navigate to="/login"/>
+    }
+
+    return children;
+  }
+
+  return (
+    <Router>
+      <AuthProvider>
         <NavBar />
           <Container customClass="min-height">
             <Routes>
-              <Route path="/" element={/*<RoutesPrivate element={<Home />} />}*/<Home />} />
+              <Route path="/" element={<Private> <Home /> </Private>} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/newrequest" element={/*<RoutesPrivate element={<NewRequest />} />}*/ <NewRequest />} />
-              <Route path="/requests" element={/*<RoutesPrivate element={<Requests />} />}*/ <Requests />} />
-              <Route path="/request/:id" element={/*<RoutesPrivate element={<Request />} />}*/ <Request />} />
+              <Route path="/newrequest" element={ <Private> <NewRequest /> </Private>} />
+              <Route path="/requests" element={ <Private> <Requests /> </Private>} />
+              <Route path="/request/:id" element={ <Private> <Request /> </Private>} />
               <Route path="/login" element={<Login />} />
             </Routes>
           </Container>
         <Footer />
-   </Router>
-    );
+      </AuthProvider>
+    </Router>
+  );
 }
 
 export default AppRoutes;

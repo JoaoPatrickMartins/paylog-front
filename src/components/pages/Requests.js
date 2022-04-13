@@ -21,7 +21,7 @@ import { AuthContext } from "../../context/auth"
 function Requests (){
     const { user } = useContext(AuthContext);
     const [requests, setRequests] = useState([]);
-    const [removeLoading, setRemoveLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [loadingError, setLoadingError] = useState(false);
     const [requestMessage, setRequestMessage] = useState(''); //set mensagem de solicitação excluída
 
@@ -35,7 +35,7 @@ function Requests (){
         try {
             const response = await getRequests(user?.id);
             setRequests(response.data);
-            setRemoveLoading(false);
+            setLoading(false);
         } catch (err) {
             setLoadingError(true);
         }
@@ -66,9 +66,9 @@ function Requests (){
                     ))
                 }
 
-                {removeLoading && <Loading />}
+                {loading && <Loading />}
                 {loadingError && <LoadingError/>}
-                {!removeLoading && requests.length === 0 && (
+                {!loading && requests.length === 0 && (
                     <p>Não há Solicitações cadastradas!</p>
                 )}
             </Container>

@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 import Input from '../form/Input'
-import Select from '../form/Select'
+//import Select from '../form/Select'
 import SubmitButton from '../form/SubmitButton'
 import TextArea from '../form/TextArea'
 
@@ -9,11 +9,11 @@ import styles from './RequestForm.module.css'
 
 
 function RequestForm({ handleSubmit, btnText, requestData }){
-    const [origins,setOrigins] = useState([])
+    //const [origins,setOrigins] = useState([])
 
     const [request, setRequest] = useState( requestData || {} )
 
-    useEffect(() => {
+   /* useEffect(() => {
         fetch('http://localhost:5000/origins', {
             method:'GET',
             headers: {
@@ -25,7 +25,7 @@ function RequestForm({ handleSubmit, btnText, requestData }){
             setOrigins(data)
         })
         .catch((err) => console.log(err))
-    },[])
+    },[])*/
     
     const submit = (e) => {
         e.preventDefault()
@@ -37,14 +37,14 @@ function RequestForm({ handleSubmit, btnText, requestData }){
         setRequest({ ...request, [e.target.name]: e.target.value })
     }
 
-    function handleSelect(e){
+    /*function handleSelect(e){
         setRequest({ ...request,
             [e.target.name]: {
                 id: e.target.value,
                 name: e.target.options[e.target.selectedIndex].text
             },
         })
-    }
+    }*/
 
     return (
         <form onSubmit={submit} className={styles.form}>
@@ -64,13 +64,13 @@ function RequestForm({ handleSubmit, btnText, requestData }){
                 handleOnChange={handleChange}
                 value={request.value ? request.value : ''}
             />
-            <Select 
+            {/*<Select 
                 name="origin_id" 
                 text="Selecione a Origem" 
                 options={origins} 
                 handleOnChange={handleSelect}
                 value={request.origin_id ? request.origin_id.id : ''}
-            />
+            />*/}
             <Input 
                 type="date"
                 text="Data da Solicitação"
