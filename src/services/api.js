@@ -18,6 +18,16 @@ export const getRequests = async(userId, query) => {
     return api.get(url);
 }
 
+export const getRequest = async(userId, requestId, query) => {
+    let url = `/users/${userId}/requests/${requestId}`
+
+    if(query !== '') {
+        url += `?q=${query}`;
+    }
+
+    return api.get(url);
+}
+
 export const createRequest = async(userId, title, value, origin_id, request_date, due_date, class_dre, subclass_dre, request_observation, requester_name, job_position, company, approver_name ) => {
     const url = `/users/${userId}/requests/`;
     

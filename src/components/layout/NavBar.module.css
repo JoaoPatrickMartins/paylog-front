@@ -28,16 +28,25 @@
     font-size: .95em;
 }
 
-.user_container {
-    display: flex;
-    align-items: center; 
+.user_container{
+    display:flow-root;
 }
 
-.user_container:hover{
+.user_options {
+    display:flex;
+    align-items: center;
+
+}
+.button_logout{
+    display: flex;
+    justify-items:end;
+}
+
+.user_options:hover{
     color: rgb(170, 167, 167) ;    
 }
 
-.user_container p {
+.user_options p {
     color: #fff;
     text-decoration: none;
     font-weight:bolder;
@@ -45,7 +54,7 @@
     margin-right: 1em;
 }
 
-.user_container svg {
+.user_options svg {
     color: #fff;
     font-size: 1.6em;
     cursor: pointer;

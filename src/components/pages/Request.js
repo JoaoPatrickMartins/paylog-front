@@ -1,27 +1,56 @@
-import styles from './Request.module.css'
+/*import styles from './Request.module.css'
 
 import Loading from '../layout/Loading'
 import Container from '../layout/Container'
 import Message from '../layout/Message'
 
-import RequestForm from '../request/RequestForm'
+import RequestForm from '../request/RequestForm'*/
 
-import { Link, useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
+import { useState } from 'react'
+/*import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react/cjs/react.development'
-import { BsCaretDownFill, BsCaretLeftFill, BsCaretUpFill, BsXLg, BsCheckLg, BsPencil } from 'react-icons/bs'
+import { BsCaretDownFill, BsCaretLeftFill, BsCaretUpFill, BsXLg, BsCheckLg, BsPencil } from 'react-icons/bs'*/
+
+import { useContext, useEffect } from 'react'
+
+import { AuthContext } from '../../context/auth'
+
+import { getRequest } from "../../services/api"
 
 
 function Request(){
 
-    const { id } = useParams()
+    const { requestId } = useParams()
+    const { user } = useContext(AuthContext);
     const [request , setRequest] = useState([])
-    const [showRequestForm,setShowRequestForm] = useState(false)
+   /* const [showRequestForm,setShowRequestForm] = useState(false)
     const [showPlusInfo, setShowPlusInfo] = useState(false)
-    const [message, setMessage] = useState()
+    const [message, setMessage] = useState()*/
+    
 
-    useEffect(() => {
+    const loadRequest = async(query = '') => {
+        try {
+            const response = await getRequest(user?.id, requestId);
+            setRequest(response.data);
+            //setLoading(false);
+        } catch (err) {
+            //setLoadingError(true);
+        }
+
+        
+    }
+
+    useEffect( () => {
+        (async () => await loadRequest())();
+    }, []);
+
+
+
+
+   /* useEffect(() => {
       setTimeout(() => {
-        fetch(`http://localhost:5000/requests/${id}`, {
+        fetch(`http://localhost:5000/requests/${requestId}`, {
             method: 'GET',
             headers: {
               'Content-Type' : 'application/json'
@@ -33,7 +62,7 @@ function Request(){
            })
           .catch((err) => console.log(err))
       }, 300);
-    }, [id])
+    }, [requestId])
 
     function toggleRequestForm(){
         setShowRequestForm(!showRequestForm)
@@ -87,9 +116,11 @@ function Request(){
             setMessage( 'Edição realizada com Sucesso!' )
         })
         .catch((err) => console.log(err))
-    }
+    }*/
 
     return(
+        <div>UserId: {user?.id}, requestId: {requestId}, Titulo: {request.title}</div>
+        /*
         <>
             {request.title ? (
                     <div className={styles.request_details}>
@@ -194,7 +225,7 @@ function Request(){
                 ) : ( 
                     <Loading /> 
             )}
-        </>
+        </>*/
     )
 }
 

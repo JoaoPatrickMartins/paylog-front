@@ -14,6 +14,7 @@ import { AuthContext } from '../../context/auth'
 
 function RequestCard( { request, loadRequests, msg } ) {
     const { user } = useContext(AuthContext);
+    const requestId = request._id;
 
     const remove = async (e) => {
         //e.preventDefault();
@@ -41,7 +42,7 @@ function RequestCard( { request, loadRequests, msg } ) {
            </p>
 
            <div className={styles.request_card_actions}>
-               <Link to={`/request/${request._id}`}>
+               <Link to={`/request/${requestId}`}>
                    <BsReceipt/>Detalhar 
                 </Link>
                <button onClick={remove}>
