@@ -16,13 +16,8 @@ function NewRequest(){
     const navigate = useNavigate();
 
     async function createPost(request){
-        //initialize info.requester, status and approver name
-        request.requester_name = "Joao Patrick Martins"
-        request.job_position = "Tecnico de TI"
-        request.company = ["Santos Holding"]
-
         try {
-            await createRequest(user?.id, request.title, request.value, request.origin_id, request.request_date, request.due_date, request.class_dre, request.subclass_dre, request.request_observation, request.requester_name, request.job_position, request.company);
+            await createRequest(user?.id, request.title, request.value, request.origin_id, request.request_date, request.due_date, request.class_dre, request.subclass_dre, request.request_observation);
             console.log("new request created with sucess.")
             navigate('/requests', { state: {message: 'Solicitação de pagamento criada com sucesso!'} });
         } catch (err) {

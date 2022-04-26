@@ -21,7 +21,7 @@ import { getRequest, editRequestStatus, editRequest } from "../../services/api"
 
 function Request(){
 
-    const { requestId } = useParams()
+    const { requestUserId ,requestId } = useParams()
     const { user } = useContext(AuthContext);
     const [request , setRequest] = useState([])
     const [showRequestForm,setShowRequestForm] = useState(false)
@@ -34,7 +34,7 @@ function Request(){
 
     const loadRequest = async(query = '') => {
         try {
-            const response = await getRequest(user?.id, requestId);
+            const response = await getRequest(requestUserId, requestId);
             setRequest(response.data);
             setLoading(false);
         } catch (err) {
@@ -58,10 +58,10 @@ function Request(){
 
     const statusUpdate = async (request, status) => {
         request.status = status;
-        request.approver_name = "nome do aprovador"; //colocar nome do usuario aprovador
+        request.approver_name = `${user.first_name} ${user.last_name}`; //colocar nome do usuario aprovador
         
         try {
-            await editRequestStatus(user?.id, requestId, request.status, request.approver_name);
+            await editRequestStatus(requestUserId, requestId, request.status, request.approver_name);
             console.log("status updated successfully")
             loadRequest();
         } catch (err) {
@@ -84,7 +84,7 @@ function Request(){
 
     const editPost = async (request) => {
         try {
-            await editRequest(user?.id, requestId, request.title, request.value, request.origin_id, request.request_date, request.due_date, request.class_dre, request.subclass_dre, request.request_observatio);
+            await editRequest(requestUserId, requestId, request.title, request.value, request.origin_id, request.request_date, request.due_date, request.class_dre, request.subclass_dre, request.request_observatio);
             console.log("Request updated successfully")
             navigate(`/requests`);
         } catch (err) {
@@ -103,10 +103,23 @@ function Request(){
                        <h1>{ request.title }</h1>
                        <div className={styles.option_container}>
                            {!showRequestForm && (<Link className={styles.btn} to="/requests"><BsCaretLeftFill /> Voltar</Link>)}
-                           <button className={styles.btn} onClick={toggleRequestForm}>
-                               {!showRequestForm ?  (<BsPencil/>) : (<BsCaretLeftFill/>)}
-                               {!showRequestForm ?  ('Editar Solicitação') : ('Voltar')}
-                           </button>
+                           {(request.status === 'Pendente') ? (
+                                <button className={styles.btn} onClick={toggleRequestForm}>
+                                    {!showRequestForm ?  (<BsPencil/>) : (<BsCaretLeftFill/>)}
+                                    {!showRequestForm ?  ('Editar Solicitação') : ('Voltar')}
+                                </button>
+                            ):(
+                                <>
+                                    {(user.permission === 'admin') ? (
+                                        <button className={styles.btn} onClick={toggleRequestForm}>
+                                            {!showRequestForm ?  (<BsPencil/>) : (<BsCaretLeftFill/>)}
+                                            {!showRequestForm ?  ('Editar Solicitação') : ('Voltar')}
+                                        </button>
+                                    ):(
+                                        <></>
+                                    )}
+                                </>
+                            )}
                        </div>
 
                        {!showRequestForm ? (
@@ -168,15 +181,17 @@ function Request(){
                                    </div>
                                </div>
                                
-                               {request.status === 'Pendente' && (
-                                   <div className={styles.aprover_container}>
-                                   <button className={styles.button_aprovado} onClick={upDateStatusAprove}>
-                                        <BsCheckLg/> Aprovar
-                                   </button>
-                                   <button className={styles.button_reprovado} onClick={upDateStatusReprove}>
-                                       <BsXLg/> Reprovar
-                                   </button>
-                                   </div>  
+                               {((request.status === 'Pendente') & (user.permission === 'admin')) ? (
+                                        <div className={styles.aprover_container}>
+                                        <button className={styles.button_aprovado} onClick={upDateStatusAprove}>
+                                            <BsCheckLg/> Aprovar
+                                        </button>
+                                        <button className={styles.button_reprovado} onClick={upDateStatusReprove}>
+                                            <BsXLg/> Reprovar
+                                        </button>
+                                        </div>  
+                               ):(
+                                   <></>
                                )}
                                 
                            </div>                         

@@ -28,7 +28,7 @@ export const getRequest = async(userId, requestId, query) => {
     return api.get(url);
 }
 
-export const createRequest = async(userId, title, value, origin_id, request_date, due_date, class_dre, subclass_dre, request_observation, requester_name, job_position, company, approver_name ) => {
+export const createRequest = async(userId, title, value, origin_id, request_date, due_date, class_dre, subclass_dre, request_observation ) => {
     const url = `/users/${userId}/requests/`;
     
     return api.post(url, { 
@@ -39,12 +39,7 @@ export const createRequest = async(userId, title, value, origin_id, request_date
         due_date: due_date,
         class_dre: class_dre,
         subclass_dre: subclass_dre,
-        request_observation: request_observation,
-        requester_name: requester_name,
-        job_position: job_position,
-        company: company,
-        status: "Pendente",
-        approver_name: approver_name
+        request_observation: request_observation
     })
 }
 

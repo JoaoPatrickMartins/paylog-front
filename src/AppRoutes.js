@@ -43,7 +43,7 @@ function AppRoutes() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/newrequest" element={ <Private> <NewRequest /> </Private>} />
               <Route path="/requests" element={ <Private> <Requests /> </Private>} />
-              <Route path="/request/:requestId" element={ <Private> <Request /> </Private>} />
+              <Route path="/request/:requestUserId/:requestId" element={ <Private> <Request /> </Private>} />
               <Route path="/login" element={<Login />} />
             </Routes>
           </Container>

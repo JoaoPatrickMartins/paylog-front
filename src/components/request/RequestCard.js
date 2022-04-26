@@ -15,10 +15,12 @@ import { AuthContext } from '../../context/auth'
 function RequestCard( { request, loadRequests, msg } ) {
     const { user } = useContext(AuthContext);
     const requestId = request._id;
+    const requestUserId = request.userId;
+    
 
     const remove = async (e) => {
         //e.preventDefault();
-        await destroyRequest(user?.id, request._id);
+        await destroyRequest(requestUserId, request._id);
         await loadRequests();
         console.log('delete request');
         msg('Solicitação excluida com sucesso!');
@@ -42,12 +44,25 @@ function RequestCard( { request, loadRequests, msg } ) {
            </p>
 
            <div className={styles.request_card_actions}>
-               <Link to={`/request/${requestId}`}>
+               <Link to={`/request/${requestUserId}/${requestId}`}>
                    <BsReceipt/>Detalhar 
                 </Link>
-               <button onClick={remove}>
-                   <BsFillTrashFill/>Excluir
-               </button>
+                {(request.status === 'Pendente') ? (
+                    <button onClick={remove}>
+                        <BsFillTrashFill/>Excluir
+                    </button>
+                ):(
+                    <>
+                        {(user.permission === 'admin') ? (
+                            <button onClick={remove}>
+                                <BsFillTrashFill/>Excluir
+                            </button>
+                        ):(
+                            <></>
+                        )}
+                    </>
+                )}
+               
            </div>
        </div> 
     )

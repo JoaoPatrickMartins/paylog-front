@@ -12,20 +12,6 @@ function RequestForm({ handleSubmit, btnText, requestData }){
     //const [origins,setOrigins] = useState([])
 
     const [request, setRequest] = useState( requestData || {} )
-
-   /* useEffect(() => {
-        fetch('http://localhost:5000/origins', {
-            method:'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        .then((resp) => resp.json())
-        .then((data) => {
-            setOrigins(data)
-        })
-        .catch((err) => console.log(err))
-    },[])*/
     
     const submit = (e) => {
         e.preventDefault()
@@ -36,15 +22,6 @@ function RequestForm({ handleSubmit, btnText, requestData }){
     async function handleChange(e){
         setRequest({ ...request, [e.target.name]: e.target.value })
     }
-
-    /*function handleSelect(e){
-        setRequest({ ...request,
-            [e.target.name]: {
-                id: e.target.value,
-                name: e.target.options[e.target.selectedIndex].text
-            },
-        })
-    }*/
 
     return (
         <form onSubmit={submit} className={styles.form}>
@@ -71,6 +48,14 @@ function RequestForm({ handleSubmit, btnText, requestData }){
                 handleOnChange={handleSelect}
                 value={request.origin_id ? request.origin_id.id : ''}
             />*/}
+            <Input 
+                type="text"
+                text="Origem"
+                name="origin_id"
+                placeholder="Insira a origem do valor "
+                handleOnChange={handleChange}
+                value={request.origin_id ? request.origin_id : ''}
+            />
             <Input 
                 type="date"
                 text="Data da Solicitação"

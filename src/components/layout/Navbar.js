@@ -37,7 +37,7 @@ function NavBar() {
                 {user && (
                     <div className={styles.user_container}>
                     <Link className={styles.user_options} to='/contact'>
-                        <p>{user.email}</p>
+                        <p>Olá, {user.first_name}</p>
                         <BsFillPersonFill />
                     </Link>
                     <LogoutButton className={styles.button_logout} />
