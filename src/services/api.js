@@ -28,6 +28,16 @@ export const getRequest = async(userId, requestId, query) => {
     return api.get(url);
 }
 
+export const getRequestsPending = async(userId, requestId, query) => {
+    let url = `/users/${userId}/requests/peding`
+
+    if(query !== '') {
+        url += `?q=${query}`;
+    }
+
+    return api.get(url);
+}
+
 export const createRequest = async(userId, title, value, origin_id, request_date, due_date, class_dre, subclass_dre, request_observation ) => {
     const url = `/users/${userId}/requests/`;
     

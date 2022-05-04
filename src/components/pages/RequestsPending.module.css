@@ -3,10 +3,6 @@
     width: 100%;
 }
 
-.request_container h1{
-    color: #2e353f;
-}
-
 .title_container{
     display: flex;
     justify-content: space-between;

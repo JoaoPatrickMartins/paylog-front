@@ -13,7 +13,7 @@ function initialState(){
 }
 
 function Login(){
-    const { authenticated, user, login } = useContext(AuthContext);
+    const { login } = useContext(AuthContext);
     const [userAttempt, setUserAttempt] = useState(initialState);
 
     function onChange(e){
@@ -27,7 +27,7 @@ function Login(){
 
     async function onSubmit(e){
         e.preventDefault()
-        console.log(userAttempt.email, userAttempt.password);
+        console.log("Login with sucess.");
         login(userAttempt.email, userAttempt.password);
         setUserAttempt(initialState);
     }
@@ -37,8 +37,6 @@ function Login(){
             <div className={styles.card_login}>
                 <h1>Login</h1>
                 <p>Insira seu email e senha para acessar</p>
-                <p>Authenticated: { JSON.stringify(authenticated) }</p>
-                <p>Email: { JSON.stringify(user) }</p>
                 <form onSubmit={onSubmit} className={styles.form}>
                     <Input
                          type="email"

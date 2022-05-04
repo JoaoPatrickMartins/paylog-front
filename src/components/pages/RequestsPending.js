@@ -1,5 +1,5 @@
-//Page Request History
- 
+//Page Request Pending
+
 import { useLocation } from "react-router-dom" 
 
 import { useState, useEffect, useContext } from "react"
@@ -14,15 +14,13 @@ import RequestCard from "../request/RequestCard"
 
 import styles from "./Requests.module.css"
 
-import { getRequests } from "../../services/api"
+import { getRequestsPending } from "../../services/api"
 
 import { AuthContext } from "../../context/auth"
 
 import SortNextDueDate from "../../utilities/SortNextDueDate"
 
-
-
-function Requests (){
+function RequestsPending(){
     const { user } = useContext(AuthContext);
     const [requests, setRequests] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -35,9 +33,9 @@ function Requests (){
         message = location.state.message
     }
 
-    const loadData = async(query = '') => {
+    const loadRequestsPending = async(query = '') => {
         try {
-            const response = await getRequests(user?.id);
+            const response = await getRequestsPending(user?.id);
 
             const arr = response.data;
             setRequests(SortNextDueDate(arr));
@@ -50,15 +48,14 @@ function Requests (){
     }
 
     useEffect( () => {
-        (async () => await loadData())();
+        (async () => await loadRequestsPending())();
     }, []);
 
-
     return(
-       <div className = { styles.request_container }>
+        <div className = { styles.request_container }>
 
            <div className = { styles.title_container } >
-                <h1>Minhas Solicitações</h1>
+                <h1>Solicitações Pendentes</h1>
                 <LinkButton to="/newrequest" text="Criar Registro" />
            </div>
 
@@ -68,7 +65,7 @@ function Requests (){
             <Container customClass= "start">
                 {requests.length > 0 &&
                     requests.map((request) => (
-                        <RequestCard request={request} key={request._id} loadRequests={loadData} msg={setRequestMessage} />
+                        <RequestCard request={request} key={request._id} loadRequests={loadRequestsPending} msg={setRequestMessage} />
                     ))
                 }
 
@@ -79,7 +76,8 @@ function Requests (){
                 )}
             </Container>
        </div>
+        
     )
 }
 
-export default Requests
+export default RequestsPending

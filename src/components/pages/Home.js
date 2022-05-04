@@ -10,7 +10,7 @@ function Home(){
             <h1>
                 Bem-vindo ao <span>PayLog</span>
             </h1>
-            <p>Comece os registros de Pagamentos agora!</p>
+            <p>Comece os registros de pagamentos agora!</p>
             <LinkButton to="/newrequest" text="Criar Registro" />
             <img src={savings} alt="PayLog" />
         </section>

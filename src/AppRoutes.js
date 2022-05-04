@@ -14,6 +14,8 @@ import Footer from './components/layout/Footer'
 
 import { AuthProvider, AuthContext } from "./context/auth";
 import Loading from './components/layout/Loading'
+import RequestsPending from './components/pages/RequestsPending'
+import MyAccount from './components/pages/MyAccount'
 
 
 function AppRoutes() {
@@ -39,12 +41,14 @@ function AppRoutes() {
         <NavBar />
           <Container customClass="min-height">
             <Routes>
+              <Route path="/login" element={<Login />} />
               <Route path="/" element={<Private> <Home /> </Private>} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/newrequest" element={ <Private> <NewRequest /> </Private>} />
               <Route path="/requests" element={ <Private> <Requests /> </Private>} />
+              <Route path="/requestspending" element={ <Private> <RequestsPending /> </Private>} />
               <Route path="/request/:requestUserId/:requestId" element={ <Private> <Request /> </Private>} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/myaccount" element={ <Private> <MyAccount /> </Private>} />
             </Routes>
           </Container>
         <Footer />

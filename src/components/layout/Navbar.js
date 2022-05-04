@@ -5,7 +5,6 @@ import styles from './NavBar.module.css'
 
 import logo from '../../img/payLog_logo.png'
 import { BsFillPersonFill } from "react-icons/bs"
-import LogoutButton from "./LogoutButton"
 
 import { useContext } from 'react'
 
@@ -20,27 +19,35 @@ function NavBar() {
                 <Link to='/' >
                     <img src={logo} alt='PayLog' />
                 </Link>
-                <ul className={styles.list}>
-                    <li className={styles.item}>
-                        <Link to="/">Home</Link>
-                    </li>
 
-                    <li className={styles.item}>
-                      <Link to="/requests">Solicitações</Link>
-                    </li>
-
-                    <li className={styles.item}>
-                        <Link to="/Contact">Contato</Link>
-                    </li>
-                </ul>
+                {user ? ( 
+                    <ul className={styles.list}>
+                        <li className={styles.item}>
+                        <Link to="/requestspending">Solicitações Pendentes</Link>
+                        </li>
+    
+                        <li className={styles.item}>
+                        <Link to="/requests">Histórico de Solicitações</Link>
+                        </li>
+    
+                        <li className={styles.item}>
+                            <Link to="/Contact">Contato</Link>
+                        </li>
+                    </ul>
+                ) : (
+                    <ul className={styles.list}>
+                        <li className={styles.item}>
+                            <Link to="/Contact">Contato</Link>
+                        </li>
+                    </ul>
+                )}
 
                 {user && (
                     <div className={styles.user_container}>
-                    <Link className={styles.user_options} to='/contact'>
+                    <Link className={styles.user_options} to='/myaccount'>
                         <p>Olá, {user.first_name}</p>
                         <BsFillPersonFill />
                     </Link>
-                    <LogoutButton className={styles.button_logout} />
                  </div>
                 )}
                 

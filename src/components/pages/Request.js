@@ -127,9 +127,9 @@ function Request(){
                                <p>
                                    <span>Valor:</span> {request.value}
                                </p>
-                               {/*<p>
-                                   <span>Origem:</span> {request.origin_id.name}
-                                </p>*/}
+                               <p>
+                                   <span>Origem:</span> {request.origin_id}
+                                </p>
                                <p>
                                    <span>Data de Vencimento:</span> {request.due_date.split("-").reverse().join("/")}
                                </p>

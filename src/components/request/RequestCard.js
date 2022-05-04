@@ -31,13 +31,16 @@ function RequestCard( { request, loadRequests, msg } ) {
        <div className={styles.request_card}>
            <h4>{request.title}</h4>
            <p>
+               <span>Empresa:</span> {request.company}
+           </p>
+           <p>
+               <span>Data de vencimento:</span> {request.due_date.split("-").reverse().join("/")}
+           </p>
+           <p>
                <span>Valor:</span> {request.value}
            </p>
            <p>
                <span>Solicitante:</span> {request.requester_name}
-           </p>
-           <p>
-               <span>Data de vencimento:</span> {request.due_date.split("-").reverse().join("/")}
            </p>
            <p className={styles.status_text}>
                <span className={`${styles[request.status.toLowerCase()]}`}></span> {request.status}

@@ -2,15 +2,15 @@ import { useContext } from "react";
 
 import { AuthContext } from "../../context/auth";
 
-function LogoutButton(){
+function LogoutButton({className}){
     const { logout } = useContext(AuthContext);
 
     function handleLogout(){
-        console.log('logout')
+        console.log('Logout with sucess.')
         logout();
     }
     return(
-        <button onClick={handleLogout}>Sair</button>
+        <button className={className} onClick={handleLogout}>Sair</button>
     )
 }
 
