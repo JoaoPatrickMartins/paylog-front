@@ -21,14 +21,15 @@ function MyAccount() {
                         </div>
                     </div>
                     <h1>Minha Conta</h1>
-                    <p><span>Nome: </span> {user.first_name} {user.last_name}</p>
-                    <p><span>Cargo: </span> {user.job_position}</p>
-                    <p><span>Empresa: </span> {user.company}</p>
-                    <p><span>Email: </span> {user.email}</p>   
+                    <div className={styles.info_profile}>
+                        <p><span>Nome: </span> {user.first_name} {user.last_name}</p>
+                        <p><span>Cargo: </span> {user.job_position}</p>
+                        <p><span>Empresa: </span> {user.company}</p>
+                        <p><span>Email: </span> {user.email}</p>   
+                    </div>  
                     <div className={styles.button_container}>
-                        <LogoutButton className={styles.logout_button} />
+                            <LogoutButton className={styles.logout_button} />
                     </div> 
-                      
                 </div>            
             </div>
             

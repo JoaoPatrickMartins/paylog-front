@@ -1,15 +1,15 @@
 import { useState } from 'react'
 
 import Input from '../form/Input'
-//import Select from '../form/Select'
+import SelectOrigin from '../form/SelectOrigin'
 import SubmitButton from '../form/SubmitButton'
 import TextArea from '../form/TextArea'
 
 import styles from './RequestForm.module.css'
 
 
+
 function RequestForm({ handleSubmit, btnText, requestData }){
-    //const [origins,setOrigins] = useState([])
 
     const [request, setRequest] = useState( requestData || {} )
     
@@ -22,6 +22,12 @@ function RequestForm({ handleSubmit, btnText, requestData }){
     async function handleChange(e){
         setRequest({ ...request, [e.target.name]: e.target.value })
     }
+
+    const handleSelectChange = (event) => {
+        request.origin_id = event.value
+        console.log(request.origin_id)
+    }
+
 
     return (
         <form onSubmit={submit} className={styles.form}>
@@ -41,21 +47,22 @@ function RequestForm({ handleSubmit, btnText, requestData }){
                 handleOnChange={handleChange}
                 value={request.value ? request.value : ''}
             />
-            {/*<Select 
+
+            <SelectOrigin 
                 name="origin_id" 
                 text="Selecione a Origem" 
-                options={origins} 
-                handleOnChange={handleSelect}
-                value={request.origin_id ? request.origin_id.id : ''}
-            />*/}
-            <Input 
+                placeholder='Selecione uma origem'
+                handleSelectChange={handleSelectChange}                
+            />
+
+            {/*<Input 
                 type="text"
                 text="Origem"
                 name="origin_id"
                 placeholder="Insira a origem do valor "
                 handleOnChange={handleChange}
                 value={request.origin_id ? request.origin_id : ''}
-            />
+            />*/}
             <Input 
                 type="date"
                 text="Data da Solicitação"

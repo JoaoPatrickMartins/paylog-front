@@ -43,6 +43,7 @@
     text-decoration: none;
     border: none;
     color: #596677;
+    background-color: #fff;
     border-radius: 5px;
     border: 1px solid #596677 ;
     font-size: 0.9em;
@@ -90,7 +91,7 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: #ccc;
+    background-color: #ffd252;
     margin-right: 5px;
 }
 
@@ -101,10 +102,6 @@
 .status_text .reprovado {
     background-color: #b9453a;
 }
-
-.button_plus_info:hover{
-    font-size: 0.8em;
- }
  
  .button_plus_info svg {
     margin-left: .5em;
@@ -131,6 +128,7 @@
 .button_plus_info{
     border: none;
     color: #596677;
+    background-color: #fff;
     font-size: 0.7em;
     padding: 0.6em 1em;
     margin-right: 1em;
@@ -184,11 +182,6 @@
 .button_reprovado svg,
 .button_aprovado svg {
     font-size: .8em;
-}
-
-.button_reprovado:hover,
-.button_aprovado:hover{
-    font-size: .95em;
 }
 
 .approver_info_container{

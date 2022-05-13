@@ -29,43 +29,94 @@ function RequestCard( { request, loadRequests, msg } ) {
 
     return(
        <div className={styles.request_card}>
-           <h4>{request.title}</h4>
-           <p>
-               <span>Empresa:</span> {request.company}
-           </p>
-           <p>
-               <span>Data de vencimento:</span> {request.due_date.split("-").reverse().join("/")}
-           </p>
-           <p>
-               <span>Valor:</span> {request.value}
-           </p>
-           <p>
-               <span>Solicitante:</span> {request.requester_name}
-           </p>
-           <p className={styles.status_text}>
-               <span className={`${styles[request.status.toLowerCase()]}`}></span> {request.status}
-           </p>
-
-           <div className={styles.request_card_actions}>
-               <Link to={`/request/${requestUserId}/${requestId}`}>
-                   <BsReceipt/>Detalhar 
-                </Link>
-                {(request.status === 'Pendente') ? (
-                    <button onClick={remove}>
-                        <BsFillTrashFill/>Excluir
-                    </button>
-                ):(
+          {(request.status === 'Pendente') ? (
+               <div className={styles.background_title_pendente}>
+               {(request.status === 'Pendente') ? (
+                   <div className={styles.statusBar_pendente}> </div>
+               ) : (
                     <>
-                        {(user.permission === 'admin') ? (
+                        {(request.status === 'Aprovado') ? (
+                            <div className={styles.statusBar_aprovado}> </div>
+                        ) : (
+                            <div className={styles.statusBar_reprovado}> </div>
+                        ) }
+                    </>
+               )}
+               <h4> {request.title} </h4>
+           </div>
+          ) : (
+              <>
+                {(request.status === 'Aprovado') ? (
+                     <div className={styles.background_title_aprovado}>
+                     {(request.status === 'Pendente') ? (
+                         <div className={styles.statusBar_pendente}> </div>
+                     ) : (
+                          <>
+                              {(request.status === 'Aprovado') ? (
+                                  <div className={styles.statusBar_aprovado}> </div>
+                              ) : (
+                                  <div className={styles.statusBar_reprovado}> </div>
+                              ) }
+                          </>
+                     )}
+                     <h4> {request.title} </h4>
+                 </div>
+                ) : (
+                    <div className={styles.background_title_reprovado}>
+                        {(request.status === 'Pendente') ? (
+                            <div className={styles.statusBar_pendente}> </div>
+                        ) : (
+                            <>
+                                {(request.status === 'Aprovado') ? (
+                                    <div className={styles.statusBar_aprovado}> </div>
+                                ) : (
+                                    <div className={styles.statusBar_reprovado}> </div>
+                                ) }
+                            </>
+                        )}
+                        <h4> {request.title} </h4>
+                    </div>
+                )}
+              </>
+          )}
+           
+           <div className={styles.bottom_card} >
+                <p>
+                    <span>Empresa:</span> {request.company}
+                </p>
+                <p>
+                    <span>Data de vencimento:</span> {request.due_date.split("-").reverse().join("/")}
+                </p>
+                <p>
+                    <span>Valor:</span> {request.value}
+                </p>
+                <p>
+                    <span>Solicitante:</span> {request.requester_name}
+                </p>
+                {/*<p className={styles.status_text}>
+                    <span className={`${styles[request.status.toLowerCase()]}`}></span> {request.status}
+                </p>*/}
+
+                <div className={styles.request_card_actions}>
+                    <Link to={`/request/${requestUserId}/${requestId}`}>
+                        <BsReceipt/>Detalhar 
+                        </Link>
+                        {(request.status === 'Pendente') ? (
                             <button onClick={remove}>
                                 <BsFillTrashFill/>Excluir
                             </button>
                         ):(
-                            <></>
-                        )}
-                    </>
-                )}
-               
+                            <>
+                                {(user.permission === 'admin') ? (
+                                    <button onClick={remove}>
+                                        <BsFillTrashFill/>Excluir
+                                    </button>
+                                ):(
+                                    <></>
+                                )}
+                            </>
+                        )}   
+                </div>
            </div>
        </div> 
     )
