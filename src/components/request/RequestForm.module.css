@@ -2,3 +2,14 @@
     width: 100%;
     margin: 2em auto;
 }
+
+.err_container{
+    width: 100%;
+}
+
+.err_container p{
+    font-size:0.7rem;
+    color: red;
+    text-align: end;
+    
+}

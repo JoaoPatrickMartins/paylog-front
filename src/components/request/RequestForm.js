@@ -2,33 +2,61 @@ import { useState } from 'react'
 
 import Input from '../form/Input'
 import SelectOrigin from '../form/SelectOrigin'
+import SelectDRE from '../form/SelectDRE'
+import Select from '../form/Select'
 import SubmitButton from '../form/SubmitButton'
 import TextArea from '../form/TextArea'
 
-import styles from './RequestForm.module.css'
+import { OptionsForSelect } from '../../utilities/OptionsForSelect'
 
+import styles from './RequestForm.module.css'
 
 
 function RequestForm({ handleSubmit, btnText, requestData }){
 
     const [request, setRequest] = useState( requestData || {} )
+    const [selectedDRE, setSelectedDRE] = useState(" ")
+    const [mensagemValidadeDRE, setMensagemValidadeDRE] = useState(false)
     
     const submit = (e) => {
         e.preventDefault()
-        //console.log(request)
-        handleSubmit(request)
+        if(validateSubclass(request)){
+            handleSubmit(request)
+        }else{
+            setMensagemValidadeDRE(true)
+        }
+        
     }
 
     async function handleChange(e){
         setRequest({ ...request, [e.target.name]: e.target.value })
     }
 
-    const handleSelectChange = (event) => {
+    const handleSelectOrigin = (event) => {
         request.origin_id = event.value
-        console.log(request.origin_id)
     }
 
+    const handleSelectDRE = (event) => {
+        request.subclass_dre = ' '
 
+        request.class_dre = event.value
+        setSelectedDRE(event.value)
+    }
+
+    const handleSelectSubDRE = (event) => {
+        request.subclass_dre = event.value
+    }
+
+    function validateSubclass(request){
+        if(request.subclass_dre === ' '){
+            if((request.class_dre === 'Royalties Ri Happy') || (request.class_dre === 'Fundo de Propaganda Ri Happy') || (request.class_dre === 'DARF CSLL') || (request.class_dre === 'DARF IRPJ') || (request.class_dre === 'Pró Labore')) {
+                return true
+            }else{
+                return false
+            }
+        }
+        return true
+    }
     return (
         <form onSubmit={submit} className={styles.form}>
             <Input 
@@ -52,17 +80,9 @@ function RequestForm({ handleSubmit, btnText, requestData }){
                 name="origin_id" 
                 text="Selecione a Origem" 
                 placeholder='Selecione uma origem'
-                handleSelectChange={handleSelectChange}                
+                handleSelectChange={handleSelectOrigin}                
             />
 
-            {/*<Input 
-                type="text"
-                text="Origem"
-                name="origin_id"
-                placeholder="Insira a origem do valor "
-                handleOnChange={handleChange}
-                value={request.origin_id ? request.origin_id : ''}
-            />*/}
             <Input 
                 type="date"
                 text="Data da Solicitação"
@@ -79,22 +99,26 @@ function RequestForm({ handleSubmit, btnText, requestData }){
                 handleOnChange={handleChange}
                 value={request.due_date ? request.due_date : ''}
             />
-            <Input 
-                type="text"
-                text="Classe do DRE"
-                name="class_dre"
-                placeholder="Insira a classe do DRE"
-                handleOnChange={handleChange}
-                value={request.class_dre ? request.class_dre : ''}
+            <SelectDRE text='Classe do DRE' 
+                name='class_dre' 
+                placeholder='Selecione uma classe para o DRE'
+                handleSelectChange={handleSelectDRE}
             />
-             <Input 
-                type="text"
-                text="Sub-classe do DRE"
-                name="subclass_dre"
-                placeholder="Insira a sub-classe do DRE"
-                handleOnChange={handleChange}
-                value={request.subclass_dre ? request.subclass_dre : ''}
-            />
+
+            {(selectedDRE === ' ') || (selectedDRE === 'Royalties Ri Happy') || (selectedDRE === 'Fundo de Propaganda Ri Happy') || (selectedDRE === 'DARF CSLL') || (selectedDRE === 'DARF IRPJ') || (selectedDRE === 'Pró Labore') ? (
+                <></>
+                ) : (
+                    <Select
+                        text='Subclasse do DRE'
+                        name='subclass_dre'
+                        placeholder="Selecione uma subclasse para o DRE"
+                        option={OptionsForSelect(selectedDRE)}
+                        handleSelectChange={handleSelectSubDRE}
+                    />
+                )}
+
+            {mensagemValidadeDRE && <div className={styles.err_container}><p>Classe ou Subclasse do DRE inválido</p></div>}
+             
             <TextArea
                 text="Observação"
                 name="request_observation"

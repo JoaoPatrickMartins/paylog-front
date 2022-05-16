@@ -1,19 +1,21 @@
+import React from 'react'
+import Select from 'react-select'
+
 import styles from './Select.module.css'
 
-function Select ({ text, name, options, handleOnChange, value }){
+function SelectOrigin ({ text, name, placeholder, option , handleSelectChange }){
+
     return (
-        <div className={styles.form_control}>
+        <div className={styles.form_control} >
             <label htmlFor={name}>{text}</label>
-            <select name={name} id={name} onChange={handleOnChange} value={ value || '' }>
-                <option>Selecione uma opção</option>
-                {options.map((option) => (
-                    <option value={option.id} key={option.id} >
-                        {option.name}
-                    </option>
-                ))}
-            </select>
+            <Select 
+                name={name}
+                options={option}  
+                placeholder={placeholder}
+                onChange={handleSelectChange}
+            />
         </div>
     )
 }
 
-export default Select
+export default SelectOrigin

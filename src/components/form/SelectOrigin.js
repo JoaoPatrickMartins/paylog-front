@@ -5,8 +5,8 @@ import styles from './Select.module.css'
 
 function SelectOrigin ({ text, name, placeholder, handleSelectChange }){
     const options = [
-        { value: 'banco', label: 'Banco' },
-        { value: 'caixa', label: 'Caixa' },
+        { value: 'Banco', label: 'Banco' },
+        { value: 'Caixa', label: 'Caixa' },
       ]
 
       
