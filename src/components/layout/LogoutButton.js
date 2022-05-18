@@ -6,7 +6,6 @@ function LogoutButton({className}){
     const { logout } = useContext(AuthContext);
 
     function handleLogout(){
-        console.log('Logout with sucess.')
         logout();
     }
     return(

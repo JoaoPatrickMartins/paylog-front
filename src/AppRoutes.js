@@ -20,19 +20,18 @@ import MyAccount from './components/pages/MyAccount'
 
 function AppRoutes() {
   const Private = ({ children }) => {
-    const { authenticated } = useContext(AuthContext);
-
-    if (!Loading){
+    const { authenticated, loading} = useContext(AuthContext);
+    
+    if(loading){
       return <Loading/>
     }
 
-    if (!authenticated) {
-      
-      console.log("autenticado:",authenticated)
+    if (authenticated) {
+      return children;
+    }else{
       return <Navigate to="/login"/>
     }
-
-    return children;
+    
   }
 
   return (

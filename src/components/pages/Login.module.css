@@ -25,3 +25,15 @@
 .form{
     text-align: end;
 }
+
+.msg_container{
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.msg_container p{
+    font-size:0.8rem;
+    color: red;
+    text-align: end;
+
+}

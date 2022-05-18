@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (email, password) =>{
+        
         const response = await createSession(email, password);
 
         localStorage.setItem('user', JSON.stringify(response.data.user));
@@ -52,6 +53,7 @@ export const AuthProvider = ({ children }) => {
                 authenticated: !!user,
                 user,
                 loading,
+                setLoading,
                 login,
                 logout
             }}>

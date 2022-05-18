@@ -6,7 +6,7 @@ import styles from './NewRequest.module.css'
 
 import { createRequest } from '../../services/api'
 
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
 import { AuthContext } from '../../context/auth'
 
@@ -14,6 +14,7 @@ import { AuthContext } from '../../context/auth'
 function NewRequest(){
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [errorMsg, setErrorMsg] = useState(false)
 
     async function createPost(request){
         try {
@@ -22,7 +23,7 @@ function NewRequest(){
             navigate('/requests', { state: {message: 'Solicitação de pagamento criada com sucesso!'} });
         } catch (err) {
             console.error(err);
-            //fazer msg de erro
+            setErrorMsg(true)
         }
     }
 
@@ -31,6 +32,11 @@ function NewRequest(){
             <h1>Criar Solicitação</h1>
             <p>Crie sua solicitação de pagamento e aguarde ser aprovado</p>
             <RequestForm handleSubmit={createPost} btnText="Criar Solicitação" />
+            <div className={styles.msg_container}>
+                {errorMsg && (
+                    <p>Todos os Campos obrigatórios devem ser preenchidos.</p>
+                )}
+            </div>
         </div>
     )
 }
