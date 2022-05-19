@@ -1,9 +1,9 @@
 .login_container{
     display:flex;
-    flex-direction: column;
     align-items: center;
     width: 100%;
-    margin: 5em 2em;
+    background-image: linear-gradient(55deg,#C918A1, #9360BD, #6F91D0,#0694B5);
+    justify-content: center;
 }
 
 .login_container h1,
@@ -14,16 +14,21 @@
 }
 
 .card_login{
-    background-color: #2e353f;
-   width: 40%;
-   min-width: 300px;
-   padding: 2em;
-   border-radius: 0 30px 0 30px;
-   margin-bottom: 1em;
+    display: flex;
+    flex-direction:column;
+    width: 30%;
+    align-items: center;
+}
+
+.card_login img{
+    width: 350px;
 }
 
 .form{
-    text-align: end;
+   display:flex;
+   flex-direction: column;
+   width: 100%;
+   margin: auto;
 }
 
 .msg_container{
@@ -35,5 +40,8 @@
     font-size:0.8rem;
     color: red;
     text-align: end;
+}
 
+.input_login{
+    width: 100%;
 }

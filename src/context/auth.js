@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [visibleBar, setVisibleBar] = useState(false)
 
     useEffect(() =>{
         const user = localStorage.getItem('user');
@@ -53,6 +54,8 @@ export const AuthProvider = ({ children }) => {
                 authenticated: !!user,
                 user,
                 loading,
+                visibleBar,
+                setVisibleBar,
                 setLoading,
                 login,
                 logout

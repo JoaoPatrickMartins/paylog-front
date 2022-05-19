@@ -19,8 +19,9 @@ import MyAccount from './components/pages/MyAccount'
 
 
 function AppRoutes() {
+  
   const Private = ({ children }) => {
-    const { authenticated, loading} = useContext(AuthContext);
+    const { authenticated, loading } = useContext(AuthContext);
     
     if(loading){
       return <Loading/>
@@ -37,7 +38,7 @@ function AppRoutes() {
   return (
     <Router>
       <AuthProvider>
-        <NavBar />
+      <NavBar />
           <Container customClass="min-height">
             <Routes>
               <Route path="/login" element={<Login />} />

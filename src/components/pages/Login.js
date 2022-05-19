@@ -1,7 +1,9 @@
 import styles from './Login.module.css'
 
-import Input from '../form/Input'
+import InputLogin from '../form/InputLogin'
 import SubmitButtonLogin from '../form/SubmitButtonLogin'
+
+import logo from '../../img/Logo_Branco_Digit_Control.svg'
 
 import { useState, useContext } from 'react'
 
@@ -44,17 +46,16 @@ function Login(){
         
         <div className={styles.login_container}>
             <div className={styles.card_login}>
-                <h1>Login</h1>
-                    <p>Insira seu email e senha para acessar</p>
+                <img src={logo} alt='DigitControl'/>
                     <form onSubmit={onSubmit} className={styles.form}>
-                         <Input
+                         <InputLogin
                             type="email"
                             name="email"
-                            placeholder="Endereço de Email"
+                            placeholder="Email"
                             handleOnChange={onChange}
                             value={userAttempt.email}
                         />
-                        <Input
+                        <InputLogin
                             type="password"
                             name="password"
                             placeholder="Senha"
@@ -66,7 +67,6 @@ function Login(){
                                 <p>Usuário ou Senha inválido</p>
                             )}
                         </div>
-                        
                         <SubmitButtonLogin text="Acessar"/>
                     </form>
             </div>
