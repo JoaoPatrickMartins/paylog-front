@@ -14,7 +14,9 @@ function NavBar() {
     const { user } = useContext(AuthContext);    
 
     return(
-        <nav className={styles.navbar}>
+       <>
+        {!!user ? (<>
+            <nav className={styles.navbar}>
             <Container>
                 <Link to='/' >
                     <img src={logo} alt='PayLog' />
@@ -53,6 +55,9 @@ function NavBar() {
                 
             </Container>     
         </nav>
+        </>) : (<></>)}
+       </>
+        
     )
 }
 
