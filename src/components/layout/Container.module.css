@@ -4,19 +4,23 @@
         justify-content: space-between;
         margin: 0 auto;
         flex-wrap:wrap;
+        
 }
 
 .min-height {
     min-height: 100%;
+    overflow-x: hidden;
 }
 
 .start {
     justify-content: flex-start;
     width: auto;
+    overflow-x: hidden;
 }
 
 .column {
     flex-direction:column;
     justify-content:flex-end;
     width: auto;
+    overflow-x: hidden;
 }

@@ -75,7 +75,6 @@ function Login(){
                     <Link to='/contact' className={styles.link_button}>Esqueceu sua senha?</Link>
                        
             </div>
-            <img src={arrowDown} alt='ArrowDown' className={styles.svg_arrow_down}/>  
         </div>
     )
 }

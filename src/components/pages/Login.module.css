@@ -6,8 +6,7 @@
     width: 100%;
     background-image: linear-gradient(55deg,#C918A1, #9360BD, #6F91D0,#0694B5);
     background-size: 300% 300%;
-    animation: gradient 10s ease infinite;  
-    
+    animation: gradient 10s ease infinite;      
 }
 
 @keyframes gradient {
@@ -37,6 +36,7 @@
     flex-direction:column;
     width: 30%;
     align-items: center;
+    margin: 3em 3em 0 3em;
 }
 
 .card_login img{
