@@ -30,30 +30,8 @@ function NavBar() {
                         <img src={logo} alt='PayLog' />
                     </Link>
                 </div>
-
-                {/*<ul className={styles.list}>
-                    <li>
-                        
-                    </li>
-                    <li className={styles.item}>
-                    <Link to="/requestspending">Solicitações Pendentes</Link>
-                    </li>
-                    <li className={styles.item}>
-                        <Link to="/requests">Histórico de Solicitações</Link>
-                    </li>
-                    <li className={styles.item}>
-                        <Link to="/Contact">Contato</Link>
-                    </li>
-                    </ul>*/}
-                    {user && (
-                            <div className={styles.user_container}>
-                                <Link className={styles.user_options} to='/myaccount'>
-                                    <p>Olá, {user.first_name}</p>
-                                    <BsFillPersonFill />
-                                </Link>
-                            </div>
-                    )}
-                    <MenuMobile menuIsVisible={menuIsVisible} setMenuIsVisible={setMenuIsVisible} user={user} />
+                    
+                <MenuMobile menuIsVisible={menuIsVisible} setMenuIsVisible={setMenuIsVisible} user={user} />
             </Container>     
         </nav>
         </>) : (<></>)}
