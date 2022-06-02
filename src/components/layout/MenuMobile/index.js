@@ -1,14 +1,13 @@
 import { Container } from './styles';
 
-import {  useNavigate, Link } from "react-router-dom"
+import {  useNavigate } from "react-router-dom"
 
-import { BsFillPersonFill } from "react-icons/bs"
-import { IoClose, IoChevronBack, IoLogOutOutline,IoReader, IoInformationCircleOutline, IoWarning, IoTime, IoBagHandle, IoFileTrayStacked, IoCreate, IoPersonCircle } from "react-icons/io5"
+import { IoClose, IoChevronBack, IoLogOutOutline,IoReader, IoChatboxEllipses, IoWarning, IoTime, IoBagHandle, IoFileTrayStacked, IoCreate, IoPersonCircle } from "react-icons/io5"
 
 import { useEffect, useState } from 'react';
 
 
-export function MenuMobile({ menuIsVisible, setMenuIsVisible, user}){
+export function MenuMobile({ menuIsVisible, setMenuIsVisible, user, logout}){
     useEffect(() => {
         document.body.style.overflowY = menuIsVisible ? 'hidden' : 'auto';
     }, [menuIsVisible]);
@@ -66,6 +65,12 @@ export function MenuMobile({ menuIsVisible, setMenuIsVisible, user}){
             setplusOptionsIsVisible(false)
             return setMenuIsVisible(false)
         }
+
+        if(option === 'logout'){
+            setMenuIsVisible(false);
+            setplusOptionsIsVisible(false)
+            return logout();
+        }
         
 
     }
@@ -96,7 +101,13 @@ export function MenuMobile({ menuIsVisible, setMenuIsVisible, user}){
                                     optionSelected('myaccount');
                                     }}>
                             <IoPersonCircle  />
-                            <p>Olá, {user.first_name}</p>
+                            <div>
+                                <p>Olá, {user.first_name}</p>
+                                <div className='job_position_container'>
+                                    <p>{user.job_position}</p>
+                                    <p>{user.company}</p>
+                                </div>   
+                            </div>
                         </div>
                         
                         
@@ -106,33 +117,42 @@ export function MenuMobile({ menuIsVisible, setMenuIsVisible, user}){
                 
 
                 {!plusoptionsIsVisible && (
-                    <ul>
-                        <li onClick={() => {
-                                optionSelected('requests');
-                                setplusOptionsIsVisible(true);
-                            }}>
-                            <IoReader/>
-                            <button >Solicitações de pagamento</button>
-                        </li>
-                        <li onClick={() => {
-                                optionSelected('inventory');
-                            }}>
-                            <IoFileTrayStacked/>
-                            <button >Estoque</button>
-                        </li>
-                        <li onClick={() => {
-                                optionSelected('sales');
-                            }}>
-                            <IoBagHandle/>
-                            <button >Vendas</button>
-                        </li>
-                        <li onClick={() => {
-                                optionSelected('contact');
-                            }}>
-                            <IoInformationCircleOutline/>
-                            <button >Contato</button>
-                        </li>
-                    </ul>
+                    <>
+                        <ul>
+                            <li onClick={() => {
+                                    optionSelected('requests');
+                                    setplusOptionsIsVisible(true);
+                                }}>
+                                <IoReader/>
+                                <button >Solicitações de pagamento</button>
+                            </li>
+                            <li onClick={() => {
+                                    optionSelected('inventory');
+                                }}>
+                                <IoFileTrayStacked/>
+                                <button >Estoque</button>
+                            </li>
+                            <li onClick={() => {
+                                    optionSelected('sales');
+                                }}>
+                                <IoBagHandle/>
+                                <button >Vendas</button>
+                            </li>
+                            <li onClick={() => {
+                                    optionSelected('contact');
+                                }}>
+                                <IoChatboxEllipses/>
+                                <button >Contato</button>
+                            </li>
+                        </ul>
+
+                        <div className='logout_container' onClick={() => {
+                                    optionSelected('logout');
+                                }}>
+                            <IoLogOutOutline/>
+                            <button >Sair</button>
+                        </div>
+                    </>
                 )}
                 
 
@@ -163,12 +183,6 @@ export function MenuMobile({ menuIsVisible, setMenuIsVisible, user}){
                     </>
                     
                 )}
-
-                        <div className='logout_container'>
-                            <IoLogOutOutline/>
-                            <p>sair</p>
-                        </div>
-
             </div>
             
             

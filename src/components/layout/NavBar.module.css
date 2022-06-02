@@ -1,6 +1,6 @@
 .navbar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background-color: #6F91D0;
     padding-right: 2vw;
@@ -12,67 +12,18 @@
    opacity: 0.7;
 }
 
-
-.list {
-    display: flex;
-    list-style: none;   
-}
-
-.item {
-    letter-spacing: 1px;
-    margin-left: 32px;
-}
-
-.item a {
-    color: #fff;
-    text-decoration: none;
-    font-weight:bolder;
-    transition: 0.3s;
-}
-
 .container_menu{
-    display: flex;
+    display:flex;
     justify-content: center;
     align-items: center;
 }
 
+
 .container_menu svg{
     color: #fff;
-    font-size: 2.5em;
+    font-size: 2.5rem;
+    text-justify: start;
     cursor: pointer;
     transition: 0.3s;
-    margin-right: 1em;
-}
-
-.item a:hover {
-    opacity: 0.7;
-}
-
-
-.user_container{
-    display:flow-root;
-}
-
-.user_options {
-    display:flex;
-    align-items: center;
-
-}
-
-.user_options p:hover{
-   opacity: 0.7;
-}
-
-.user_options p {
-    color: #fff;
-    font-weight:bolder;
-    margin-right: 1em;
-    transition: 0.3s;
-    text-decoration:underline;
-}
-
-.user_options svg {
-    color: #fff;
-    font-size: 1.6em;
-    cursor: pointer;
+    margin-right: 4rem;
 }

@@ -4,7 +4,7 @@ import styles from "./MyAccount.module.css"
 
 import { useContext } from "react";
 
-import { BsFillPersonFill } from "react-icons/bs"
+import { IoPersonCircle } from "react-icons/io5"
 
 import { AuthContext } from "../../context/auth"
 
@@ -17,7 +17,7 @@ function MyAccount() {
                 <div>
                     <div className={styles.icon_container}>
                         <div className={styles.background_icon}>
-                            <BsFillPersonFill />
+                            <IoPersonCircle />
                         </div>
                     </div>
                     <h1>Minha Conta</h1>

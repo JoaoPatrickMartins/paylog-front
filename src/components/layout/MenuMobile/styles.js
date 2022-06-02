@@ -31,6 +31,10 @@ export const Container = styled.section`
         cursor: pointer;
     }
 
+    > svg :hover {
+        opacity: 0.7;
+    }
+
     .menu_container{
         display: flex;
         flex-direction: column;
@@ -61,6 +65,7 @@ export const Container = styled.section`
         padding-top: 2vh;
         border-bottom: #fff ridge;
         width: 100%;
+        min-width: 300px;
     }
 
     li:hover{
@@ -94,7 +99,7 @@ export const Container = styled.section`
     .user_container{
         display:flex;
         flex-direction: column;
-        margin-left: 1vw;
+        margin-left: 2vw;
         margin-bottom: 5vh;
     }
 
@@ -118,19 +123,33 @@ export const Container = styled.section`
     .user_options svg {
         color: #fff;
         margin-right: .5rem;
-        font-size: 4rem;
+        font-size: 0rem;
         cursor: pointer;
+        opacity: 0.7;
+        transition: 1s;
     }
+
+    .job_position_container p{
+        color: #fff;
+        font-weight: 600;
+        font-size: 0rem;
+        opacity: 0.7;
+        transition: 1s;
+    }
+
+
 
     .logout_container{
         display: flex;
-        margin-left: 2.3rem;
+        margin-left: 2.3vw;
         width: 100%;
         padding-top: 2vh;
     }
  
     .logout_container p{
-        font-size: medium;
+        font-size: 0rem;
+        opacity: 0.7;
+        transition: 1s;
     }
 
     .logout_container:hover{
@@ -140,33 +159,55 @@ export const Container = styled.section`
     .logout_container svg {
         color: #fff;
         margin-right: .5rem;
-        font-size: x-large;
+        font-size: 0rem;
         cursor: pointer;
+        opacity: 0.7;
+        transition: 1s;
     }
 
     ${({ isVisible }) => isVisible && css`
         opacity: 1;
         pointer-events: auto;
-        width: 23%;
+        min-width: 400px;
+        width: 23vw;
 
          >svg {
              transform: rotate(0deg);
          }
 
-         p, a, button {
+         .logout_container p, p, a, button {
             opacity: 1;
             font-size: medium;
          }
 
-         ul svg {
+         .logout_container svg, .optionIcon, ul svg {
             opacity: 1;
             font-size: x-large;
          }
 
-         .optionIcon {
-            opacity: 1;
-            font-size: x-large;
+         .user_options svg{
+             opacity: 1;
+            font-size: 5rem;
          }
+         .job_position_container p{
+            opacity: 1;
+            font-size: small;
+        }
+
+        @media (max-width: 799px) {
+            opacity: 1;
+            pointer-events: auto;
+            width: 100%;
+            min-width: 300px;
+            
+            li{
+                padding-left: 6vw;
+            }
+
+            .logout_container{
+                margin-left: 6vw;
+            }
+        }
 
     `}
 `;

@@ -33,10 +33,12 @@
 
 
 .background_icon{
-    background-color: #fff;
-    border-radius: 100%;
-    padding: 0.5em;
     margin-bottom: 0.5em;   
+}
+
+.background_icon svg{
+    color: #fff;
+    font-size: 10rem;  
 }
 
 .button_container,
