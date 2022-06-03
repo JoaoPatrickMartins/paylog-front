@@ -4,7 +4,6 @@ import InputLogin from '../form/InputLogin'
 import SubmitButtonLogin from '../form/SubmitButtonLogin'
 
 import logo from '../../img/Logo_Branco_Digit_Control.svg'
-import arrowDown from '../../img/keyboard-arrow-down_119013.svg'
 
 import { useState, useContext } from 'react'
 

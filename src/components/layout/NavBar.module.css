@@ -1,29 +1,54 @@
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
     background-color: #6F91D0;
+    background: linear-gradient(90deg, #c918a1 0%, #6F91D0 95%);
     padding-right: 2vw;
     padding-left: 2vw;
     height: 8vh;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
 
 .navbar svg:hover {
    opacity: 0.7;
 }
 
-.container_menu{
+.logo{
+    display: flex;
+    width: 7rem;  
+}
+
+.container_header{
     display:flex;
-    justify-content: center;
+    justify-content: space-between;
+    justify-items: center;
     align-items: center;
+    height: 8vh;
+    width: 100%;
 }
 
 
-.container_menu svg{
+.container_header svg{
     color: #fff;
     font-size: 2.5rem;
-    text-justify: start;
     cursor: pointer;
     transition: 0.3s;
-    margin-right: 4rem;
+}
+
+.container_menu{
+    width: 33%;
+}
+
+
+.container_company{
+    display: flex;
+    width: 33%;
+    justify-content: flex-end;
+}
+
+.container_company p{
+    color: #fff;
+    text-justify: end;
+    font-weight: bold;
 }

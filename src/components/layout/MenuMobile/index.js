@@ -2,17 +2,16 @@ import { Container } from './styles';
 
 import {  useNavigate } from "react-router-dom"
 
-import { IoClose, IoChevronBack, IoLogOutOutline,IoReader, IoChatboxEllipses, IoWarning, IoTime, IoBagHandle, IoFileTrayStacked, IoCreate, IoPersonCircle } from "react-icons/io5"
+import {  IoLogOutOutline,IoReader, IoChatboxEllipses, IoWarning, IoTime, IoBagHandle, IoFileTrayStacked, IoCreate, IoPersonCircle } from "react-icons/io5"
 
 import { useEffect, useState } from 'react';
 
 
-export function MenuMobile({ menuIsVisible, setMenuIsVisible, user, logout}){
+export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menuIsVisible, setMenuIsVisible, user, logout}){
     useEffect(() => {
         document.body.style.overflowY = menuIsVisible ? 'hidden' : 'auto';
     }, [menuIsVisible]);
 
-    const [plusoptionsIsVisible, setplusOptionsIsVisible] = useState(false)
     const [option, setOption] = useState('')
     const navigate = useNavigate();
 
@@ -78,21 +77,7 @@ export function MenuMobile({ menuIsVisible, setMenuIsVisible, user, logout}){
     return(
         <Container isVisible={menuIsVisible}>
 
-            {!plusoptionsIsVisible && (
-                <IoClose size={45} onClick={() => {
-                    setMenuIsVisible(false);
-                    setplusOptionsIsVisible(false);
-                }} />
-            )}
             
-            {plusoptionsIsVisible && (
-                <IoChevronBack size={45} onClick={() => {
-                    setMenuIsVisible(true);
-                    setOption('');
-                    setplusOptionsIsVisible(false);
-                }} />
-            )}
-
             <div className='menu_container'>
                 
                 {user && (
@@ -104,8 +89,8 @@ export function MenuMobile({ menuIsVisible, setMenuIsVisible, user, logout}){
                             <div>
                                 <p>Olá, {user.first_name}</p>
                                 <div className='job_position_container'>
-                                    <p>{user.job_position}</p>
                                     <p>{user.company}</p>
+                                    <p>{user.job_position}</p>
                                 </div>   
                             </div>
                         </div>

@@ -78,14 +78,3 @@
 .link_button:hover {
    text-decoration:underline;    
 }
-
-.svg_arrow_down{
-    width: 50px;
-    animation: is-bouncing 2s ease alternate infinite;
-}
-
-@keyframes is-bouncing {
-    to{
-        transform:  translateY(15px);
-    }
-}
