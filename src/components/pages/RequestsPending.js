@@ -55,8 +55,10 @@ function RequestsPending(){
         <div className = { styles.request_container }>
 
            <div className = { styles.title_container } >
-                <h1>Solicitações Pendentes</h1>
-                <LinkButton to="/newrequest" text="Criar Registro" />
+                <div className={styles.title_frame}>
+                    <h1>Solicitações Pendentes</h1>
+                </div>
+                <LinkButton to="/newrequest" text="Nova Solicitação" />
            </div>
 
             {message && <Message type="success" msg={message} />}

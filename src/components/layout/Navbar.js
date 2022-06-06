@@ -8,6 +8,7 @@ import logo from '../../img/logoLinearBranco.png'
 import { useContext, useState } from 'react'
 
 import { AuthContext } from '../../context/auth'
+
 import { MenuMobile } from "./MenuMobile"
 
 import { IoMenu,IoChevronBack , IoClose } from 'react-icons/io5'
@@ -55,7 +56,7 @@ function NavBar() {
                     </div>
 
                     <div className={styles.container_company}>
-                        {/*<p>Empresa</p>*/}
+                        {/*<p>Empresa</p>*/}    
                     </div>
                 </div>
                 

@@ -26,7 +26,6 @@
 }
 
 .home_container img {
-    width: 350px;
-    margin: 2em 0;
+    width: 100%;
     align-items: center;
 }

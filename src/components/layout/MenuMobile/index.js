@@ -2,7 +2,7 @@ import { Container } from './styles';
 
 import {  useNavigate } from "react-router-dom"
 
-import {  IoLogOutOutline,IoReader, IoChatboxEllipses, IoWarning, IoTime, IoBagHandle, IoFileTrayStacked, IoCreate, IoPersonCircle } from "react-icons/io5"
+import {  IoLogOutOutline,IoReader, IoChatboxEllipses, IoWarning, IoTime, IoBagHandle, IoCubeSharp, IoCreate } from "react-icons/io5"
 
 import { useEffect, useState } from 'react';
 
@@ -43,20 +43,20 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
 
         if(option === 'requestspending'){
             navigate('/requestspending')
-            setplusOptionsIsVisible(false)
-            return setMenuIsVisible(false)
+            setMenuIsVisible(false)
+            return setplusOptionsIsVisible(false)
         }
 
         if(option === 'requestHistory'){
             navigate('/requests')
-            setplusOptionsIsVisible(false)
-            return setMenuIsVisible(false)
+            setMenuIsVisible(false)
+            return setplusOptionsIsVisible(false)
         }
 
         if(option === 'newrequest'){
             navigate('/newrequest')
-            setplusOptionsIsVisible(false)
-            return setMenuIsVisible(false)
+            setMenuIsVisible(false)
+            return setplusOptionsIsVisible(false)
         }
         
         if(option === 'myaccount'){
@@ -85,7 +85,7 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                         <div className='user_options' onClick={() => {
                                     optionSelected('myaccount');
                                     }}>
-                            <IoPersonCircle  />
+                            
                             <div>
                                 <p>Olá, {user.first_name}</p>
                                 <div className='job_position_container'>
@@ -114,7 +114,7 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                             <li onClick={() => {
                                     optionSelected('inventory');
                                 }}>
-                                <IoFileTrayStacked/>
+                                <IoCubeSharp/>
                                 <button >Estoque</button>
                             </li>
                             <li onClick={() => {
@@ -149,7 +149,7 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                                     optionSelected('newrequest');
                                     }}>
                                     <IoCreate/>
-                                    <button >Nova Solitação</button>
+                                    <button >Nova Solicitação</button>
                                 </li>
                                 <li onClick={() => {
                                     optionSelected('requestspending');
@@ -169,9 +169,6 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                     
                 )}
             </div>
-            
-            
-
         </Container>
     )
 }

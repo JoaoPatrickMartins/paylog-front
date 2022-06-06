@@ -88,7 +88,6 @@ export const Container = styled.section`
         opacity: 0;
         transition: 1s;
     }   
-
     .optionIcon{
         color: #fff;
         font-size: 0em;
@@ -102,10 +101,13 @@ export const Container = styled.section`
     .user_container{
         display:flex;
         flex-direction: column;
-        margin-left: 2vw;
+        justify-content: end;
+        margin-left: 2.3vw;
         margin-bottom: 3vh;
-        border-radius: 15rem;
-        box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+        border-radius: 0rem;
+        border-left: 0px #fff solid;
+        opacity: 0;
+        transition: 0.3s;
     }
 
     .user_options:hover{
@@ -115,8 +117,9 @@ export const Container = styled.section`
     .user_options {
         display:flex;
         align-items: center;
+        margin-left: .5vw;
     }
-
+    
 
     .user_options p {
         color: #fff;
@@ -174,9 +177,9 @@ export const Container = styled.section`
         opacity: 1;
         pointer-events: auto;
         min-width: 380px;
-        width: 25%;
+        width: 26%;
         height: 100%;
-        margin-top: 7vh;
+        margin-top: 7.8vh;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
 
@@ -199,6 +202,11 @@ export const Container = styled.section`
              opacity: 1;
             font-size: 5rem;
          }
+         
+         .user_container{
+            border-left: 5px #fff solid;
+             opacity: 1;
+         }
          .job_position_container p{
             opacity: 1;
             font-size: small;
@@ -217,6 +225,13 @@ export const Container = styled.section`
                 margin-right: 10%;
             }
 
+            .user_container{
+                margin-left: 6vw;
+            }
+
+            .user_options{
+                margin-left: 1.5vw;
+            }
             
             li{
                 padding-left: 6vw;

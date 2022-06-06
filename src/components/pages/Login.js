@@ -9,7 +9,7 @@ import { useState, useContext } from 'react'
 
 import { AuthContext } from '../../context/auth'
 
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 
 
 function initialState(){
@@ -45,36 +45,45 @@ function Login(){
     }
 
     return(
-        <div className={styles.login_container}>
-            <div className={styles.card_login}>
-                <img src={logo} alt='DigitControl'/>
-                <h1>Faça seu login</h1>
-                    <form onSubmit={onSubmit} className={styles.form}>
-                         <InputLogin
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                            handleOnChange={onChange}
-                            value={userAttempt.email}
-                        />
-                        <InputLogin
-                            type="password"
-                            name="password"
-                            placeholder="Senha"
-                            handleOnChange={onChange}
-                            value={userAttempt.password}
-                        />
-                        <div className={styles.msg_container}>
-                            {errorMsg && (
-                                <p>Usuário ou Senha inválido</p>
-                            )}
-                        </div>
-                        <SubmitButtonLogin text="Acessar"/>
-                    </form>  
-                    <Link to='/contact' className={styles.link_button}>Esqueceu sua senha?</Link>
-                       
-            </div>
-        </div>
+
+        <>
+            {!!user ? (
+                <Navigate to='/' />
+            ) : (
+                <div className={styles.login_container}>
+                    <div className={styles.card_login}>
+                        <img src={logo} alt='DigitControl'/>
+                        <h1>Faça seu login</h1>
+                            <form onSubmit={onSubmit} className={styles.form}>
+                                <InputLogin
+                                    type="email"
+                                    name="email"
+                                    placeholder="Email"
+                                    handleOnChange={onChange}
+                                    value={userAttempt.email}
+                                />
+                                <InputLogin
+                                    type="password"
+                                    name="password"
+                                    placeholder="Senha"
+                                    handleOnChange={onChange}
+                                    value={userAttempt.password}
+                                />
+                                <div className={styles.msg_container}>
+                                    {errorMsg && (
+                                        <p>Usuário ou Senha inválido</p>
+                                    )}
+                                </div>
+                                <SubmitButtonLogin text="Acessar"/>
+                            </form>  
+                            <Link to='/contact' className={styles.link_button}>Esqueceu sua senha?</Link>
+                            <p className={styles.copy_right}>
+                                Copyright &copy; 2022 <span>Digit Control</span> - Todos direitos reservados.
+                            </p>                       
+                    </div>
+                </div>
+            )}  
+        </>
     )
 }
 
