@@ -62,7 +62,6 @@ function Request(){
         
         try {
             await editRequestStatus(requestUserId, requestId, request.status, request.approver_name);
-            console.log("status updated successfully")
             loadRequest();
         } catch (err) {
             console.error(err);

@@ -14,7 +14,7 @@
     padding: 0.7em;
     min-height: 30px;
     font-size: medium;
-    color: #9360BD;
+    
     border-radius: 10em;
     border: none;
     outline: none;
@@ -22,9 +22,8 @@
 
 .form_control input::placeholder {
     padding-left: 1em;
-    color: #9360BD;
 }
 
 .form_control input:focus {
-    border: 3px solid #0694B5;
+    border: 3px solid #9360BD;
 }

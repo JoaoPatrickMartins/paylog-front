@@ -46,7 +46,6 @@ function NavBar() {
                             setplusOptionsIsVisible(false);
                         }} />
                     )}
-
                     </div>
 
                     <div className={styles.container_logo}>

@@ -1,10 +1,11 @@
-import styles from './RequestCard.module.css'
+import { Container } from './stylesRequestCard';
 
 import { Link } from 'react-router-dom'
 
 import { useNavigate } from 'react-router-dom'
 
 import { BsReceipt, BsFillTrashFill } from 'react-icons/bs'
+import { IoTrashSharp, IoNewspaperOutline } from 'react-icons/io5'
 
 import { destroyRequest } from '../../services/api'
 
@@ -35,98 +36,51 @@ function RequestCard( { request, loadRequests, msg } ) {
     }
 
     return(
-       <div className={styles.request_card} >
-          {(request.status === 'Pendente') ? (
-               <div className={styles.background_title_pendente} onClick={onClickCard}>
-               {(request.status === 'Pendente') ? (
-                   <div className={styles.statusBar_pendente}></div>
-               ) : (
-                    <>
-                        {(request.status === 'Aprovado') ? (
-                            <div className={styles.statusBar_aprovado}> </div>
-                        ) : (
-                            <div className={styles.statusBar_reprovado}> </div>
-                        ) }
-                    </>
-               )}
-               <h4> {request.title} </h4>
-           </div>
-          ) : (
-              <>
-                {(request.status === 'Aprovado') ? (
-                     <div className={styles.background_title_aprovado} onClick={onClickCard}>
-                     {(request.status === 'Pendente') ? (
-                         <div className={styles.statusBar_pendente}> </div>
-                     ) : (
-                          <>
-                              {(request.status === 'Aprovado') ? (
-                                  <div className={styles.statusBar_aprovado}> </div>
-                              ) : (
-                                  <div className={styles.statusBar_reprovado}> </div>
-                              ) }
-                          </>
-                     )}
-                     <h4> {request.title} </h4>
-                 </div>
-                ) : (
-                    <div className={styles.background_title_reprovado} onClick={onClickCard}>
-                        {(request.status === 'Pendente') ? (
-                            <div className={styles.statusBar_pendente}> </div>
-                        ) : (
-                            <>
-                                {(request.status === 'Aprovado') ? (
-                                    <div className={styles.statusBar_aprovado}> </div>
-                                ) : (
-                                    <div className={styles.statusBar_reprovado}> </div>
-                                ) }
-                            </>
-                        )}
-                        <h4> {request.title} </h4>
+        <Container status={request.status}>
+        <div className='request_card' >
+
+            <div className='title_card_container' onClick={onClickCard}>
+                    <h4>{request.title}</h4>    
+            </div>
+
+            <div >
+                    <div className='info_container' onClick={onClickCard}>
+                        <p>
+                            <span>Empresa:</span> {request.company}
+                        </p>
+                        <p>
+                            <span>Vencimento:</span> {request.due_date.split("-").reverse().join("/")}
+                        </p>
+                        <p>
+                            <span>Valor:</span> {request.value}
+                        </p>
+                        <p>
+                            <span>Solicitante:</span> {request.requester_name}
+                        </p>
                     </div>
-                )}
-              </>
-          )}
-           
-           <div className={styles.bottom_card} >
-                <div className={styles.info_container} onClick={onClickCard}>
-                    <p>
-                        <span>Empresa:</span> {request.company}
-                    </p>
-                    <p>
-                        <span>Data de vencimento:</span> {request.due_date.split("-").reverse().join("/")}
-                    </p>
-                    <p>
-                        <span>Valor:</span> {request.value}
-                    </p>
-                    <p>
-                        <span>Solicitante:</span> {request.requester_name}
-                    </p>
-                    {/*<p className={styles.status_text}>
-                        <span className={`${styles[request.status.toLowerCase()]}`}></span> {request.status}
-                    </p>*/}
+                    <div className='request_card_actions'>
+                        <Link to={`/request/${requestUserId}/${requestId}`}>
+                            <IoNewspaperOutline size={20}/>Detalhar 
+                            </Link>
+                            {(request.status === 'Pendente') ? (
+                                <button onClick={remove}>
+                                    <IoTrashSharp size={20}/>Excluir
+                                </button>
+                            ):(
+                                <>
+                                    {(user.permission === 'admin') ? (
+                                        <button onClick={remove}>
+                                            <IoTrashSharp size={20}/>Excluir
+                                        </button>
+                                    ):(
+                                        <></>
+                                    )}
+                                </>
+                            )}   
                     </div>
-                <div className={styles.request_card_actions}>
-                    <Link to={`/request/${requestUserId}/${requestId}`}>
-                        <BsReceipt/>Detalhar 
-                        </Link>
-                        {(request.status === 'Pendente') ? (
-                            <button onClick={remove}>
-                                <BsFillTrashFill/>Excluir
-                            </button>
-                        ):(
-                            <>
-                                {(user.permission === 'admin') ? (
-                                    <button onClick={remove}>
-                                        <BsFillTrashFill/>Excluir
-                                    </button>
-                                ):(
-                                    <></>
-                                )}
-                            </>
-                        )}   
-                </div>
-           </div>
-       </div> 
+            </div>
+        </div> 
+       </Container>
     )
 }
 

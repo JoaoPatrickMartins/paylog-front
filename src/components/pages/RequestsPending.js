@@ -10,7 +10,7 @@ import LinkButton from "../layout/LinkButton"
 import Loading from "../layout/Loading"
 import LoadingError from "../layout/LoadingError"
 
-import RequestCard from "../request/RequestCard"
+import RequestCardPending from "../request/RequestCardPending"
 
 import styles from "./Requests.module.css"
 
@@ -25,7 +25,7 @@ function RequestsPending(){
     const [requests, setRequests] = useState([]);
     const [loading, setLoading] = useState(true);
     const [loadingError, setLoadingError] = useState(false);
-    const [requestMessage, setRequestMessage] = useState(''); //set mensagem de solicitação excluída
+    const [requestMessage, setRequestMessage] = useState(''); 
 
     const location = useLocation()
     let message = ''
@@ -67,18 +67,17 @@ function RequestsPending(){
             <Container customClass= "start">
                 {requests.length > 0 &&
                     requests.map((request) => (
-                        <RequestCard request={request} key={request._id} loadRequests={loadRequestsPending} msg={setRequestMessage} />
+                        <RequestCardPending request={request} key={request._id} loadRequests={loadRequestsPending} msg={setRequestMessage} />
                     ))
                 }
 
                 {loading && <Loading />}
                 {loadingError && <LoadingError/>}
                 {!loading && requests.length === 0 && (
-                    <p>Não há Solicitações cadastradas!</p>
+                    <p>Não existem solicitações pendentes no momento!</p>
                 )}
             </Container>
        </div>
-        
     )
 }
 
