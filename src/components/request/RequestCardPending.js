@@ -2,7 +2,6 @@ import { Container } from './stylesRequestCardPending';
 
 import { useNavigate } from 'react-router-dom'
 
-import {  BsCheckLg, BsXLg } from 'react-icons/bs'
 import {  IoCloseSharp, IoCheckmarkSharp } from 'react-icons/io5'
 
 import { useContext } from 'react'
@@ -73,10 +72,10 @@ function RequestCardPending( { request, loadRequests, msg } ) {
                     {(request.status === 'Pendente') && (    
                         <div className='request_card_actions'>        
                             <button className='button_approved' onClick={upDateStatusAprove}>
-                                <IoCheckmarkSharp size={25}/> Aprovar
+                                <IoCheckmarkSharp size={20}/> Aprovar   
                             </button>
                             <button className='button_disapproved' onClick={upDateStatusReprove}>
-                                <IoCloseSharp size={25}/> Reprovar
+                                <IoCloseSharp size={20}/> Reprovar
                             </button>
                         </div>
                     )} 

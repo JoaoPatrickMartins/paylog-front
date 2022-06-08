@@ -68,17 +68,17 @@ function Requests (){
             {requestMessage && <Message type="success" msg={requestMessage} />}
 
             <Container customClass= "start">
-                {requests.length > 0 &&
-                    requests.map((request) => (
-                        <RequestCard request={request} key={request._id} loadRequests={loadData} msg={setRequestMessage} />
-                    ))
-                }
+                    {requests.length > 0 &&
+                        requests.map((request) => (
+                            <RequestCard request={request} key={request._id} loadRequests={loadData} msg={setRequestMessage} />
+                        ))
+                    }
 
-                {loading && <Loading />}
-                {loadingError && <LoadingError/>}
-                {!loading && requests.length === 0 && (
-                    <p>Não há Solicitações cadastradas!</p>
-                )}
+                    {loading && <Loading />}
+                    {loadingError && <LoadingError/>}
+                    {!loading && requests.length === 0 && (
+                        <p>Não há Solicitações cadastradas!</p>
+                    )}
             </Container>
        </div>
     )

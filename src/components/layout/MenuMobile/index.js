@@ -32,12 +32,12 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
         }
 
         if(option === 'sales'){
-            navigate('/Contact')
+            navigate('/salesdashboard')
             return setMenuIsVisible(false)
         }
 
         if(option === 'inventory'){
-            navigate('/Contact')
+            navigate('/inventorydashboard')
             return setMenuIsVisible(false)
         }
 
@@ -60,7 +60,7 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
         }
         
         if(option === 'myaccount'){
-            navigate('/myaccount')
+            //navigate('/myaccount')
             setplusOptionsIsVisible(false)
             return setMenuIsVisible(false)
         }

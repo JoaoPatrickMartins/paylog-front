@@ -5,12 +5,26 @@
 }
 
 .form_control label {
+    color: #666666;
     margin-bottom: 0.6em;
     font-weight: bold;
 }
 
 .form_control select {
+    color: #c2c2c2;
     padding: 0.7em;
     border-radius: 0.5em;
     border: none;
+    outline: none;
+    
 }
+.form_control select:focus,
+.form_control select:hover,
+.form_control select:active,
+.form_control select:checked{
+    color:  #9360BD;
+    
+}
+
+
+

@@ -29,8 +29,12 @@ function NewRequest(){
 
     return(
         <div className={styles.newrequest_container}>
-            <h1>Criar Solicitação</h1>
-            <p>Crie sua solicitação de pagamento e aguarde ser aprovado</p>
+            <div className={styles.title_container}>
+                <div className={styles.title_frame}>
+                    <h1>Criar Solicitação</h1>
+                </div>
+                <p>Crie sua solicitação de pagamento e aguarde ser aprovado</p>
+            </div>
             <RequestForm handleSubmit={createPost} btnText="Criar Solicitação" />
             <div className={styles.msg_container}>
                 {errorMsg && (

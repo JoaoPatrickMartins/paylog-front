@@ -2,11 +2,13 @@ import { BrowserRouter as Router, Navigate, Route, Routes, } from 'react-router-
 import React, { useContext }  from 'react'
 
 import Home from './components/pages/Home'
-import Contact from './components/pages/Contact'
+import Contact from './components/pages/Contact/index'
 import NewRequest from './components/pages/NewRequest'
 import Requests from './components/pages/Requests'
 import Request from './components/pages/Request'
 import Login from './components/pages/Login'
+import InventoryDashboard from './components/pages/InventoryDashboard/index'
+import SalesDashboard from './components/pages/SalesDashboard/index'
 
 import Container from './components/layout/Container'
 import NavBar from './components/layout/Navbar'
@@ -42,13 +44,15 @@ function AppRoutes() {
           <Container customClass="min-height">
             <Routes>
               <Route path="/login" element={<Login />} />
-              <Route path="/" element={<Private> <Home /> </Private>} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/" element={<Private> {/*<Home />*/} <RequestsPending /> </Private>} />
+              <Route path="/myaccount" element={ <Private> <MyAccount /> </Private>} />
               <Route path="/newrequest" element={ <Private> <NewRequest /> </Private>} />
               <Route path="/requests" element={ <Private> <Requests /> </Private>} />
               <Route path="/requestspending" element={ <Private> <RequestsPending /> </Private>} />
               <Route path="/request/:requestUserId/:requestId" element={ <Private> <Request /> </Private>} />
-              <Route path="/myaccount" element={ <Private> <MyAccount /> </Private>} />
+              <Route path="/inventorydashboard" element={ <Private> <InventoryDashboard /> </Private>} />              
+              <Route path="/salesdashboard" element={ <Private> <SalesDashboard /> </Private>} />              
             </Routes>
           </Container>
         <Footer />

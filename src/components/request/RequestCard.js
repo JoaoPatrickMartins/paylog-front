@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 import { useNavigate } from 'react-router-dom'
 
-import { BsReceipt, BsFillTrashFill } from 'react-icons/bs'
 import { IoTrashSharp, IoNewspaperOutline } from 'react-icons/io5'
 
 import { destroyRequest } from '../../services/api'
@@ -37,49 +36,49 @@ function RequestCard( { request, loadRequests, msg } ) {
 
     return(
         <Container status={request.status}>
-        <div className='request_card' >
+            <div className='request_card' >
 
-            <div className='title_card_container' onClick={onClickCard}>
-                    <h4>{request.title}</h4>    
-            </div>
+                <div className='title_card_container' onClick={onClickCard}>
+                        <h4>{request.title}</h4>    
+                </div>
 
-            <div >
-                    <div className='info_container' onClick={onClickCard}>
-                        <p>
-                            <span>Empresa:</span> {request.company}
-                        </p>
-                        <p>
-                            <span>Vencimento:</span> {request.due_date.split("-").reverse().join("/")}
-                        </p>
-                        <p>
-                            <span>Valor:</span> {request.value}
-                        </p>
-                        <p>
-                            <span>Solicitante:</span> {request.requester_name}
-                        </p>
-                    </div>
-                    <div className='request_card_actions'>
-                        <Link to={`/request/${requestUserId}/${requestId}`}>
-                            <IoNewspaperOutline size={20}/>Detalhar 
-                            </Link>
-                            {(request.status === 'Pendente') ? (
-                                <button onClick={remove}>
-                                    <IoTrashSharp size={20}/>Excluir
-                                </button>
-                            ):(
-                                <>
-                                    {(user.permission === 'admin') ? (
-                                        <button onClick={remove}>
-                                            <IoTrashSharp size={20}/>Excluir
-                                        </button>
-                                    ):(
-                                        <></>
-                                    )}
-                                </>
-                            )}   
-                    </div>
-            </div>
-        </div> 
+                <div >
+                        <div className='info_container' onClick={onClickCard}>
+                            <p>
+                                <span>Empresa:</span> {request.company}
+                            </p>
+                            <p>
+                                <span>Vencimento:</span> {request.due_date.split("-").reverse().join("/")}
+                            </p>
+                            <p>
+                                <span>Valor:</span> {request.value}
+                            </p>
+                            <p>
+                                <span>Solicitante:</span> {request.requester_name}
+                            </p>
+                        </div>
+                        <div className='request_card_actions'>
+                            <Link to={`/request/${requestUserId}/${requestId}`}>
+                                <IoNewspaperOutline size={20}/>Detalhar 
+                                </Link>
+                                {(request.status === 'Pendente') ? (
+                                    <button onClick={remove}>
+                                        <IoTrashSharp size={20}/>Excluir
+                                    </button>
+                                ):(
+                                    <>
+                                        {(user.permission === 'admin') ? (
+                                            <button onClick={remove}>
+                                                <IoTrashSharp size={20}/>Excluir
+                                            </button>
+                                        ):(
+                                            <></>
+                                        )}
+                                    </>
+                                )}   
+                        </div>
+                </div>
+            </div> 
        </Container>
     )
 }

@@ -1,25 +1,27 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.section`
+    display: flex;
     position: absolute;
     backdrop-filter: blur(3px);
-    width: 0;
-    height: 0;
-    margin-top: 8vh;
+    width: 26%;
+    min-width: 380px;
+    height: 100%;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 5;
-    display: flex;
+    z-index: 5;    
+    margin-top: 7.8vh;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
     background: #c918a1;
     background: linear-gradient(90deg, #c918a1 0%, #B138AD 95%);
-    opacity: 0;
 
     pointer-events: none;
 
-    transition: .7s;
+    opacity: 0;
+    transition: .3s;
     
 
     > svg {
@@ -29,7 +31,7 @@ export const Container = styled.section`
         color: #fff;
         transform: rotate(45deg);
         opacity: 0;
-        transition: .7s;
+        transition: .5s;
         cursor: pointer;
     }
 
@@ -55,7 +57,7 @@ export const Container = styled.section`
         margin-right: 1rem;
         cursor: pointer;
         opacity: 0;
-        transition: 1s;
+        transition: .5s;
     }
 
     li{
@@ -82,11 +84,11 @@ export const Container = styled.section`
         background: none;
         border: none;
         font-weight: bold;
-        font-size: 0em;
+        font-size: medium;
         cursor: pointer;
         width: 100%;
         opacity: 0;
-        transition: 1s;
+        transition: .5s;
     }   
     .optionIcon{
         color: #fff;
@@ -94,7 +96,7 @@ export const Container = styled.section`
         margin-right: 1rem;
         cursor: pointer;
         opacity: 0;
-        transition: 1s;
+        transition: .5s;
     }
 
         
@@ -124,7 +126,7 @@ export const Container = styled.section`
     .user_options p {
         color: #fff;
         font-weight:bolder;
-        transition: 0.3s;
+        transition: 0.1s;
         text-decoration:none;
     }
 
@@ -134,7 +136,7 @@ export const Container = styled.section`
         font-size: 0rem;
         cursor: pointer;
         opacity: 0;
-        transition: 1s;
+        transition: .5s;
     }
 
     .job_position_container p{
@@ -142,7 +144,7 @@ export const Container = styled.section`
         font-weight: 600;
         font-size: 0rem;
         opacity: 0;
-        transition: 1s;
+        transition: .3s;
     }
 
 
@@ -155,9 +157,9 @@ export const Container = styled.section`
     }
  
     .logout_container p{
-        font-size: 0rem;
+        font-size: medium;
         opacity: 0;
-        transition: 1s;
+        transition: .5s;
     }
 
     .logout_container:hover{
@@ -170,18 +172,53 @@ export const Container = styled.section`
         font-size: 0rem;
         cursor: pointer;
         opacity: 0;
-        transition: 1s;
+        transition: .5s;
     }
+
+    @media (max-width: 799px) {
+            opacity: 0;
+            pointer-events: none;
+            width: 100%;
+            min-width: 300px;
+            background: #c918a1;
+            background: linear-gradient(90deg, #c918a1 0%, #6F91D0 95%);
+
+            .menu_container{
+                width: 100%;
+                margin-right: 10%;
+                opacity: 0;
+                transition: .3s;
+            }
+
+            .user_container{
+                margin-left: 6vw;
+                opacity: 0;
+                transition: .3s;
+            }
+
+            .user_options{
+                margin-left: 1.5vw;
+                opacity: 0;
+                transition: .3s;
+            }
+            
+            li{
+                padding-left: 6vw;
+                width: 100%;
+                opacity: 0;
+                transition: .3s;
+            }
+
+            .logout_container{
+                margin-left: 6vw;
+                opacity: 0;
+                transition: .3s;
+            }
+        }
 
     ${({ isVisible }) => isVisible && css`
         opacity: 1;
         pointer-events: auto;
-        min-width: 380px;
-        width: 26%;
-        height: 100%;
-        margin-top: 7.8vh;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-
 
          >svg {
              opacity: 1;
@@ -189,8 +226,8 @@ export const Container = styled.section`
          }
 
          .logout_container p, p, a, button {    
-            opacity: 1;
-            font-size: medium;
+                opacity: 1;
+           
          }
 
          .logout_container svg, .optionIcon, ul svg {
@@ -221,25 +258,28 @@ export const Container = styled.section`
             background: linear-gradient(90deg, #c918a1 0%, #6F91D0 95%);
 
             .menu_container{
-                width: 100%;
-                margin-right: 10%;
+                opacity: 1;
+                transition: .3s;
             }
 
             .user_container{
-                margin-left: 6vw;
+                opacity: 1;
+                transition: .5s;
             }
 
             .user_options{
-                margin-left: 1.5vw;
+                opacity: 1;
+                transition: .5s;
             }
             
             li{
-                padding-left: 6vw;
-                width: 100%;
+                opacity: 1;
+                transition: .5s;
             }
 
             .logout_container{
-                margin-left: 6vw;
+                opacity: 1;
+                transition: .5s;
             }
         }
 

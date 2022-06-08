@@ -24,3 +24,9 @@
     width: auto;
     overflow-x: hidden;
 }
+
+@media (max-width: 800px) {
+    .start{
+        justify-content: center;
+    }
+}

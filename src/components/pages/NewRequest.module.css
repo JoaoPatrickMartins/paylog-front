@@ -12,6 +12,19 @@
     color: #7B7B7B;
 }
 
+.title_frame {
+    border-left: 5px #9360BD solid;
+}
+
+.title_frame h1{
+    color: #9360BD;
+    margin-left: 1rem;
+}
+
+.title_container p{
+    color: #666666;
+}
+
 .msg_container{
     width: 100%;
     margin-bottom: 1em;
@@ -23,3 +36,4 @@
     text-align: center;
 
 }
+

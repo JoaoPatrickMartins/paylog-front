@@ -1,6 +1,6 @@
 .navbar {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     background-color: #6F91D0;
     background: linear-gradient(90deg, #c918a1 0%, #6F91D0 95%);
