@@ -68,8 +68,8 @@ function RequestCardPending( { request, loadRequests, msg } ) {
                             <span>Valor:</span> {request.value}
                         </p>   
                     </div>
-
-                    {(request.status === 'Pendente') && (    
+                
+                    {((request.status === 'Pendente') & (user.permission === 'admin')) ? (    
                         <div className='request_card_actions'>        
                             <button className='button_approved' onClick={upDateStatusAprove}>
                                 <IoCheckmarkSharp size={20}/> Aprovar   
@@ -78,7 +78,7 @@ function RequestCardPending( { request, loadRequests, msg } ) {
                                 <IoCloseSharp size={20}/> Reprovar
                             </button>
                         </div>
-                    )} 
+                    ): (<div className='request_card_actions_none'></div>)} 
             </div>
         </div> 
        </Container>

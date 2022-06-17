@@ -94,6 +94,10 @@ export const Container = styled.section`
     margin-right: .5em;
 }
 
+.request_card_actions_none{
+    margin-bottom: 1rem ;
+}
+
 ${({ status }) => ( status === 'Aprovado') && css`  
     border-top: 5px #3bb659 solid;
 `}

@@ -32,16 +32,16 @@ function Login(){
 
     async function onSubmit(e){
         e.preventDefault()
-        login(userAttempt.email, userAttempt.password);
+        login(userAttempt.email, userAttempt.password, setErrorMsg);
         
-        if(!!user){
+       /* if(!!user){
             setErrorMsg(false)
             setUserAttempt(initialState)
         }else{
             setTimeout(() => {
                 setErrorMsg(true)
             }, 500);
-        }
+        }*/
     }
 
     return(

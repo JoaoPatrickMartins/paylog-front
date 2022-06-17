@@ -24,18 +24,26 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
     }, []);
 
-    const login = async (email, password) =>{
+    const login = async (email, password, setErrorMsg) =>{
+
+        try {
+            setErrorMsg(false)
+            const response = await createSession(email, password);
+
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            localStorage.setItem('token', response.data.token);
+
+            api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
+
+            setUser(response.data.user);
+
+            navigate('/');
+            
+        } catch (err) {
+            setErrorMsg(true)
+        }
         
-        const response = await createSession(email, password);
-
-        localStorage.setItem('user', JSON.stringify(response.data.user));
-        localStorage.setItem('token', response.data.token);
-
-        api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
-
-        setUser(response.data.user);
-
-        navigate('/');
+        
     }
 
     const logout = () =>{

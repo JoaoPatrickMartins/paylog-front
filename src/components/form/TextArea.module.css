@@ -5,6 +5,7 @@
 }
 
 .form_control label {
+    color: #666666;
     margin-bottom: 0.6em;
     font-weight: bold;
 }
