@@ -35,7 +35,7 @@ function RequestCard( { request, loadRequests, msg } ) {
     }
 
     return(
-        <Container status={request.status}>
+        <Container status={request.status} permission={user.permission}>
             <div className='request_card' >
 
                 <div className='title_card_container' onClick={onClickCard}>
