@@ -42,7 +42,7 @@ function RequestCard( { request, loadRequests, msg } ) {
                         <h4>{request.title}</h4>    
                 </div>
 
-                <div >
+                <div className='body_container'>
                         <div className='info_container' onClick={onClickCard}>
                             <p>
                                 <span>Empresa:</span> {request.company}
@@ -78,6 +78,7 @@ function RequestCard( { request, loadRequests, msg } ) {
                                 )}   
                         </div>
                 </div>
+                
             </div> 
        </Container>
     )

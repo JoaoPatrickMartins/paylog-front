@@ -3,11 +3,12 @@
 export const Container = styled.section`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content:flex-end;
     background: #fafafa;
     border-radius: 1em;
     width: 18.85%;
     min-width: 230px;
+    height: auto;
     margin: .5%;
     border: 1px #C2C2C2 solid;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -29,7 +30,9 @@ export const Container = styled.section`
 }
 
 .request_card h4 {
+    text-align: center;
     color: #525252;
+    flex-wrap: wrap;
     border-radius: 1em;
     font-size: 1.3em;
     margin-left: .5rem;
