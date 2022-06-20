@@ -105,7 +105,7 @@ function RequestForm({ handleSubmit, btnText, requestData }){
                 handleSelectChange={handleSelectDRE}
             />
 
-            {(selectedDRE === ' ') || (selectedDRE === 'Royalties Ri Happy') || (selectedDRE === 'Fundo de Propaganda Ri Happy') || (selectedDRE === 'DARF CSLL') || (selectedDRE === 'DARF IRPJ') || (selectedDRE === 'Pró Labore') ? (
+            {(selectedDRE === ' ') || (selectedDRE === 'Fornecedor') || (selectedDRE === 'Royalties Ri Happy') || (selectedDRE === 'Fundo de Propaganda Ri Happy') || (selectedDRE === 'DARF CSLL') || (selectedDRE === 'DARF IRPJ') || (selectedDRE === 'Pró Labore') ? (
                 <></>
                 ) : (
                     <Select
@@ -124,7 +124,7 @@ function RequestForm({ handleSubmit, btnText, requestData }){
                 name="request_observation"
                 rows="4"
                 cols="20"
-                placeholder="Insira uma observação (Opicional)"
+                placeholder="Insira uma observação (Opcional)"
                 handleOnChange={handleChange}
                 value={request.request_observation ? request.request_observation : ''}
             />

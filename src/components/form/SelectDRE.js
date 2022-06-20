@@ -11,6 +11,7 @@ function SelectOrigin ({ text, name, placeholder, handleSelectChange }){
         { value: 'Royalties Ri Happy', label: 'Royalties Ri Happy' },
         { value: 'Fundo de Propaganda Ri Happy', label: 'Fundo de Propaganda Ri Happy' },
         { value: 'Folha de Pagamento', label: 'Folha de Pagamento' },
+        { value: 'Fornecedor', label: 'Fornecedor' },
         { value: 'Despesas Financeiras', label: 'Despesas Financeiras' },
         { value: 'DARF CSLL', label: 'DARF CSLL' },
         { value: 'DARF IRPJ', label: 'DARF IRPJ' },

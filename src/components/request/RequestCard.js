@@ -23,11 +23,10 @@ function RequestCard( { request, loadRequests, msg } ) {
 
     const remove = async (e) => {
         //e.preventDefault();
+        
         await destroyRequest(requestUserId, request._id);
         await loadRequests();
-        console.log('delete request');
         msg('Solicitação excluida com sucesso!');
-
     }
 
     const onClickCard = () =>{
@@ -37,7 +36,6 @@ function RequestCard( { request, loadRequests, msg } ) {
     return(
         <Container status={request.status} permission={user.permission}>
             <div className='request_card' >
-
                 <div className='title_card_container' onClick={onClickCard}>
                         <h4>{request.title}</h4>    
                 </div>
@@ -80,6 +78,7 @@ function RequestCard( { request, loadRequests, msg } ) {
                 </div>
                 
             </div> 
+            
        </Container>
     )
 }
