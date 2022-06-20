@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const Container = styled.section`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     background: #fafafa;
     border-radius: 1em;
     width: 18.85%;
