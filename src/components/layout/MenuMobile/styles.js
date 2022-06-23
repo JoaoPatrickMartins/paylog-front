@@ -38,6 +38,7 @@ export const Container = styled.section`
         left: 0;
         right: 0;
         opacity: 0;
+        transition: .3s;
     }
     
 
