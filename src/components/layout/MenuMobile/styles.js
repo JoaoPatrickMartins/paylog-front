@@ -30,7 +30,7 @@ export const Container = styled.section`
     .overlay{
         pointer-events: none;
         z-index: 4;
-        background-color: rgba(0, 0, 0, 0.6); 
+        background-color: rgba(0, 0, 0, 0.3); 
         backdrop-filter: blur(3px);
         position: fixed;
         top: 7.95vh;
