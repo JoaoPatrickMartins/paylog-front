@@ -1,27 +1,44 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.section`
-    display: flex;
-    position: absolute;
-    backdrop-filter: blur(3px);
-    width: 26%;
-    min-width: 380px;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 5;    
-    margin-top: 7.8vh;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
-    background: #c918a1;
-    background: linear-gradient(90deg, #c918a1 0%, #B138AD 95%);
+    .body_container{
+        display: flex;
+        position: absolute;
+        backdrop-filter: blur(3px);
+        width: 26%;
+        min-width: 380px;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 5;    
+        margin-top: 7.8vh;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
-    pointer-events: none;
+        background: #c918a1;
+        background: linear-gradient(90deg, #c918a1 0%, #B138AD 95%);
 
-    opacity: 0;
-    transition: .3s;
+        pointer-events: none;
+
+        opacity: 0;
+        transition: .3s;
+    }
+    
+
+    .overlay{
+        pointer-events: none;
+        z-index: 4;
+        background-color: rgba(0, 0, 0, 0.6); 
+        backdrop-filter: blur(3px);
+        position: fixed;
+        top: 7.95vh;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+    }
     
 
     > svg {
@@ -176,12 +193,26 @@ export const Container = styled.section`
     }
 
     @media (max-width: 799px) {
+        .body_container{
             opacity: 0;
             pointer-events: none;
             width: 100%;
             min-width: 300px;
             background: #c918a1;
             background: linear-gradient(90deg, #c918a1 0%, #6F91D0 95%);
+        }
+
+        .overlay{
+            pointer-events: none;
+            z-index: 4;
+            background-color: rgba(0, 0, 0, 0.6);
+            position: fixed;
+            top: 8.1vh;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            opacity: 0;
+        }
 
             .menu_container{
                 width: 100%;
@@ -217,8 +248,15 @@ export const Container = styled.section`
         }
 
     ${({ isVisible }) => isVisible && css`
-        opacity: 1;
-        pointer-events: auto;
+        .body_container{
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .overlay{
+            opacity: 1;
+            pointer-events: auto;
+        }
 
          >svg {
              opacity: 1;
@@ -227,7 +265,6 @@ export const Container = styled.section`
 
          .logout_container p, p, a, button {    
                 opacity: 1;
-           
          }
 
          .logout_container svg, .optionIcon, ul svg {
@@ -250,12 +287,19 @@ export const Container = styled.section`
         }
 
         @media (max-width: 799px) {
-            opacity: 1;
-            pointer-events: auto;
-            width: 100%;
-            min-width: 300px;
-            background: #c918a1;
-            background: linear-gradient(90deg, #c918a1 0%, #6F91D0 95%);
+            .body_container{
+                opacity: 1;
+                pointer-events: auto;
+                width: 100%;
+                min-width: 300px;
+                background: #c918a1;
+                background: linear-gradient(90deg, #c918a1 0%, #6F91D0 95%);
+            }
+
+            .overlay{
+                opacity: 1;
+                pointer-events: auto;
+            }
 
             .menu_container{
                 opacity: 1;
