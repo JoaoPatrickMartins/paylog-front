@@ -61,7 +61,7 @@ function RequestForm({ handleSubmit, btnText, requestData }){
         <form onSubmit={submit} className={styles.form}>
             <Input 
                 type="text"
-                text="Titulo da Solicitação"
+                text="Título da Solicitação"
                 name="title"
                 placeholder="Insira o titulo da solicitação "
                 handleOnChange={handleChange}

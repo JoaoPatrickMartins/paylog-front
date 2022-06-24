@@ -18,6 +18,8 @@ import { AuthProvider, AuthContext } from "./context/auth";
 import Loading from './components/layout/Loading'
 import RequestsPending from './components/pages/RequestsPending'
 import MyAccount from './components/pages/MyAccount'
+import { Styles } from './components/pages/Contact/styles'
+
 
 
 function AppRoutes() {

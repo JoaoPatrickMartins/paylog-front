@@ -155,7 +155,7 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                                         optionSelected('newrequest');
                                         }}>
                                         <IoCreate/>
-                                        <button >Nova Solicitação</button>
+                                        <button >Criar Solicitação</button>
                                     </li>
                                     <li onClick={() => {
                                         optionSelected('requestspending');

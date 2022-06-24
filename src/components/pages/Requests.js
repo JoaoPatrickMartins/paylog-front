@@ -61,7 +61,7 @@ function Requests (){
                 <div className={styles.title_frame}>
                     <h1>Histórico de Solicitações</h1>
                 </div>
-                <LinkButton to="/newrequest" text="Nova Solicitação" />
+                <LinkButton to="/newrequest" text="Criar Solicitação" />
            </div>
 
             {message && <Message type="success" msg={message} />}

@@ -35,7 +35,7 @@ function NewRequest(){
                 </div>
                 <p>Crie sua solicitação de pagamento e aguarde ser aprovado</p>
             </div>
-            <RequestForm handleSubmit={createPost} btnText="Criar Solicitação" />
+            <RequestForm handleSubmit={createPost} btnText="Solicitar" />
             <div className={styles.msg_container}>
                 {errorMsg && (
                     <p>Todos os Campos obrigatórios devem ser preenchidos.</p>

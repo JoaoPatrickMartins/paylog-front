@@ -8,6 +8,7 @@ export const Container = styled.section`
         backdrop-filter: blur(3px);
         width: 26%;
         min-width: 380px;
+        max-width: 450px;
         height: 100%;
         top: 0;
         left: 0;
@@ -30,7 +31,7 @@ export const Container = styled.section`
     .overlay{
         pointer-events: none;
         z-index: 4;
-        background-color: rgba(0, 0, 0, 0.2); 
+        background-color: rgba(0, 0, 0, 0.3); 
         backdrop-filter: blur(3px);
         position: fixed;
         top: 7.95vh;
@@ -198,6 +199,7 @@ export const Container = styled.section`
             opacity: 0;
             pointer-events: none;
             width: 100%;
+            max-width: 100%;
             min-width: 300px;
             background: #c918a1;
             background: linear-gradient(90deg, #c918a1 0%, #6F91D0 95%);

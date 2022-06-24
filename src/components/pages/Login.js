@@ -44,7 +44,6 @@ function Login(){
                 <div className={styles.login_container}>
                     <div className={styles.card_login}>
                         <img src={logo} alt='DigitControl'/>
-                        <h1>Faça seu login</h1>
                             <form onSubmit={onSubmit} className={styles.form}>
                                 <InputLogin
                                     type="email"

@@ -15,6 +15,7 @@ function SelectOrigin ({ text, name, placeholder, handleSelectChange }){
         <div className={styles.form_control} >
             <label htmlFor={name}>{text}</label>
             <Select 
+                className={styles.select_style}
                 name={name}
                 options={options}  
                 placeholder={placeholder}
