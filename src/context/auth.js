@@ -9,7 +9,6 @@ export const AuthContext =  createContext();
 export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [visibleBar, setVisibleBar] = useState(false)
 
     useEffect(() =>{
@@ -20,8 +19,6 @@ export const AuthProvider = ({ children }) => {
             setUser(JSON.parse(user));  
             api.defaults.headers.Authorization = `Bearer ${token}`;
         }
-
-        setLoading(false);
     }, []);
 
     const login = async (email, password, setErrorMsg) =>{
@@ -61,10 +58,8 @@ export const AuthProvider = ({ children }) => {
         <AuthContext.Provider value={{
                 authenticated: !!user,
                 user,
-                loading,
                 visibleBar,
                 setVisibleBar,
-                setLoading,
                 login,
                 logout
             }}>

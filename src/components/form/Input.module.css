@@ -19,7 +19,7 @@
 }
 
 .form_control input:focus{
-    border: 2px solid #9360BD;
+    outline: 2px solid #9360BD;
 }
 
 .form_control input::placeholder {

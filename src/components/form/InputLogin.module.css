@@ -14,16 +14,12 @@
     padding: 0.7em;
     min-height: 30px;
     font-size: medium;
-    
+    padding-left: 1em;    
     border-radius: 10em;
     border: none;
     outline: none;
 }
 
-.form_control input::placeholder {
-    padding-left: 1em;
-}
-
 .form_control input:focus {
-    border: 2px solid #9360BD;
+    outline: 2px solid #9360BD;
 }

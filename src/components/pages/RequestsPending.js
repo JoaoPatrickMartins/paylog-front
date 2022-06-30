@@ -7,7 +7,7 @@ import { useState, useEffect, useContext } from "react"
 import Message from "../layout/Message"
 import Container from "../layout/Container"
 import LinkButton from "../layout/LinkButton"
-import Loading from "../layout/Loading"
+import Loading from "../layout/Loading/index"
 import LoadingError from "../layout/LoadingError"
 
 import RequestCardPending from "../request/RequestCardPending"
