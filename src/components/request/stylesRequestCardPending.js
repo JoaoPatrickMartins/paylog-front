@@ -29,7 +29,9 @@ export const Container = styled.section`
 }
 
 .request_card h4 {
+    text-align: center;
     color: #525252;
+    flex-wrap: wrap;
     border-radius: 1em;
     font-size: 1.3em;
     margin-left: .5rem;

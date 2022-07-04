@@ -8,6 +8,8 @@ function Input ({ type, text, name, placeholder, handleOnChange, value }){
                 type={type}
                 step="any"
                 min="0"
+                minlength="2"
+                maxlength="20"
                 name={name}
                 id={name}
                 placeholder={placeholder}
