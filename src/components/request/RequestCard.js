@@ -8,10 +8,11 @@ import { IoTrashSharp, IoNewspaperOutline } from 'react-icons/io5'
 
 import { destroyRequest } from '../../services/api'
 
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
 import { AuthContext } from '../../context/auth'
 
+import BoxDialog from '../layout/BoxDialog/index'
 
 
 function RequestCard( { request, loadRequests, msg } ) {
@@ -19,14 +20,12 @@ function RequestCard( { request, loadRequests, msg } ) {
     const requestId = request._id;
     const requestUserId = request.userId;
     const navigate = useNavigate();
+    const [visibleBoxDialogDelete, setvisibleBoxDialogDelete] = useState()
     
 
     const remove = async (e) => {
         //e.preventDefault();
-        
-        await destroyRequest(requestUserId, request._id);
-        await loadRequests();
-        msg('Solicitação excluida com sucesso!');
+        setvisibleBoxDialogDelete(true);
     }
 
     const onClickCard = () =>{
@@ -35,6 +34,17 @@ function RequestCard( { request, loadRequests, msg } ) {
 
     return(
         <Container status={request.status} permission={user.permission}>
+
+            {visibleBoxDialogDelete && 
+                <BoxDialog 
+                    requestUserId={requestUserId} 
+                    requestId={requestId} 
+                    loadRequests={loadRequests} 
+                    setVisibleBoxDialogDelete={setvisibleBoxDialogDelete} 
+                    msg={msg}
+                />
+            }
+
             <div className='request_card' >
                 <div className='title_card_container' onClick={onClickCard}>
                         <h4>{request.title}</h4>    

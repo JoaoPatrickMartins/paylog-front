@@ -70,7 +70,12 @@ function Requests (){
             <Container customClass= "start">
                     {requests.length > 0 &&
                         requests.map((request) => (
-                            <RequestCard request={request} key={request._id} loadRequests={loadData} msg={setRequestMessage} />
+                            <RequestCard 
+                                request={request} 
+                                key={request._id} 
+                                loadRequests={loadData} 
+                                msg={setRequestMessage} 
+                            />
                         ))
                     }
 

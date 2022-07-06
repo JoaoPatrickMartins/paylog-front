@@ -27,7 +27,10 @@ function NavBar() {
                 <div className={styles.container_header}>
                     <div className={styles.container_menu}>
                     {!menuIsVisible && 
-                        <IoMenu size={35}  onClick={() => setMenuIsVisible(true)} />
+                        <IoMenu size={35}  onClick={() => {
+                            setMenuIsVisible(true); 
+                            window.scrollTo(0, 0);
+                        }} />
                     }    
                     {menuIsVisible && 
                         <>
