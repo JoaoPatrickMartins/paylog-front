@@ -81,6 +81,28 @@ export const Container = styled.section`
     border-right: 1.5px solid #C2C2C2;
 }
 
+.button_file{
+    width: 100%;
+    background-color: #fafafa;
+    text-decoration: none;
+    border: none;
+    color: #666666;
+    border-top: 1.5px solid #C2C2C2 ;
+    border-radius: 0 0 1rem 1rem;
+    font-size: 0.9em;
+    padding: 0.6em 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .1s;
+    cursor: pointer;
+}
+
+.button_file:hover{
+    color: #666666;
+    background-color: #EBEBEB;
+}
+
 .button_approved:hover{
     color: #3bb659;
     background-color: #C1EBCB;

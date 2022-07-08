@@ -38,6 +38,16 @@ export const getRequestsPending = async(userId, requestId, query) => {
     return api.get(url);
 }
 
+export const getRequestsSupervisor= async(userId, requestId, query) => {
+    let url = `/users/${userId}/requests/supervisor`
+
+    if(query !== '') {
+        url += `?q=${query}`;
+    }
+
+    return api.get(url);
+}
+
 export const createRequest = async(userId, title, value, origin_id, request_date, due_date, class_dre, subclass_dre, request_observation ) => {
     const url = `/users/${userId}/requests/`;
     
@@ -53,13 +63,31 @@ export const createRequest = async(userId, title, value, origin_id, request_date
     })
 }
 
-export const editRequestStatus = async(userId, requestId, status, approver_name) => {
+export const editRequestStatus = async(userId, requestId, status, approver_name, forwardSupervisor , checked) => {
     const url = `/users/${userId}/requests/${requestId}`;
     
     return api.put(url, { 
         
         status: status,
-        approver_name: approver_name
+        approver_name: approver_name,
+        forward_to_supervisor: forwardSupervisor,
+        checked: checked
+    })
+}
+
+export const editRequestChecked = async(userId, requestId, checked) => {
+    const url = `/users/${userId}/requests/${requestId}`;
+    
+    return api.put(url, { 
+        checked: checked
+    })
+}
+
+export const editRequestSupervisor = async(userId, requestId, forwardSupervisor) => {
+    const url = `/users/${userId}/requests/${requestId}`;
+    
+    return api.put(url, { 
+        forward_to_supervisor: forwardSupervisor
     })
 }
 

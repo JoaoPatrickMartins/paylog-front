@@ -75,7 +75,7 @@ function RequestCard( { request, loadRequests, msg } ) {
                                     </button>
                                 ):(
                                     <>
-                                        {(user.permission === 'admin') ? (
+                                        {((user.permission === 'admin') || (user.permission === 'supervisor')) ? (
                                             <button onClick={remove}>
                                                 <IoTrashSharp size={20}/>Excluir
                                             </button>

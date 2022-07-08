@@ -2,13 +2,13 @@ import { Container } from './stylesRequestCardPending';
 
 import { useNavigate } from 'react-router-dom'
 
-import {  IoCloseSharp, IoCheckmarkSharp } from 'react-icons/io5'
+import {  IoCloseSharp, IoCheckmarkSharp, IoFileTrayFullOutline } from 'react-icons/io5'
 
 import { useContext } from 'react'
 
 import { AuthContext } from '../../context/auth'
 
-import { editRequestStatus } from "../../services/api"
+import { editRequestStatus, editRequestChecked } from "../../services/api"
 
 function RequestCardPending( { request, loadRequests, msg } ) {
     const { user } = useContext(AuthContext);
@@ -19,14 +19,40 @@ function RequestCardPending( { request, loadRequests, msg } ) {
     const statusUpdate = async (request, status) => {
         request.status = status;
         request.approver_name = `${user.first_name} ${user.last_name}`; 
+        request.forward_to_supervisor = false;
+        if(user.permission === 'admin'){
+            request.checked = true;
+            
+        }else{
+            request.forward_to_supervisor = false;
+        }
+        
         
         try {
-            await editRequestStatus(requestUserId, requestId, request.status, request.approver_name);
+            await editRequestStatus(requestUserId, requestId, request.status, request.approver_name, request.forward_to_supervisor, request.checked);
             loadRequests();
         } catch (err) {
             console.error(err);
             //fazer msg de erro
         }
+    }
+
+    const upDateChecked = async (request) => {
+        request.forward_to_supervisor = false;
+        console.log(request.checked)
+        try {
+            await editRequestChecked(requestUserId, requestId, request.forward_to_supervisor);
+            loadRequests();
+        } catch (err) {
+            console.error(err);
+            //fazer msg de erro
+        }
+    }
+
+    function fileRequest (e) {
+        e.preventDefault()
+        upDateChecked(request)
+        msg( 'Solicitação Arquivada com sucesso!' )
     }
 
     function upDateStatusAprove(e) {
@@ -78,7 +104,32 @@ function RequestCardPending( { request, loadRequests, msg } ) {
                                 <IoCloseSharp size={20}/> Reprovar
                             </button>
                         </div>
-                    ): (<div className='request_card_actions_none'></div>)} 
+                    ): (
+                        <>
+                            {((user.permission === 'supervisor')) ? ( 
+                                <> 
+                                    {((request.forward_to_supervisor)) && (
+                                        <div className='request_card_actions'>        
+                                        <button className='button_approved' onClick={upDateStatusAprove}>
+                                            <IoCheckmarkSharp size={20}/> Aprovar   
+                                        </button>
+                                        <button className='button_disapproved' onClick={upDateStatusReprove}>
+                                            <IoCloseSharp size={20}/> Reprovar
+                                        </button>
+                                        </div>
+                                    )}
+                                    {((request.checked)) && (
+                                        <div className='request_card_actions'>        
+                                        <button className='button_file' onClick={fileRequest}>
+                                            <IoFileTrayFullOutline size={20}/> Arquivar   
+                                        </button>
+                                        </div>
+                                    )}
+                                </>
+                                
+                            ): (<div className='request_card_actions_none'></div>)}
+                        </>
+                    )} 
             </div>
         </div> 
        </Container>

@@ -14,7 +14,7 @@ import RequestCardPending from "../request/RequestCardPending"
 
 import styles from "./Requests.module.css"
 
-import { getRequestsPending } from "../../services/api"
+import { getRequestsPending, getRequestsSupervisor } from "../../services/api"
 
 import { AuthContext } from "../../context/auth"
 
@@ -42,14 +42,29 @@ function RequestsPending(){
             setLoading(false);
         } catch (err) {
             setLoadingError(true);
-        }
+        } 
+    }
 
-        
+    const loadRequestsSupervisor = async(query = '') => {
+        try {
+            const response = await getRequestsSupervisor(user?.id);
+
+            const arr = response.data;
+            setRequests(SortNextDueDate(arr));
+            setLoading(false);
+        } catch (err) {
+            setLoadingError(true);
+        } 
     }
 
     useEffect( () => {
-        (async () => await loadRequestsPending())();
+        if(user.permission === 'supervisor'){
+            (async () => await loadRequestsSupervisor())();
+        }else{
+            (async () => await loadRequestsPending())();
+        }
     }, []);
+
 
     return(
         <div className = { styles.request_container }>

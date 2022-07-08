@@ -11,12 +11,13 @@ import {  useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { BsCaretDownFill, BsCaretLeftFill, BsCaretUpFill, BsXLg, BsCheckLg, BsPencil } from 'react-icons/bs'
-
+import {IoShareOutline} from 'react-icons/io5'
+ 
 import { useContext, useEffect } from 'react'
 
 import { AuthContext } from '../../context/auth'
 
-import { getRequest, editRequestStatus, editRequest } from "../../services/api"
+import { getRequest, editRequestStatus, editRequest, editRequestSupervisor } from "../../services/api"
 
 
 function Request(){
@@ -58,15 +59,42 @@ function Request(){
 
     const statusUpdate = async (request, status) => {
         request.status = status;
-        request.approver_name = `${user.first_name} ${user.last_name}`; //colocar nome do usuario aprovador
+        request.approver_name = `${user.first_name} ${user.last_name}`; 
+        request.forward_to_supervisor = false;
+        if(user.permission === 'admin'){
+            request.checked = true;
+            
+        }else{
+            request.forward_to_supervisor = false;
+        }
+        
         
         try {
-            await editRequestStatus(requestUserId, requestId, request.status, request.approver_name);
+            await editRequestStatus(requestUserId, requestId, request.status, request.approver_name, request.forward_to_supervisor, request.checked);
             loadRequest();
         } catch (err) {
             console.error(err);
             //fazer msg de erro
         }
+    }
+
+    const upDateSupervisor = async (request) => {
+        request.forward_to_supervisor = true;
+        console.log(request.checked)
+        try {
+            await editRequestSupervisor(requestUserId, requestId, request.forward_to_supervisor);
+            loadRequest();
+            navigate('/requestspending');
+        } catch (err) {
+            console.error(err);
+            //fazer msg de erro
+        }
+    }
+
+
+    function sendSupervisor (e) {
+        e.preventDefault()
+        upDateSupervisor(request)
     }
 
     function upDateStatusAprove(e) {
@@ -103,10 +131,16 @@ function Request(){
                        <div className={styles.option_container}>
                            {!showRequestForm && (<Link className={styles.btn} to="/requests"><BsCaretLeftFill /> Voltar</Link>)}
                            {(request.status === 'Pendente') ? (
-                                <button className={styles.btn} onClick={toggleRequestForm}>
-                                    {!showRequestForm ?  (<BsPencil/>) : (<BsCaretLeftFill/>)}
-                                    {!showRequestForm ?  ('Editar Solicitação') : ('Voltar')}
-                                </button>
+                                <>
+                                    <button className={styles.btn} onClick={toggleRequestForm}>
+                                        {!showRequestForm ?  (<BsPencil/>) : (<BsCaretLeftFill/>)}
+                                        {!showRequestForm ?  ('Editar Solicitação') : ('Voltar')}
+                                    </button>
+                                    <button className={styles.btn} onClick={sendSupervisor}>
+                                        <IoShareOutline/>
+                                        enviar para supervisão
+                                    </button>
+                                </>
                             ):(
                                 <>
                                     {(user.permission === 'admin') ? (

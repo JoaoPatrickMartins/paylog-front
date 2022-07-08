@@ -100,7 +100,7 @@ ${({ status }) => ( status === 'Reprovado') && css`
     border-top: 5px #b9453a solid;
 `}
 
-${({ permission, status }) => ( (permission !== 'admin') && (status !== 'Pendente') ) && css`  
+${({ permission, status }) => ( ((permission !== 'admin') && (permission !== 'supervisor')) && (status !== 'Pendente') ) && css`  
     .request_card_actions a{
         width: 100%;
         border-radius: 0 0 1rem 1rem;
