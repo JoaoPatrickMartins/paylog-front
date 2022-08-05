@@ -9,6 +9,7 @@ import Request from './components/pages/Request'
 import Login from './components/pages/Login'
 import InventoryDashboard from './components/pages/InventoryDashboard/index'
 import SalesDashboard from './components/pages/SalesDashboard/index'
+import Deposit from './components/pages/Deposit/index'
 
 import Container from './components/layout/Container'
 import NavBar from './components/layout/Navbar'
@@ -18,7 +19,6 @@ import { AuthProvider, AuthContext } from "./context/auth";
 import Loading from './components/layout/Loading'
 import RequestsPending from './components/pages/RequestsPending'
 import MyAccount from './components/pages/MyAccount'
-import { Styles } from './components/pages/Contact/styles'
 
 
 
@@ -53,6 +53,7 @@ function AppRoutes() {
               <Route path="/requests" element={ <Private> <Requests /> </Private>} />
               <Route path="/requestspending" element={ <Private> <RequestsPending /> </Private>} />
               <Route path="/request/:requestUserId/:requestId" element={ <Private> <Request /> </Private>} />
+              <Route path="/deposit" element={ <Private> <Deposit /> </Private>} /> 
               <Route path="/inventorydashboard" element={ <Private> <InventoryDashboard /> </Private>} />              
               <Route path="/salesdashboard" element={ <Private> <SalesDashboard /> </Private>} />              
             </Routes>

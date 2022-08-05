@@ -2,7 +2,7 @@ import { Container } from './styles';
 
 import {  useNavigate } from "react-router-dom"
 
-import {  IoLogOutOutline,IoReader, IoChatboxEllipses, IoWarning, IoTime, IoBagHandle, IoCubeSharp, IoCreate } from "react-icons/io5"
+import {  IoLogOutOutline,IoReader, IoChatboxEllipses, IoWarning, IoTime, IoBagHandle, IoCubeSharp, IoCreate, IoWallet } from "react-icons/io5"
 
 import { useEffect, useState } from 'react';
 
@@ -55,6 +55,12 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
 
         if(option === 'newrequest'){
             navigate('/newrequest')
+            setMenuIsVisible(false)
+            return setplusOptionsIsVisible(false)
+        }
+
+        if(option === 'deposit'){
+            navigate('/deposit')
             setMenuIsVisible(false)
             return setplusOptionsIsVisible(false)
         }
@@ -115,7 +121,7 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                                         setplusOptionsIsVisible(true);
                                     }}>
                                     <IoReader/>
-                                    <button >Solicitações de pagamento</button>
+                                    <button >Financeiro</button>
                                 </li>
                                 <li onClick={() => {
                                         optionSelected('inventory');
@@ -168,6 +174,12 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                                         }}>
                                         <IoTime/>
                                         <button >Histórico de Solicitações</button>
+                                    </li>
+                                    <li onClick={() => {
+                                        optionSelected('deposit');
+                                        }}>
+                                        <IoWallet/>
+                                        <button >Depósito</button>
                                     </li>
                                 </ul>
                             )}
