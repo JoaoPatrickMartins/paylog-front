@@ -59,8 +59,14 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
             return setplusOptionsIsVisible(false)
         }
 
-        if(option === 'deposit'){
-            navigate('/deposit')
+        if(option === 'informdeposit'){
+            navigate('/informdeposit')
+            setMenuIsVisible(false)
+            return setplusOptionsIsVisible(false)
+        }
+
+        if(option === 'viewdeposits'){
+            navigate('/viewdeposits ')
             setMenuIsVisible(false)
             return setplusOptionsIsVisible(false)
         }
@@ -176,11 +182,12 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                                         <button >Histórico de Solicitações</button>
                                     </li>
                                     <li onClick={() => {
-                                        optionSelected('deposit');
+                                        optionSelected('informdeposit');
                                         }}>
                                         <IoWallet/>
-                                        <button >Depósito</button>
+                                        <button >Informar Depósito</button>
                                     </li>
+                                    
                                 </ul>
                             )}
                         </>

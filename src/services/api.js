@@ -111,3 +111,12 @@ export const destroyRequest = async (userId, id) => {
     
     return api.delete(url);
 }
+
+export const createDeposit = async(userId, value, depositDate, company) => {
+    const url = `/users/${userId}/${company}/deposit`;
+    
+    return api.post(url, { 
+        value,
+        depositDate
+    })
+}
