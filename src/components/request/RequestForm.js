@@ -49,7 +49,20 @@ function RequestForm({ handleSubmit, btnText, requestData }){
 
     function validateSubclass(request){
         if(request.subclass_dre === ' '){
-            if((request.class_dre === 'Royalties Ri Happy') || (request.class_dre === 'Fundo de Propaganda Ri Happy') || (request.class_dre === 'DARF CSLL') || (request.class_dre === 'DARF IRPJ') || (request.class_dre === 'Pró Labore')) {
+            if((request.class_dre === 'Royalties Ri Happy') || 
+                (request.class_dre === 'Fundo de Propaganda Ri Happy') || 
+                (request.class_dre === 'DARF CSLL') || 
+                (request.class_dre === 'DARF IRPJ') || 
+                (request.class_dre === 'Pró Labore') || 
+                (request.class_dre === 'Rei do Mate') ||
+                (request.class_dre === 'Ri Happy Macaé') ||
+                (request.class_dre === 'Ri Happy Cachoeiro de Itapemirim') ||
+                (request.class_dre === 'Ri Happy Ubá') ||
+                (request.class_dre === 'Ri Happy Rio das Ostras') ||
+                (request.class_dre === 'Ri Happy Nova Friburgo') ||
+                (request.class_dre === 'Ri Happy Campos Dos Goytacazes') ||
+                (request.class_dre === 'Ri Happy Cabo Frio')
+            ) {
                 return true
             }else{
                 return false
@@ -105,7 +118,22 @@ function RequestForm({ handleSubmit, btnText, requestData }){
                 handleSelectChange={handleSelectDRE}
             />
 
-            {(selectedDRE === ' ') || (selectedDRE === 'Fornecedor') || (selectedDRE === 'Royalties Ri Happy') || (selectedDRE === 'Fundo de Propaganda Ri Happy') || (selectedDRE === 'DARF CSLL') || (selectedDRE === 'DARF IRPJ') || (selectedDRE === 'Pró Labore') ? (
+            {(selectedDRE === ' ') || 
+                (selectedDRE === 'Fornecedor') || 
+                (selectedDRE === 'Royalties Ri Happy') || 
+                (selectedDRE === 'Fundo de Propaganda Ri Happy') || 
+                (selectedDRE === 'DARF CSLL') || 
+                (selectedDRE === 'DARF IRPJ') || 
+                (selectedDRE === 'Pró Labore') ||
+                (selectedDRE === 'Rei do Mate') ||
+                (selectedDRE === 'Ri Happy Macaé') ||
+                (selectedDRE === 'Ri Happy Cachoeiro de Itapemirim') ||
+                (selectedDRE === 'Ri Happy Ubá') ||
+                (selectedDRE === 'Ri Happy Rio das Ostras') ||
+                (selectedDRE === 'Ri Happy Nova Friburgo') ||
+                (selectedDRE === 'Ri Happy Campos Dos Goytacazes') ||
+                (selectedDRE === 'Ri Happy Cabo Frio')
+            ? (
                 <></>
                 ) : (
                     <Select

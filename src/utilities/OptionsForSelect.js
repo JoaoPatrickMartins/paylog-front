@@ -62,6 +62,35 @@ export const OptionsForSelect =(option) => {
         { value: 'DAS LS DOS SANTOS', label: 'DAS LS DOS SANTOS' }
       ]
 
+      const option7 = [
+        { value: 'Aplhaville ', label: 'Aplhaville ' },
+        { value: 'Amil', label: 'Amil' },
+        { value: 'Banco do Brasil', label: 'Banco do Brasil' },
+        { value: 'IPTV', label: 'IPTV' },
+        { value: 'Brasil Prev', label: 'Brasil Prev' },
+        { value: 'Buriti', label: 'Buriti' },
+        { value: 'BV', label: 'BV' },
+        { value: 'Cartão', label: 'Cartão' },
+        { value: 'Bariloche', label: 'Bariloche' },
+        { value: 'Castelo', label: 'Castelo' },
+        { value: 'Clube de Tiro', label: 'Clube de Tiro' },
+        { value: 'Combustível', label: 'Combustível' },
+        { value: 'Costa Bela', label: 'Costa Bela' },
+        { value: 'Curso', label: 'Curso' },
+        { value: 'DARF', label: 'DARF' },
+        { value: 'Despachante', label: 'Despachante' },
+        { value: 'Diversos', label: 'Diversos' },
+        { value: 'Doação', label: 'Doação' },
+        { value: 'Empregada', label: 'Empregada' },
+        { value: 'Emprestimo', label: 'Emprestimo' },
+        { value: 'Ibiza', label: 'Ibiza' },
+        { value: 'Igreja', label: 'Igreja' },
+        { value: 'Internet', label: 'Internet' },
+        { value: 'IPTU', label: 'IPTU' },
+        { value: 'IPVA', label: 'IPVA' },
+        { value: 'Livros', label: 'Livros' }
+      ]
+
     switch(option){
         case 'Publicidade, Marketing e Incentivos': return option1
         case 'Despesas Administrativas': return option2
@@ -69,6 +98,7 @@ export const OptionsForSelect =(option) => {
         case 'Folha de Pagamento': return option4
         case 'Despesas Financeiras': return option5
         case 'Impostos e Contribuições Incidentes sobre Vendas': return option6
+        case 'Despesas Pessoais': return option7
         default:
     }
 

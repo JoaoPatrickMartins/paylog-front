@@ -187,7 +187,12 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                                         <IoWallet/>
                                         <button >Informar Depósito</button>
                                     </li>
-                                    
+                                    <li onClick={() => {
+                                        optionSelected('viewdeposits');
+                                        }}>
+                                        <IoWallet/>
+                                        <button >Visualizar Depósitos</button>
+                                    </li>
                                 </ul>
                             )}
                         </>
