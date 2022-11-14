@@ -11,6 +11,7 @@ import InventoryDashboard from './components/pages/InventoryDashboard/index'
 import SalesDashboard from './components/pages/SalesDashboard/index'
 import Deposit from './components/pages/Deposit/index'
 import ViewDeposits from './components/pages/ViewDeposits/index'
+import ExpenseReport from './components/pages/ExpenseReport/index'
 
 import Container from './components/layout/Container'
 import NavBar from './components/layout/Navbar'
@@ -56,6 +57,7 @@ function AppRoutes() {
               <Route path="/request/:requestUserId/:requestId" element={ <Private> <Request /> </Private>} />
               <Route path="/informdeposit" element={ <Private> <Deposit /> </Private>} />
               <Route path="/viewdeposits" element={ <Private> <ViewDeposits /> </Private>} />
+              <Route path="/expensereport" element={ <Private> <ExpenseReport /> </Private>} />
               <Route path="/inventorydashboard" element={ <Private> <InventoryDashboard /> </Private>} />              
               <Route path="/salesdashboard" element={ <Private> <SalesDashboard /> </Private>} />              
             </Routes>

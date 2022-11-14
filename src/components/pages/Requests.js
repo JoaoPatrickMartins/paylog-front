@@ -20,6 +20,7 @@ import { AuthContext } from "../../context/auth"
 
 import SortNextDueDate from "../../utilities/SortNextDueDate"
 
+import FilterBar from "../layout/FilterBar/index"
 
 
 function Requests (){
@@ -28,22 +29,34 @@ function Requests (){
     const [loading, setLoading] = useState(true);
     const [loadingError, setLoadingError] = useState(false);
     const [requestMessage, setRequestMessage] = useState(''); //set mensagem de solicitação excluída
+    const query = '';
 
     const location = useLocation()
     let message = ''
     if(location.state){
         message = location.state.message
     }
-
-    const loadData = async(query = '') => {
+    
+    const loadData = async(querySelect) => {
         try {
-            const response = await getRequests(user?.id);
+            if(querySelect !== ''){
+                const response = await getRequests(user?.id,querySelect);
 
-            const arr = response.data;
-            setRequests(SortNextDueDate(arr));
-            setLoading(false);
+                const arr = response.data;
+                setRequests(SortNextDueDate(arr));
+                console.log(requests)
+                //setLoading(false);
+            }else{
+                const response = await getRequests(user?.id,query);
+
+                const arr = response.data;
+                setRequests(SortNextDueDate(arr));
+                //setLoading(false);
+            }
+            
         } catch (err) {
-            setLoadingError(true);
+            //setLoadingError(true);
+            console.log('erro aqui')
         }
 
         
@@ -62,6 +75,9 @@ function Requests (){
                     <h1>Histórico de Solicitações</h1>
                 </div>
                 <LinkButton to="/newrequest" text="Criar Solicitação" />
+           </div>
+           <div>
+               <FilterBar loadData={loadData} />
            </div>
 
             {message && <Message type="success" msg={message} />}

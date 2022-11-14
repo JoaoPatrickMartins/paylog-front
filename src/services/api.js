@@ -12,7 +12,7 @@ export const getRequests = async(userId, query) => {
     let url = `/users/${userId}/requests/`
 
     if(query !== '') {
-        url += `?q=${query}`;
+        url += `?${query}`;
     }
 
     return api.get(url);
@@ -22,7 +22,7 @@ export const getRequest = async(userId, requestId, query) => {
     let url = `/users/${userId}/requests/${requestId}`
 
     if(query !== '') {
-        url += `?q=${query}`;
+        url += `?${query}`;
     }
 
     return api.get(url);
@@ -32,7 +32,7 @@ export const getRequestsPending = async(userId, requestId, query) => {
     let url = `/users/${userId}/requests/peding`
 
     if(query !== '') {
-        url += `?q=${query}`;
+        url += `?${query}`;
     }
 
     return api.get(url);
@@ -42,7 +42,7 @@ export const getRequestsSupervisor= async(userId, requestId, query) => {
     let url = `/users/${userId}/requests/supervisor`
 
     if(query !== '') {
-        url += `?q=${query}`;
+        url += `?${query}`;
     }
 
     return api.get(url);

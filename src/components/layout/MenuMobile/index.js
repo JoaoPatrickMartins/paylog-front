@@ -2,7 +2,7 @@ import { Container } from './styles';
 
 import {  useNavigate } from "react-router-dom"
 
-import {  IoLogOutOutline,IoReader, IoChatboxEllipses, IoWarning, IoTime, IoBagHandle, IoCubeSharp, IoCreate, IoWallet } from "react-icons/io5"
+import {  IoLogOutOutline,IoReader, IoChatboxEllipses, IoWarning, IoTime, IoBagHandle, IoCubeSharp, IoCreate, IoWallet,IoDocumentText } from "react-icons/io5"
 
 import { useEffect, useState } from 'react';
 
@@ -71,6 +71,12 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
             return setplusOptionsIsVisible(false)
         }
         
+        if(option === 'expensereport'){
+            navigate('/expensereport ')
+            setMenuIsVisible(false)
+            return setplusOptionsIsVisible(false)
+        }
+
         if(option === 'myaccount'){
             //navigate('/myaccount')
             setplusOptionsIsVisible(false)
@@ -180,6 +186,12 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                                         }}>
                                         <IoTime/>
                                         <button >Histórico de Solicitações</button>
+                                    </li>
+                                    <li onClick={() => {
+                                        optionSelected('expensereport');
+                                        }}>
+                                        <IoDocumentText/>
+                                        <button >Relatório de Despesas</button>
                                     </li>
                                     <li onClick={() => {
                                         optionSelected('informdeposit');
