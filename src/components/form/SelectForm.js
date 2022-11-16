@@ -3,7 +3,7 @@ import Select from 'react-select'
 
 import styles from './Select.module.css'
 
-function SelectOrigin ({ text, name, placeholder, option , handleSelectChange }){
+function SelectForm ({ text, name, placeholder, option , handleSelectChange }){
 
     return (
         <div className={styles.form_control} >
@@ -18,4 +18,4 @@ function SelectOrigin ({ text, name, placeholder, option , handleSelectChange })
     )
 }
 
-export default SelectOrigin
+export default SelectForm

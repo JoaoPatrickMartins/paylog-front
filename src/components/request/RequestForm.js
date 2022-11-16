@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Input from '../form/Input'
 import SelectOrigin from '../form/SelectOrigin'
 import SelectDRE from '../form/SelectDRE'
-import Select from '../form/Select'
+import SelectForm from '../form/SelectForm'
 import SubmitButton from '../form/SubmitButton'
 import TextArea from '../form/TextArea'
 
@@ -12,11 +12,27 @@ import { OptionsForSelect } from '../../utilities/OptionsForSelect'
 import styles from './RequestForm.module.css'
 
 
-function RequestForm({ handleSubmit, btnText, requestData }){
+function RequestForm({ user, handleSubmit, btnText, requestData }){
 
     const [request, setRequest] = useState( requestData || {} )
     const [selectedDRE, setSelectedDRE] = useState(" ")
     const [mensagemValidadeDRE, setMensagemValidadeDRE] = useState(false)
+
+    const optionCompany = [
+        { value: '195 - Ri Happy Macaé', label: '195 - Ri Happy Macaé' },
+        { value: '247 - Ri Happy Cachoeiro de Itapemirim', label: '247 - Ri Happy Cachoeiro de Itapemirim' },  
+        { value: '256 - Ri Happy Ubá', label: '256 - Ri Happy Ubá' }, 
+        { value: '262 - Ri Happy Rio das Ostras', label: '262 - Ri Happy Rio das Ostras' }, 
+        { value: '1265 - Ri Happy Nova Friburgo', label: '1265 - Ri Happy Nova Friburgo' }, 
+        { value: '283 - Ri Happy Campos dos Goytacazes', label: '283 - Ri Happy Campos dos Goytacazes' }, 
+        { value: '292 - Ri Happy Cabo Frio', label: '292 - Ri Happy Cabo Frio' }, 
+        { value: 'SmartTour', label: 'SmartTour' }, 
+        { value: 'Santos Holding', label: 'Santos Holding' }, 
+      ]
+
+      const optionYourCompany = [
+        { value: user.company, label: user.company },
+      ]      
     
     const submit = (e) => {
         e.preventDefault()
@@ -30,6 +46,10 @@ function RequestForm({ handleSubmit, btnText, requestData }){
 
     async function handleChange(e){
         setRequest({ ...request, [e.target.name]: e.target.value })
+    }
+
+    const handleCompany = (event) => {
+        request.company = event.value
     }
 
     const handleSelectOrigin = (event) => {
@@ -89,6 +109,25 @@ function RequestForm({ handleSubmit, btnText, requestData }){
                 value={request.value ? request.value : ''}
             />
 
+            {((user.permission === "financeiro" ) || (user.permission === "supervisor" ) || (user.permission === "admin" )) ? (
+                <SelectForm 
+                    option={optionCompany}
+                    name="company" 
+                    text="Selecione a Empresa" 
+                    placeholder='Selecione uma empresa'
+                    handleSelectChange={handleCompany}        
+                />
+            ) : (
+                <SelectForm 
+                    option={optionYourCompany}
+                    name="company" 
+                    text="Selecione a Empresa" 
+                    placeholder='Selecione uma empresa'
+                    handleSelectChange={handleCompany}        
+                />
+            )}
+
+            
             <SelectOrigin 
                 name="origin_id" 
                 text="Selecione a Origem" 
@@ -136,7 +175,7 @@ function RequestForm({ handleSubmit, btnText, requestData }){
             ? (
                 <></>
                 ) : (
-                    <Select
+                    <SelectForm
                         text='Subclasse do DRE'
                         name='subclass_dre'
                         placeholder="Selecione uma subclasse para o DRE"

@@ -48,12 +48,13 @@ export const getRequestsSupervisor= async(userId, requestId, query) => {
     return api.get(url);
 }
 
-export const createRequest = async(userId, title, value, origin_id, request_date, due_date, class_dre, subclass_dre, request_observation ) => {
+export const createRequest = async(userId, title, value, company, origin_id, request_date, due_date, class_dre, subclass_dre, request_observation ) => {
     const url = `/users/${userId}/requests/`;
     
     return api.post(url, { 
         title: title,
         value: value,
+        company: company,
         origin_id: origin_id,
         request_date: request_date,
         due_date: due_date,

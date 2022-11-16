@@ -18,7 +18,7 @@ function NewRequest(){
 
     async function createPost(request){
         try {
-            await createRequest(user?.id, request.title, request.value, request.origin_id, request.request_date, request.due_date, request.class_dre, request.subclass_dre, request.request_observation);
+            await createRequest(user?.id, request.title, request.value, request.company, request.origin_id, request.request_date, request.due_date, request.class_dre, request.subclass_dre, request.request_observation);
             console.log("new request created with sucess.")
             navigate('/requests', { state: {message: 'Solicitação de pagamento criada com sucesso!'} });
         } catch (err) {
@@ -35,7 +35,7 @@ function NewRequest(){
                 </div>
                 <p>Crie sua solicitação de pagamento e aguarde ser aprovado</p>
             </div>
-            <RequestForm handleSubmit={createPost} btnText="Solicitar" />
+            <RequestForm user={user} handleSubmit={createPost} btnText="Solicitar" />
             <div className={styles.msg_container}>
                 {errorMsg && (
                     <p>Todos os Campos obrigatórios devem ser preenchidos.</p>
