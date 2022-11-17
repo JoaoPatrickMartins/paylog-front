@@ -70,6 +70,7 @@ function RequestForm({ user, handleSubmit, btnText, requestData }){
     function validateSubclass(request){
         if(request.subclass_dre === ' '){
             if((request.class_dre === 'Royalties Ri Happy') || 
+                (request.class_dre === 'Fornecedor') || 
                 (request.class_dre === 'Fundo de Propaganda Ri Happy') || 
                 (request.class_dre === 'DARF CSLL') || 
                 (request.class_dre === 'DARF IRPJ') || 
