@@ -73,7 +73,7 @@ justify-content: center;
 
 .input_start_data {
     margin-top: .5rem;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     margin-left: .5rem;
     margin-right: 2rem;
     padding: 0.7em;
@@ -87,7 +87,7 @@ justify-content: center;
 }
 
 .input_end_data {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     margin-left: .5rem;
     margin-right: .5rem;
     padding: 0.7em;
@@ -98,6 +98,7 @@ justify-content: center;
 
 .submitContainer{
     width: 100%;
+    margin-top: 2rem;
 }
  
 .submitContainer button{

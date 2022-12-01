@@ -20,6 +20,7 @@ function ExpenseReport(){
     const [company, setCompany] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
+    const [classDRE, setClassDRE] = useState('');
     const query = '';
     const [nameCompany, setNameCompany] = useState('');
     
@@ -57,6 +58,23 @@ function ExpenseReport(){
         { value: 'Caixa', label: 'Caixa' }, 
       ]
 
+      const optionClassDRE = [
+        { value: 'Publicidade, Marketing e Incentivos', label: 'Publicidade, Marketing e Incentivos' },
+        { value: 'Despesas Administrativas', label: 'Despesas Administrativas' },
+        { value: 'Despesas Pessoais', label: 'Despesas Pessoais' },
+        { value: 'Locação', label: 'Locação' },
+        { value: 'Movimentação Bancária', label: 'Movimentação Bancária' },
+        { value: 'Royalties Ri Happy', label: 'Royalties Ri Happy' },
+        { value: 'Fundo de Propaganda Ri Happy', label: 'Fundo de Propaganda Ri Happy' },
+        { value: 'Folha de Pagamento', label: 'Folha de Pagamento' },
+        { value: 'Fornecedor', label: 'Fornecedor' },
+        { value: 'Despesas Financeiras', label: 'Despesas Financeiras' },
+        { value: 'DARF CSLL', label: 'DARF CSLL' },
+        { value: 'DARF IRPJ', label: 'DARF IRPJ' },
+        { value: 'Pró Labore', label: 'Pró Labore' },
+        { value: 'Impostos e Contribuições Incidentes sobre Vendas', label: 'Impostos e Contribuições Incidentes sobre Vendas' }
+      ]
+
       const optionCompany = [
         { value: '195 - Ri Happy Macaé', label: '195 - Ri Happy Macaé' },
         { value: '247 - Ri Happy Cachoeiro de Itapemirim', label: '247 - Ri Happy Cachoeiro de Itapemirim' },  
@@ -88,11 +106,14 @@ function ExpenseReport(){
         let data = `&end_date=${event.target.value}`;
         setEndDate(data)
     }
+    const handleClassDRE = (event) => {
+        setClassDRE(`&class_dre=${event.value}`);
+    }
 
     const submit = async(e) => {
         e.preventDefault()
         setVisible(false)
-        await loadData(`${company}${origin}${startDate}${endDate}`);
+        await loadData(`${company}${origin}${startDate}${endDate}${classDRE}`);
     }
 
     return(
@@ -126,7 +147,6 @@ function ExpenseReport(){
                             name="start_date"
                             placeholder="Data de Inicio"
                             onChange={handleStartDate}
-                        
                         />
 
                         <label className='labelEndDate' htmlFor={"end_date"}>{"Fim: "}</label>
@@ -137,6 +157,12 @@ function ExpenseReport(){
                             onChange={handleEndDate}
                                                 
                         />
+                        <FilterSelect 
+                                option={optionClassDRE} 
+                                name='class_dre' 
+                                placeholder='Classe do DRE'
+                                handleSelectChange={handleClassDRE}
+                            />
                         <div className='submitContainer'>
                             <button>Gerar</button>
                         </div>                   

@@ -2,10 +2,19 @@ export const OptionsForSelect =(option) => {
 
     const option1 = [
         { value: 'Artes Publicitárias', label: 'Artes Publicitárias' },
-        { value: 'testPromoções na Loja', label: 'Promoções na Loja' },
+        { value: 'Blogueira', label: 'Blogueira' },
+        { value: 'TV', label: 'TV' },
+        { value: 'Rádio', label: 'Rádio' },
+        { value: 'Instagram', label: 'Instagram' },
+        { value: 'Gráfica', label: 'Gráfica' },
+        { value: 'Panfletagem', label: 'Panfletagem' },
+        { value: 'Outdoor', label: 'Outdoor' },
+        { value: 'Entrega Grátis', label: 'Entrega Grátis' },
+        { value: 'Decoração de Loja', label: 'Decoração de Loja' },
+        { value: 'Happy Sábado', label: 'Happy Sábado' },
+        { value: 'Promoções na Loja', label: 'Promoções na Loja' },
         { value: 'Funcionário do Mês', label: 'Funcionário do Mês' },
         { value: 'Incentivo Meta Batida', label: 'Incentivo Meta Batida' },
-        { value: 'Delivery', label: 'Delivery' },
         { value: 'Treinamento de Vendas', label: 'Treinamento de Vendas' },
         { value: 'Diversos', label: 'Diversos' }
       ]
@@ -15,6 +24,7 @@ export const OptionsForSelect =(option) => {
         { value: 'Airus', label: 'Airus' },
         { value: 'Pleno', label: 'Pleno' },
         { value: 'Contador', label: 'Contador' },
+        { value: 'Contador (Serviços Extras)', label: 'Contador (Serviços Extras)' },
         { value: 'Internet', label: 'Internet' },
         { value: 'Firjan', label: 'Firjan' },
         { value: 'Ecad', label: 'Ecad' },
@@ -22,6 +32,15 @@ export const OptionsForSelect =(option) => {
         { value: 'Limpeza', label: 'Limpeza' },
         { value: 'Alimentação', label: 'Alimentação' },
         { value: 'Papelaria', label: 'Papelaria' },
+        { value: 'Papel Presente (Bobina)', label: 'Papel Presente (Bobina)' },
+        { value: 'Bobinas (Caixa e PDV)', label: 'Bobinas (Caixa e PDV)' },
+        { value: 'Perolizado', label: 'Perolizado' },
+        { value: 'Sacolas', label: 'Sacolas' },
+        { value: 'Farmácia', label: 'Farmácia' },
+        { value: 'Manutenção', label: 'Manutenção' },
+        { value: 'Compra de Equipamentos', label: 'Compra de Equipamentos' },
+        { value: 'Aniversariante do Mês', label: 'Aniversariante do Mês' },
+        { value: 'Despesa de Viagem', label: 'Despesa de Viagem' },
         { value: 'Diversos', label: 'Diversos' }
       ]
 
@@ -29,18 +48,24 @@ export const OptionsForSelect =(option) => {
         { value: 'Aluguel Loja', label: 'Aluguel Loja' },
         { value: 'Condomínio', label: 'Condomínio' },
         { value: 'Energia Elétrica', label: 'Energia Elétrica' },
-        { value: 'Fundo de Promoção', label: 'Fundo de Promoção' }               
+        { value: 'Água', label: 'Água' },
+        { value: 'Fundo de Promoção', label: 'Fundo de Promoção' },
+        { value: 'Conta Extra', label: 'Conta Extra' }                
       ]
 
     const option4 = [
         { value: 'Salário', label: 'Salário' },
+        { value: '13º Salário', label: '13º Salário' },
         { value: 'Rescisão', label: 'Rescisão' },
+        { value: 'ASO Funcionário', label: 'ASO Funcionário' },
+        { value: 'ASO Extra', label: 'ASO Extra' },
         { value: 'Multa FGTS Rescisão', label: 'Multa FGTS Rescisão' },
         { value: 'Férias', label: 'Férias' },
         { value: 'FGTS', label: 'FGTS' },
         { value: 'INSS/GPS', label: 'INSS/GPS' },
         { value: 'INSS/GPS SMART BRINQUEDOS', label: 'INSS/GPS SMART BRINQUEDOS' },
         { value: 'Funcionários Extras', label: 'Funcionários Extras' },
+        { value: 'Plano de Saúde', label: 'Plano de Saúde' },
         { value: 'Plano Dental', label: 'Plano Dental' }
       ]
     const option5 = [
@@ -48,11 +73,14 @@ export const OptionsForSelect =(option) => {
         { value: 'Tarifa Bancária', label: 'Tarifa Bancária' },
         { value: 'Taxas e Juros', label: 'Taxas e Juros' },
         { value: 'Taxa de cartão de Crédito', label: 'Taxa de cartão de Crédito' },
-        { value: 'Adiantemanto de Cartão', label: 'Adiantemanto de Cartão' },
+        { value: 'Adiantamento de Cartão', label: 'Adiantamento de Cartão' },
         { value: 'Empréstimo 01', label: 'Empréstimo 01' },
         { value: 'Consórcio Banco', label: 'Consórcio Banco' }               
       ]
     const option6 = [
+        { value: 'Delivery', label: 'Delivery' },
+        { value: 'Cashback', label: 'Cashback' },
+        { value: 'Descontos Concedidos', label: 'Descontos Concedidos' },
         { value: 'Simples Nacional', label: 'Simples Nacional' },
         { value: 'PIS', label: 'PIS' },
         { value: 'COFINS', label: 'COFINS' },
@@ -91,6 +119,17 @@ export const OptionsForSelect =(option) => {
         { value: 'Livros', label: 'Livros' }
       ]
 
+      const option8 = [
+        { value: 'Rei do Mate', label: 'Rei do Mate' },
+        { value: 'Ri Happy Macaé', label: 'Ri Happy Macaé' },
+        { value: 'Ri Happy Cachoeiro de Itapemirim', label: 'Ri Happy Cachoeiro de Itapemirim' },
+        { value: 'Ri Happy Ubá', label: 'Ri Happy Ubá' },
+        { value: 'Ri Happy Rio das Ostras', label: 'Ri Happy Rio das Ostras' },
+        { value: 'Ri Happy Nova Friburgo', label: 'Ri Happy Nova Friburgo' },
+        { value: 'Ri Happy Campos Dos Goytacazes', label: 'Ri Happy Campos Dos Goytacazes' },
+        { value: 'Ri Happy Cabo Frio', label: 'Ri Happy Cabo Frio' },
+      ]
+
     switch(option){
         case 'Publicidade, Marketing e Incentivos': return option1
         case 'Despesas Administrativas': return option2
@@ -99,6 +138,7 @@ export const OptionsForSelect =(option) => {
         case 'Despesas Financeiras': return option5
         case 'Impostos e Contribuições Incidentes sobre Vendas': return option6
         case 'Despesas Pessoais': return option7
+        case 'Movimentação Bancária': return option8
         default:
     }
 

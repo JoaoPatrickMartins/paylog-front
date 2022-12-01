@@ -20,14 +20,7 @@ export default function FilterBar ({ loadData }){
         { value: 'Despesas Administrativas', label: 'Despesas Administrativas' },
         { value: 'Despesas Pessoais', label: 'Despesas Pessoais' },
         { value: 'Locação', label: 'Locação' },
-        { value: 'Rei do Mate', label: 'Rei do Mate' },
-        { value: 'Ri Happy Macaé', label: 'Ri Happy Macaé' },
-        { value: 'Ri Happy Cachoeiro de Itapemirim', label: 'Ri Happy Cachoeiro de Itapemirim' },
-        { value: 'Ri Happy Ubá', label: 'Ri Happy Ubá' },
-        { value: 'Ri Happy Rio das Ostras', label: 'Ri Happy Rio das Ostras' },
-        { value: 'Ri Happy Nova Friburgo', label: 'Ri Happy Nova Friburgo' },
-        { value: 'Ri Happy Campos Dos Goytacazes', label: 'Ri Happy Campos Dos Goytacazes' },
-        { value: 'Ri Happy Cabo Frio', label: 'Ri Happy Cabo Frio' },
+        { value: 'Movimentação Bancária', label: 'Movimentação Bancária' },
         { value: 'Royalties Ri Happy', label: 'Royalties Ri Happy' },
         { value: 'Fundo de Propaganda Ri Happy', label: 'Fundo de Propaganda Ri Happy' },
         { value: 'Folha de Pagamento', label: 'Folha de Pagamento' },
@@ -81,7 +74,6 @@ export default function FilterBar ({ loadData }){
 
         const submit = async(e) => {
             e.preventDefault()
-            console.log(`${company}${origin}${startDate}${endDate}${classDRE}`)
             await loadData(`${company}${origin}${startDate}${endDate}${classDRE}`);
             setVisible(true);
             setClassDRE('');
