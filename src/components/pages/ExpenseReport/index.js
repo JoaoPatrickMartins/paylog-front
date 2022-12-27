@@ -58,6 +58,7 @@ function ExpenseReport(){
       const optionOrigin = [
         { value: 'Banco', label: 'Banco' },
         { value: 'Caixa', label: 'Caixa' }, 
+        { value: 'Receita', label: 'Receita' },
       ]
 
       const optionClassDRE = [

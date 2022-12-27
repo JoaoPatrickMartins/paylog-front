@@ -7,6 +7,7 @@ function SelectOrigin ({ text, name, placeholder, value, handleSelectChange }){
     const options = [
         { value: 'Banco', label: 'Banco' },
         { value: 'Caixa', label: 'Caixa' },
+        { value: 'Receita', label: 'Receita' },
       ]
 
       
