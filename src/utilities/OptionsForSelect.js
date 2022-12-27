@@ -131,6 +131,11 @@ export const OptionsForSelect =(option) => {
         { value: 'Ri Happy Cabo Frio', label: 'Ri Happy Cabo Frio' },
       ]
 
+      const option9 = [
+        { value: 'Descontos Ri Happy (Matriz)', label: 'Descontos Ri Happy (Matriz)' },
+        { value: 'Descontos Gerente (Franquia)', label: 'Descontos Gerente (Franquia)' },
+      ]
+
     switch(option){
         case 'Publicidade, Marketing e Incentivos': return option1
         case 'Despesas Administrativas': return option2
@@ -140,6 +145,7 @@ export const OptionsForSelect =(option) => {
         case 'Impostos e Contribuições Incidentes sobre Vendas': return option6
         case 'Despesas Pessoais': return option7
         case 'Movimentação Bancária': return option8
+        case 'Descontos': return option9
         default:
     }
 
