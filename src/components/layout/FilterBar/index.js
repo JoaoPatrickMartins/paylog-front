@@ -29,6 +29,7 @@ export default function FilterBar ({ loadData }){
         { value: 'DARF CSLL', label: 'DARF CSLL' },
         { value: 'DARF IRPJ', label: 'DARF IRPJ' },
         { value: 'Pró Labore', label: 'Pró Labore' },
+        { value: 'Descontos', label: 'Descontos' },
         { value: 'Impostos e Contribuições Incidentes sobre Vendas', label: 'Impostos e Contribuições Incidentes sobre Vendas' },
         { value: 'Venda Mensal', label: 'Venda Mensal' }
       ]
