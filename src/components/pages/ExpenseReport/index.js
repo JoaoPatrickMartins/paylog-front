@@ -185,7 +185,7 @@ function ExpenseReport(){
                                     {requests.length > 0 &&
                                         requests.map((request) => (
                                             <div className='cell'>
-                                                <p>{request.request_date.split("-").reverse().join("/")}</p>
+                                                <p>{request.due_date.split("-").reverse().join("/")}</p>
                                             </div>
                                         ))
                                     }
