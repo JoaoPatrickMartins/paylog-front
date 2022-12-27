@@ -161,12 +161,12 @@ function RequestForm({ user, handleSubmit, btnText, requestData }){
                     />
                 )}
 
-            {(selectedDRE === 'Venda Mensal')
+            {(selectedDRE === 'Venda Mensal' || selectedDRE === 'Descontos')
             ? (
                 <>
                     <Input 
                         type="date"
-                        text="Data de lançamento da Venda"
+                        text="Data de lançamento"
                         name="request_date"
                         placeholder="Insira a data da solicitação"
                         handleOnChange={handleChange}
@@ -174,7 +174,7 @@ function RequestForm({ user, handleSubmit, btnText, requestData }){
                     />
                     <Input 
                         type="month"
-                        text="Mês da Venda"
+                        text="Mês de Referência"
                         name="due_date"
                         placeholder="Insira a data da solicitação"
                         handleOnChange={handleChange}
