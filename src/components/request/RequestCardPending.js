@@ -91,7 +91,7 @@ function RequestCardPending( { request, loadRequests, msg } ) {
                             <span>Solicitante:</span> {request.requester_name}
                         </p>
                         <p className='value'>
-                            <span>Valor:</span> {request.value}
+                            <span>Valor:</span> {Number.parseFloat(request.value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                         </p>   
                     </div>
                 

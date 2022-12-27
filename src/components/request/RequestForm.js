@@ -50,6 +50,7 @@ function RequestForm({ user, handleSubmit, btnText, requestData }){
 
     const handleCompany = (event) => {
         request.company = event.value
+        request.origin_id = 'Banco'
     }
 
     const handleSelectOrigin = (event) => {
@@ -74,7 +75,8 @@ function RequestForm({ user, handleSubmit, btnText, requestData }){
                 (request.class_dre === 'Fundo de Propaganda Ri Happy') || 
                 (request.class_dre === 'DARF CSLL') || 
                 (request.class_dre === 'DARF IRPJ') || 
-                (request.class_dre === 'Pró Labore')
+                (request.class_dre === 'Pró Labore') ||
+                (selectedDRE === 'Venda Mensal')
             ) {
                 return true
             }else{
@@ -120,30 +122,19 @@ function RequestForm({ user, handleSubmit, btnText, requestData }){
                 />
             )}
 
-            
-            <SelectOrigin 
-                name="origin_id" 
-                text="Selecione a Origem" 
-                placeholder='Selecione uma origem'
-                handleSelectChange={handleSelectOrigin}                
-            />
 
-            <Input 
-                type="date"
-                text="Data da Solicitação"
-                name="request_date"
-                placeholder="Insira a data da solicitação"
-                handleOnChange={handleChange}
-                value={request.request_date ? request.request_date : ''}
-            />
-            <Input 
-                type="date"
-                text="Data de Vencimento"
-                name="due_date"
-                placeholder="Insira a data da solicitação"
-                handleOnChange={handleChange}
-                value={request.due_date ? request.due_date : ''}
-            />
+
+            {(user.permission === "financeiro" )  ? (
+                 <></>
+            ) : (
+                <SelectOrigin 
+                        name="origin_id" 
+                        text="Selecione a Origem" 
+                        placeholder='Selecione uma origem'
+                        handleSelectChange={handleSelectOrigin}                
+                />
+            )}
+
             <SelectDRE text='Classe do DRE' 
                 name='class_dre' 
                 placeholder='Selecione uma classe para o DRE'
@@ -156,7 +147,8 @@ function RequestForm({ user, handleSubmit, btnText, requestData }){
                 (selectedDRE === 'Fundo de Propaganda Ri Happy') || 
                 (selectedDRE === 'DARF CSLL') || 
                 (selectedDRE === 'DARF IRPJ') || 
-                (selectedDRE === 'Pró Labore')
+                (selectedDRE === 'Pró Labore') ||
+                (selectedDRE === 'Venda Mensal')
             ? (
                 <></>
                 ) : (
@@ -168,6 +160,48 @@ function RequestForm({ user, handleSubmit, btnText, requestData }){
                         handleSelectChange={handleSelectSubDRE}
                     />
                 )}
+
+            {(selectedDRE === 'Venda Mensal')
+            ? (
+                <>
+                    <Input 
+                        type="date"
+                        text="Data de lançamento da Venda"
+                        name="request_date"
+                        placeholder="Insira a data da solicitação"
+                        handleOnChange={handleChange}
+                        value={request.request_date ? request.request_date : ''}
+                    />
+                    <Input 
+                        type="month"
+                        text="Mês da Venda"
+                        name="due_date"
+                        placeholder="Insira a data da solicitação"
+                        handleOnChange={handleChange}
+                        value={request.due_date ? request.due_date : ''}
+                    />
+                </>
+                ) : (
+                    <>
+                        <Input 
+                            type="date"
+                            text="Data da Solicitação"
+                            name="request_date"
+                            placeholder="Insira a data da solicitação"
+                            handleOnChange={handleChange}
+                            value={request.request_date ? request.request_date : ''}
+                        />
+                        <Input 
+                            type="date"
+                            text="Data de Vencimento"
+                            name="due_date"
+                            placeholder="Insira a data da solicitação"
+                            handleOnChange={handleChange}
+                            value={request.due_date ? request.due_date : ''}
+                        />
+                    </>
+                )}
+            
 
             {mensagemValidadeDRE && <div className={styles.err_container}><p>Classe ou Subclasse do DRE inválido</p></div>}
              

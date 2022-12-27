@@ -59,7 +59,7 @@ function RequestCard( { request, loadRequests, msg } ) {
                                 <span>Vencimento:</span> {request.due_date.split("-").reverse().join("/")}
                             </p>
                             <p>
-                                <span>Valor:</span> {request.value}
+                                <span>Valor:</span> {Number.parseFloat(request.value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                             </p>
                             <p>
                                 <span>Solicitante:</span> {request.requester_name}

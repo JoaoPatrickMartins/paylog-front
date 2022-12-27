@@ -126,20 +126,20 @@ justify-content: center;
 }
 
 .table_data_titulo{
-    width: 15%;
-    min-width:250px;
+    width: 12%;
+    min-width:220px;
     
 }
 
 .table_data_class_dre{
-    width: 25%;
-    min-width:350px;
+    width: 30%;
+    min-width:400px;
     
 }
 
 .table_data_subclasse_dre{
-    width: 25%;
-    min-width:350px;
+    width: 18%;
+    min-width:280px;
     
 }
 
@@ -150,8 +150,8 @@ justify-content: center;
 }
 
 .table_data_value{
-    width: 5%;
-    min-width:100px;
+    width: 10%;
+    min-width:150px;
     
 }
 
@@ -174,6 +174,15 @@ justify-content: center;
 .cell p {
     margin: 0.5rem;
     color: #666666;
+}
+
+.total_expenses_container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    color: red;
 }
 
 `

@@ -56,6 +56,7 @@ export const OptionsForSelect =(option) => {
     const option4 = [
         { value: 'Salário', label: 'Salário' },
         { value: '13º Salário', label: '13º Salário' },
+        { value: 'Adicional DC e Natal', label: 'Adicional DC e Natal' },
         { value: 'Rescisão', label: 'Rescisão' },
         { value: 'ASO Funcionário', label: 'ASO Funcionário' },
         { value: 'ASO Extra', label: 'ASO Extra' },
@@ -79,8 +80,8 @@ export const OptionsForSelect =(option) => {
       ]
     const option6 = [
         { value: 'Delivery', label: 'Delivery' },
-        { value: 'Cashback', label: 'Cashback' },
-        { value: 'Descontos Concedidos', label: 'Descontos Concedidos' },
+        { value: 'Descontos Ri Happy (Matriz)', label: 'Descontos Ri Happy (Matriz)' },
+        { value: 'Descontos Gerente (Franquia)', label: 'Descontos Gerente (Franquia)' },
         { value: 'Simples Nacional', label: 'Simples Nacional' },
         { value: 'PIS', label: 'PIS' },
         { value: 'COFINS', label: 'COFINS' },

@@ -158,7 +158,7 @@ function Request(){
                        {!showRequestForm ? (
                            <div className={styles.request_info}>
                                <p>
-                                   <span>Valor:</span> {request.value}
+                                   <span>Valor:</span> {Number.parseFloat(request.value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                                </p>
                                <p>
                                    <span>Origem:</span> {request.origin_id}

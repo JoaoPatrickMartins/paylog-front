@@ -10,6 +10,8 @@ import { AuthContext } from "../../../context/auth"
 
 import SortNextDueDate from "../../../utilities/SortNextDueDate"
 
+import { AddExpenses } from '../../../utilities/AddExpenses'
+
 
 function ExpenseReport(){
     
@@ -175,18 +177,33 @@ function ExpenseReport(){
                     </div>
                     <div className='table_report'>
                         <div className='columns'>
-                            <div className='table_data_titulo'>
+
+                            <div className='table_data_date'>
                                 <div  className='header'>
-                                    <p>Titulo</p>
+                                    <p>Data</p>
                                 </div>
                                     {requests.length > 0 &&
                                         requests.map((request) => (
                                             <div className='cell'>
-                                                <p>{request.title}</p>
+                                                <p>{request.request_date.split("-").reverse().join("/")}</p>
                                             </div>
                                         ))
                                     }
                             </div>
+
+                            <div className='table_data_value'>
+                                <div  className='header'>
+                                    <p>Valor</p>
+                                </div>
+                                    {requests.length > 0 &&
+                                        requests.map((request) => (
+                                            <div className='cell'>
+                                                <p>{Number.parseFloat(request.value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+                                            </div>
+                                        ))
+                                    }
+                            </div>
+                            
                             <div className='table_data_class_dre'>
                                 <div  className='header'>
                                     <p>Classe DRE</p>
@@ -200,6 +217,7 @@ function ExpenseReport(){
                                         ))
                                     }
                             </div>
+
                             <div className='table_data_subclasse_dre'>
                                 <div  className='header'>
                                     <p>Subclasse DRE</p>
@@ -212,31 +230,25 @@ function ExpenseReport(){
                                         ))
                                     }
                             </div>
-                            <div className='table_data_date'>
+
+                            <div className='table_data_titulo'>
                                 <div  className='header'>
-                                    <p>Data</p>
+                                    <p>Titulo</p>
                                 </div>
                                     {requests.length > 0 &&
                                         requests.map((request) => (
                                             <div className='cell'>
-                                                <p>{request.request_date.split("-").reverse().join("/")}</p>
+                                                <p>{request.title}</p>
                                             </div>
                                         ))
                                     }
                             </div>
-                            <div className='table_data_value'>
-                                <div  className='header'>
-                                    <p>Valor</p>
-                                </div>
-                                    {requests.length > 0 &&
-                                        requests.map((request) => (
-                                            <div className='cell'>
-                                                <p>{request.value}</p>
-                                            </div>
-                                        ))
-                                    }
-                            </div>
+
                         </div>
+                    </div>
+                    <div className='total_expenses_container'>
+                        <h3>Total: {AddExpenses(requests).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h3>
+                        
                     </div>
                 </div>
 

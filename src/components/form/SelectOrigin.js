@@ -3,7 +3,7 @@ import Select from 'react-select'
 
 import styles from './Select.module.css'
 
-function SelectOrigin ({ text, name, placeholder, handleSelectChange }){
+function SelectOrigin ({ text, name, placeholder, value, handleSelectChange }){
     const options = [
         { value: 'Banco', label: 'Banco' },
         { value: 'Caixa', label: 'Caixa' },
@@ -19,6 +19,7 @@ function SelectOrigin ({ text, name, placeholder, handleSelectChange }){
                 name={name}
                 options={options}  
                 placeholder={placeholder}
+                value={value}
                 onChange={handleSelectChange}
             />
         </div>
