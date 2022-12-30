@@ -115,6 +115,12 @@ function ExpenseReport(){
         setClassDRE(`&class_dre=${event.value}`);
     }
 
+
+    const onclickButton = async (e) => {
+        e.preventDefault();
+        setVisible(true);
+    }
+
     const submit = async(e) => {
         e.preventDefault()
         setVisible(false)
@@ -175,6 +181,11 @@ function ExpenseReport(){
                 </div>
             ):(
                 <div className='report'>
+
+                    <div className='button_container'>
+                       <button className='btn' onClick={onclickButton}>Novo Relatório</button>
+                    </div>
+
                     <div className='report_title'>
                         <h1>Relatório de Despesas {nameCompany} </h1>
                     </div>

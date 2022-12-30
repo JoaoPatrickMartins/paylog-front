@@ -99,11 +99,50 @@ justify-content: center;
   opacity: 0.8;
 }
 
-
 .dre_report {
     display: flex;
     flex-direction: column;
     width: 60%;
+}
+
+.button_container{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+
+.btn{
+    display: flex;
+    padding: .75rem 1rem .75rem 1rem;
+    text-decoration: none;
+    align-items: center;
+    margin-bottom: 1rem;
+    border: none    ;
+    border-radius: 10rem;
+    background-color: #9360BD;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    color: #fff;
+    font-weight: bold;
+    font-size: normal;
+    max-height: 50px;
+    transition: 0.5s;
+
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 700px) {
+  .btn{
+    font-size: 0rem;
+    border-radius: 100%;
+    padding: .75rem .75rem .75rem 1rem;
+  }
+  .btn svg{
+    font-size: xx-large;
+    margin-right: .5vw; 
+  }
 }
 
 .dre_report h1{
@@ -112,7 +151,7 @@ justify-content: center;
 }
 
 .dre_report_title {
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     margin-top: 2rem;
 }
 

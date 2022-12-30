@@ -161,7 +161,7 @@ function DREReport(){
         if(x===0){
             return 0
         } else {
-            let result = (x/1000000)*100;
+            let result = (x/grossOpR)*100;
 
             return result.toFixed(2)
         }
@@ -170,6 +170,10 @@ function DREReport(){
 
 
 
+    const onclickButton = async (e) => {
+        e.preventDefault();
+        setVisible(true);
+    }
 
     const submit = async(e) => {
         e.preventDefault()
@@ -226,9 +230,15 @@ function DREReport(){
                 </div>
             ):(
                 <div className='dre_report'>
+
+                    <div className='button_container'>
+                       <button className='btn' onClick={onclickButton}>Novo Relatório</button>
+                    </div>
+                    
                     <div className='dre_report_title'>
                         <h1>Demonstração do Resultado do Exercício - {nameCompany} </h1>
                     </div>
+                    
                     <div className='container_list_dre_report'>
                         <ul >
                             <li className='featured_container_result'>
