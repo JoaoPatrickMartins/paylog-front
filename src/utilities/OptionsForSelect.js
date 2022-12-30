@@ -80,8 +80,6 @@ export const OptionsForSelect =(option) => {
       ]
     const option6 = [
         { value: 'Delivery', label: 'Delivery' },
-        { value: 'Descontos Ri Happy (Matriz)', label: 'Descontos Ri Happy (Matriz)' },
-        { value: 'Descontos Gerente (Franquia)', label: 'Descontos Gerente (Franquia)' },
         { value: 'Simples Nacional', label: 'Simples Nacional' },
         { value: 'PIS', label: 'PIS' },
         { value: 'COFINS', label: 'COFINS' },

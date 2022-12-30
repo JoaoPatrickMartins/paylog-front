@@ -77,6 +77,12 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
             return setplusOptionsIsVisible(false)
         }
 
+        if(option === 'drereport'){
+            navigate('/drereport ')
+            setMenuIsVisible(false)
+            return setplusOptionsIsVisible(false)
+        }
+
         if(option === 'myaccount'){
             //navigate('/myaccount')
             setplusOptionsIsVisible(false)
@@ -192,6 +198,12 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                                         }}>
                                         <IoDocumentText/>
                                         <button >Relatório de Despesas</button>
+                                    </li>
+                                    <li onClick={() => {
+                                        optionSelected('drereport');
+                                        }}>
+                                        <IoDocumentText/>
+                                        <button >DRE</button>
                                     </li>
                                     <li onClick={() => {
                                         optionSelected('informdeposit');

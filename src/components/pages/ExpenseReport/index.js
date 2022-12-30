@@ -10,7 +10,7 @@ import { AuthContext } from "../../../context/auth"
 
 import SortNextDueDate from "../../../utilities/SortNextDueDate"
 
-import { AddExpenses } from '../../../utilities/AddExpenses'
+import { AddRequests } from '../../../utilities/AddRequests'
 
 
 function ExpenseReport(){
@@ -118,7 +118,7 @@ function ExpenseReport(){
     const submit = async(e) => {
         e.preventDefault()
         setVisible(false)
-        await loadData(`${company}${origin}${startDate}${endDate}${classDRE}`);
+        await loadData(`${company}${origin}${startDate}${endDate}${classDRE}&status=Aprovado`);
     }
 
     return(
@@ -176,7 +176,7 @@ function ExpenseReport(){
             ):(
                 <div className='report'>
                     <div className='report_title'>
-                        <h1>Relario de Despesas {nameCompany} </h1>
+                        <h1>Relatório de Despesas {nameCompany} </h1>
                     </div>
                     <div className='table_report'>
                         <div className='columns'>
@@ -250,7 +250,7 @@ function ExpenseReport(){
                         </div>
                     </div>
                     <div className='total_expenses_container'>
-                        <h3>Total: {AddExpenses(requests).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h3>
+                        <h3>Total: {AddRequests(requests).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h3>
                         
                     </div>
                 </div>

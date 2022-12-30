@@ -1,4 +1,4 @@
-export const AddExpenses =(requests) => {
+export const AddRequests =(requests) => {
     var result = 0;
 
     requests.map((request) => (
