@@ -48,6 +48,11 @@ function RequestForm({ user, handleSubmit, btnText, requestData }){
         setRequest({ ...request, [e.target.name]: e.target.value })
     }
 
+    const handleMonth = (event) =>{
+        let data = `${event.target.value}-28`;
+        request.due_date = data
+    }
+    
     const handleCompany = (event) => {
         request.company = event.value
         request.origin_id = 'Banco'
@@ -177,8 +182,7 @@ function RequestForm({ user, handleSubmit, btnText, requestData }){
                         text="Mês de Referência"
                         name="due_date"
                         placeholder="Insira a data da solicitação"
-                        handleOnChange={handleChange}
-                        value={request.due_date ? request.due_date : ''}
+                        handleOnChange={handleMonth}
                     />
                 </>
                 ) : (
