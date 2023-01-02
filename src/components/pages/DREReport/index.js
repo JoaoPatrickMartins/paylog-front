@@ -390,7 +390,7 @@ function DREReport(){
                                     <p>DARF IRPJ</p>
                                 </div>
                                 <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'DARF IRPJ')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'DARF IRPJ  ')))}%</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'DARF IRPJ')))}%</p></div>
                             </li>
 
                             <li className='featured_container_result'>
