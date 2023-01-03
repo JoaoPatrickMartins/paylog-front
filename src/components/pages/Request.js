@@ -123,35 +123,49 @@ function Request(){
     return(
         <>
            {!loading ? (
+            <div className={styles.request_details_container}>
+                <div className={styles.option_container}>
+                    <Link className={styles.btn_back} to="/requests"><BsCaretLeftFill /> Voltar</Link>
+                </div>
+
+
+
                <div className={styles.request_details}>
                <Container customClass="column" >
                    { message && <Message type={'success'} msg={message} />}
-                   <div className={styles.details_container}>
-                       <h1>{ request.title }</h1>
-                       <div className={styles.option_container}>
-                           {!showRequestForm && (<Link className={styles.btn} to="/requests"><BsCaretLeftFill /> Voltar</Link>)}
-                           {(request.status === 'Pendente') ? (
-                                <>
-                                    <button className={styles.btn} onClick={toggleRequestForm}>
-                                        {!showRequestForm ?  (<BsPencil/>) : (<BsCaretLeftFill/>)}
-                                        {!showRequestForm ?  ('Editar Solicitação') : ('Voltar')}
-                                    </button>
-                                    <button className={styles.btn} onClick={sendSupervisor}>
-                                        <IoShareOutline/>
-                                        enviar para supervisão
-                                    </button>
-                                </>
-                            ):(
-                                <>
-                                    {(user.permission === 'admin') ? (
-                                        <button className={styles.btn} onClick={toggleRequestForm}>
-                                            {!showRequestForm ?  (<BsPencil/>) : (<BsCaretLeftFill/>)}
-                                            {!showRequestForm ?  ('Editar Solicitação') : ('Voltar')}
-                                        </button>
-                                    ):(
-                                        <></>
-                                    )}
-                                </>
+                   <div className={styles.details_container}>  
+                        <div className={styles.header_container}>
+                            <div className={styles.title_frame}>
+                                    <h1>{ request.title }</h1>
+                                    <div >
+                                        {(request.status === 'Pendente') ? (
+                                            <>
+                                                {!showRequestForm ? (
+                                                    <button className={styles.btn_edit} onClick={toggleRequestForm}><BsPencil/></button>
+                                                    ) : (
+                                                        <button className={styles.btn_edit} onClick={toggleRequestForm}><BsCaretLeftFill /></button>
+                                                    )}
+                                                {(user.permission === 'admin') && (
+                                                    <button className={styles.btn_sup} onClick={sendSupervisor}><IoShareOutline/></button>
+                                                )}
+                                            </>
+                                        ):(
+                                            <>
+                                                {(user.permission === 'admin') && (
+                                                    <>
+                                                        {!showRequestForm ? (
+                                                            <button className={styles.btn_edit} onClick={toggleRequestForm}><BsPencil/></button>
+                                                        ) : (
+                                                            <button className={styles.btn_edit} onClick={toggleRequestForm}><BsCaretLeftFill /></button>
+                                                        )}   
+                                                    </>       
+                                                )}
+                                            </>
+                                        )}
+                                    </div>
+                            </div>
+                            {showRequestForm && (
+                                <p>Edite sua solicitação de pagamento e aguarde ser aprovado</p>
                             )}
                        </div>
 
@@ -229,9 +243,9 @@ function Request(){
                                 
                            </div>                         
                        ):(
-                           <div className={styles.request_info} >
-                               <RequestForm handleSubmit={editPost} btnText={'Concluir edição'} requestData={request} />
-                           </div>
+                        <div className={styles.request_info} >
+                            <RequestForm user={user} handleSubmit={editPost} btnText={'Concluir edição'} requestData={request} />
+                        </div>
                        )
                        }
                    </div>
@@ -243,7 +257,8 @@ function Request(){
                        )}
                    </div>
                </Container>
-           </div>
+                </div>
+            </div>
            ) : (
                <>
                     {loadingError ? (
