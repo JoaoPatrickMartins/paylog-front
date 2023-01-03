@@ -20,7 +20,7 @@ function NewRequest(){
         try {
             await createRequest(user?.id, request.title, request.value, request.company, request.origin_id, request.request_date, request.due_date, request.class_dre, request.subclass_dre, request.request_observation);
             console.log("new request created with sucess.")
-            navigate('/requests', { state: {message: 'Solicitação de pagamento criada com sucesso!'} });
+            navigate('/requestspending', { state: {message: 'Solicitação de pagamento criada com sucesso!'} });
         } catch (err) {
             console.error(err);
             setErrorMsg(true)

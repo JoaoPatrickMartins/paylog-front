@@ -28,7 +28,7 @@ import MyAccount from './components/pages/MyAccount'
 function AppRoutes() {
   
   const Private = ({ children }) => {
-    const { authenticated, loading } = useContext(AuthContext);
+    const { authenticated, loading, logout } = useContext(AuthContext);
     
     if(loading){
       return <Loading/>
@@ -37,6 +37,7 @@ function AppRoutes() {
     if (authenticated) {
       return children;
     }else{
+      logout()
       return <Navigate to="/login"/>
     }
     

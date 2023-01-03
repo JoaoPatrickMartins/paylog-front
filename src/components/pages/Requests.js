@@ -45,18 +45,17 @@ function Requests (){
                 const arr = response.data;
                 setRequests(SortNextDueDate(arr));
                 console.log(requests)
-                //setLoading(false);
+                setLoading(false);
             }else{
                 const response = await getRequests(user?.id,query);
 
                 const arr = response.data;
                 setRequests(SortNextDueDate(arr));
-                //setLoading(false);
+                setLoading(false);
             }
             
         } catch (err) {
-            //setLoadingError(true);
-            console.log('erro aqui')
+            setLoadingError(true);
         }
 
         

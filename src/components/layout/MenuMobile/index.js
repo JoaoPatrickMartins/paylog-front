@@ -199,12 +199,13 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                                         <IoDocumentText/>
                                         <button >Relatório de Despesas</button>
                                     </li>
+                                    {((user.permission === 'admin') || (user.permission === 'supervisor')) && (
                                     <li onClick={() => {
                                         optionSelected('drereport');
                                         }}>
                                         <IoDocumentText/>
                                         <button >DRE</button>
-                                    </li>
+                                    </li>)}
                                     <li onClick={() => {
                                         optionSelected('informdeposit');
                                         }}>
