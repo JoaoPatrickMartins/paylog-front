@@ -193,12 +193,13 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                                         <IoTime/>
                                         <button >Histórico de Solicitações</button>
                                     </li>
+                                    {((user.permission === 'admin') || (user.permission === 'supervisor')) && (
                                     <li onClick={() => {
                                         optionSelected('expensereport');
                                         }}>
                                         <IoDocumentText/>
                                         <button >Relatório de Despesas</button>
-                                    </li>
+                                    </li>)}
                                     {((user.permission === 'admin') || (user.permission === 'supervisor')) && (
                                     <li onClick={() => {
                                         optionSelected('drereport');
