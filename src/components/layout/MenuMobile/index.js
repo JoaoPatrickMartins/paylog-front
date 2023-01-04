@@ -70,6 +70,12 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
             setMenuIsVisible(false)
             return setplusOptionsIsVisible(false)
         }
+
+        if(option === 'depositsreport'){
+            navigate('/depositsreport ')
+            setMenuIsVisible(false)
+            return setplusOptionsIsVisible(false)
+        }
         
         if(option === 'expensereport'){
             navigate('/expensereport ')
@@ -219,6 +225,13 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                                         <IoWallet/>
                                         <button >Visualizar Depósitos</button>
                                     </li>
+                                    <li onClick={() => {
+                                        optionSelected('depositsreport');
+                                        }}>
+                                        <IoWallet/>
+                                        <button >Relatório de Depósitos</button>
+                                    </li>
+                                    
                                 </ul>
                             )}
                         </>

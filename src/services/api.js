@@ -114,10 +114,21 @@ export const destroyRequest = async (userId, id) => {
 }
 
 export const createDeposit = async(userId, value, depositDate, company) => {
-    const url = `/users/${userId}/${company}/deposit`;
+    const url = `/users/${userId}/deposit`;
     
     return api.post(url, { 
         value,
         depositDate
     })
 }
+
+export const getDeposits = async(userId, query) => {
+    let url = `/users/${userId}/deposit/`
+    
+    if(query !== '') {
+        url += `?${query}`;
+    }
+
+    return api.get(url);
+}
+

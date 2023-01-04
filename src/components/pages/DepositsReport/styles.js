@@ -24,46 +24,11 @@ justify-content: center;
     border-left: 5px #9360BD solid;
 }
 
-.newrequest_container p {
-    color: #7B7B7B;
-}
-
 .formReportTitulo h1 {
     margin-bottom: 1rem;
     margin-left: 1rem;
     color: #9360BD;
     
-}
-
-.report {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-}
-
-.report h1{
-    text-align: center;
-    color: #9360BD;
-}
-
-
-.table_report{
-    display: flex;
-    width: 100%;
-}
-
-.report_title {
-    margin-bottom: 4rem;
-    margin-top: 2rem;
-}
-
-.columns {
-    display: flex;
-    justify-content: space-between;
-    background-color: #FFFFFF;
-    border: 2px #666666 solid;
-    width: 100%;
-    min-width:1150px;
 }
 
 .labelStartDate{
@@ -100,6 +65,12 @@ justify-content: center;
     width: 100%;
     margin-top: 2rem;
 }
+
+.submitContainer p{
+    margin-top: .5rem;
+    text-align: center;
+    color: red;
+}
  
 .submitContainer button{
     display: flex;
@@ -125,11 +96,18 @@ justify-content: center;
   opacity: 0.8;
 }
 
+.deposit_report {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+
 .button_container{
     display: flex;
     width: 100%;
     justify-content: end;
-}
+}   
 
 .btn{
     display: flex;
@@ -159,70 +137,85 @@ justify-content: center;
     border-radius: 100%;
     padding: .75rem .75rem .75rem 1rem;
   }
-  .btn svg{
-    font-size: xx-large;
-    margin-right: .5vw; 
-  }
 }
 
-.table_data_titulo{
-    width: 12%;
-    min-width:220px;
-    
+.deposit_report h1{
+    text-align: center;
+    color: #9360BD;
 }
 
-.table_data_class_dre{
+.deposit_report_title {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.list_container{
+    width: 100%;
+    display:flex;
+    border: #fff ridge;
+    background-color: #B38FD2;
+    margin-top: 2rem;
+}
+
+.list_container h4{
+    color: #fff;
+}
+
+ul{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    list-style: none; 
+    justify-content: center;
+    align-items: center;
+    margin-top: .3rem;
+    margin-bottom: .2rem;
+}
+
+.header_table,
+li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-bottom: .7vh;
+    padding-top: 1vh;
+    border: #fff ridge;
+    width: 95%;
+    height: 100%;
+    background-color: #EBE2F3
+}
+
+.header_table{
+    background-color: #9360BD;
+}
+
+.date_container{
+    width: 15%;
+    border-right: #fff ridge;
+}
+
+.value_container{
     width: 30%;
-    min-width:400px;
-    
+    text-align: center;
 }
 
-.table_data_subclasse_dre{
-    width: 18%;
-    min-width:280px;
-    
+.name_container{
+    width: 50%;
+    text-align: center;
+    border-left: #fff ridge;
 }
 
-.table_data_date{
-    width: 5%;
-    min-width:100px;
-    
-}
-
-.table_data_value{
-    width: 10%;
-    min-width:150px;
-    
-}
-
-.header{
-    border: 1px #666666 solid;
-    width: 100%;
-}
-
-.header p {
-    font-weight: bolder;
-    margin: .5rem;
-    color: #666666;
-}
-
-.cell {
-    border: 1px #666666 solid;
-    width: 100%;
-}
-
-.cell p {
-    margin: 0.5rem;
-    color: #666666;
-}
-
-.total_expenses_container{
+.total_deposits_container{
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2rem;
-    color: red;
+    margin-top: 2rem;
+    color: green;
 }
+
+
 
 `

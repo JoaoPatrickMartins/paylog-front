@@ -18,7 +18,7 @@ import { getRequests } from "../../services/api"
 
 import { AuthContext } from "../../context/auth"
 
-import SortNextDueDate from "../../utilities/SortNextDueDate"
+import SortDate from "../../utilities/SortDate"
 
 import FilterBar from "../layout/FilterBar/index"
 
@@ -43,14 +43,14 @@ function Requests (){
                 const response = await getRequests(user?.id,querySelect);
 
                 const arr = response.data;
-                setRequests(SortNextDueDate(arr));
+                setRequests(SortDate(arr,'request'));
                 console.log(requests)
                 setLoading(false);
             }else{
                 const response = await getRequests(user?.id,query);
 
                 const arr = response.data;
-                setRequests(SortNextDueDate(arr));
+                setRequests(SortDate(arr,'request'));
                 setLoading(false);
             }
             

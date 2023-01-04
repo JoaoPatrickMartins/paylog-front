@@ -8,9 +8,9 @@ import { getRequests } from "../../../services/api"
 
 import { AuthContext } from "../../../context/auth"
 
-import SortNextDueDate from "../../../utilities/SortNextDueDate"
+import SortDate from "../../../utilities/SortDate"
 
-import { AddRequests } from '../../../utilities/AddRequests'
+import { AddValue } from '../../../utilities/AddValue'
 
 import { FilterClassDRE } from '../../../utilities/FilterClassDRE'
 
@@ -32,13 +32,13 @@ function DREReport(){
             if(querySelect !== ''){
                 const response = await getRequests(user?.id,querySelect);
                 const arr = response.data;
-                setRequests(SortNextDueDate(arr));
+                setRequests(SortDate(arr,'request'));
 
                 //setLoading(false);
             }else{
                 const response = await getRequests(user?.id,query);
                 const arr = response.data;
-                setRequests(SortNextDueDate(arr));
+                setRequests(SortDate(arr,'request'));
 
                 //setLoading(false);
             }
@@ -77,8 +77,8 @@ function DREReport(){
     
 
     function calcDeductionsGR (){
-        let taxes = AddRequests(FilterClassDRE(requests, 'Impostos e Contribuições Incidentes sobre Vendas'))
-        let discounts = AddRequests(FilterClassDRE(requests, 'Descontos'))
+        let taxes = AddValue(FilterClassDRE(requests, 'Impostos e Contribuições Incidentes sobre Vendas'))
+        let discounts = AddValue(FilterClassDRE(requests, 'Descontos'))
 
         let result = -taxes-discounts;
 
@@ -86,7 +86,7 @@ function DREReport(){
     }
 
     function calcNetOpR (){
-        let grossOpR = AddRequests(FilterClassDRE(requests, 'Venda Mensal'))
+        let grossOpR = AddValue(FilterClassDRE(requests, 'Venda Mensal'))
         let deductionsGR = calcDeductionsGR ()
 
         let result = grossOpR+deductionsGR;
@@ -96,7 +96,7 @@ function DREReport(){
 
     function calcGrossOpIn (){
         let netOpR = calcNetOpR()
-        let cOGS = AddRequests(FilterClassDRE(requests, 'Fornecedor'))
+        let cOGS = AddValue(FilterClassDRE(requests, 'Fornecedor'))
 
         let result = netOpR-cOGS;
 
@@ -105,13 +105,13 @@ function DREReport(){
 
     function calcOpFinExpenses (){
 
-        let result = -(AddRequests(FilterClassDRE(requests, 'Publicidade, Marketing e Incentivos')))
-                    -(AddRequests(FilterClassDRE(requests, 'Despesas Administrativas')))
-                    -(AddRequests(FilterClassDRE(requests, 'Locação')))
-                    -(AddRequests(FilterClassDRE(requests, 'Royalties Ri Happy')))
-                    -(AddRequests(FilterClassDRE(requests, 'Fundo de Propaganda Ri Happy')))
-                    -(AddRequests(FilterClassDRE(requests, 'Folha de Pagamento')))
-                    -(AddRequests(FilterClassDRE(requests, 'Despesas Financeiras')));
+        let result = -(AddValue(FilterClassDRE(requests, 'Publicidade, Marketing e Incentivos')))
+                    -(AddValue(FilterClassDRE(requests, 'Despesas Administrativas')))
+                    -(AddValue(FilterClassDRE(requests, 'Locação')))
+                    -(AddValue(FilterClassDRE(requests, 'Royalties Ri Happy')))
+                    -(AddValue(FilterClassDRE(requests, 'Fundo de Propaganda Ri Happy')))
+                    -(AddValue(FilterClassDRE(requests, 'Folha de Pagamento')))
+                    -(AddValue(FilterClassDRE(requests, 'Despesas Financeiras')));
 
         return result
     }
@@ -127,7 +127,7 @@ function DREReport(){
 
     function calcProvisionIrCsll (){
 
-        let result = -(AddRequests(FilterClassDRE(requests, 'DARF CSLL')))-(AddRequests(FilterClassDRE(requests, 'DARF IRPJ')));
+        let result = -(AddValue(FilterClassDRE(requests, 'DARF CSLL')))-(AddValue(FilterClassDRE(requests, 'DARF IRPJ')));
 
         return result
     }
@@ -143,7 +143,7 @@ function DREReport(){
 
     function calcNetIncomeYear (){
         let netInBefParticipation = calcNetInBefParticipation()
-        let proLabore = AddRequests(FilterClassDRE(requests, 'Pró Labore'))
+        let proLabore = AddValue(FilterClassDRE(requests, 'Pró Labore'))
 
         let result = netInBefParticipation-proLabore;
 
@@ -151,7 +151,7 @@ function DREReport(){
     }
 
     function percentageRevenue (x){
-        let grossOpR = AddRequests(FilterClassDRE(requests, 'Venda Mensal'))
+        let grossOpR = AddValue(FilterClassDRE(requests, 'Venda Mensal'))
         x= parseInt(x)
 
         if(x<0){
@@ -245,8 +245,8 @@ function DREReport(){
                                 <div className='container_item'>
                                     <h4>Receita Operacional Bruta</h4>
                                 </div>
-                                <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'Venda Mensal')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'Venda Mensal')))}%</p></div>
+                                <div className='container_value'><p>{AddValue(FilterClassDRE(requests, 'Venda Mensal')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddValue(FilterClassDRE(requests, 'Venda Mensal')))}%</p></div>
                             </li>
                             
                             <li className='featured_container'>
@@ -261,16 +261,16 @@ function DREReport(){
                                 <div className='container_item'>
                                     <p>Impostos e Contribuições Incidentes sobre Vendas</p>
                                 </div>
-                                <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'Impostos e Contribuições Incidentes sobre Vendas')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'Impostos e Contribuições Incidentes sobre Vendas')))}%</p></div>
+                                <div className='container_value'><p>{AddValue(FilterClassDRE(requests, 'Impostos e Contribuições Incidentes sobre Vendas')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddValue(FilterClassDRE(requests, 'Impostos e Contribuições Incidentes sobre Vendas')))}%</p></div>
                             </li>
 
                             <li>
                                 <div className='container_item'>
                                     <p>Descontos</p>
                                 </div>
-                                <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'Descontos')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'Descontos')))}%</p></div>
+                                <div className='container_value'><p>{AddValue(FilterClassDRE(requests, 'Descontos')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddValue(FilterClassDRE(requests, 'Descontos')))}%</p></div>
                             </li>
 
                             <li className='featured_container_result'>
@@ -285,8 +285,8 @@ function DREReport(){
                                 <div className='container_item'>
                                     <h4>( - ) Custos das Vendas (CMV)</h4>
                                 </div>
-                                <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'Fornecedor')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'Fornecedor')))}%</p></div>
+                                <div className='container_value'><p>{AddValue(FilterClassDRE(requests, 'Fornecedor')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddValue(FilterClassDRE(requests, 'Fornecedor')))}%</p></div>
                             </li>
 
                             <li className='featured_container_result'>
@@ -309,56 +309,56 @@ function DREReport(){
                                 <div className='container_item'>
                                     <p>Publicidade, Marketing e Incentivos</p>
                                 </div>
-                                <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'Publicidade, Marketing e Incentivos')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'Publicidade, Marketing e Incentivos')))}%</p></div>
+                                <div className='container_value'><p>{AddValue(FilterClassDRE(requests, 'Publicidade, Marketing e Incentivos')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddValue(FilterClassDRE(requests, 'Publicidade, Marketing e Incentivos')))}%</p></div>
                             </li>
 
                             <li>
                                 <div className='container_item'>
                                     <p>Despesas Administrativas</p>
                                 </div>
-                                <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'Despesas Administrativas')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'Despesas Administrativas')))}%</p></div>
+                                <div className='container_value'><p>{AddValue(FilterClassDRE(requests, 'Despesas Administrativas')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddValue(FilterClassDRE(requests, 'Despesas Administrativas')))}%</p></div>
                             </li>
 
                             <li>
                                 <div className='container_item'>
                                     <p>Locação</p>
                                 </div>
-                                <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'Locação')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'Locação')))}%</p></div>
+                                <div className='container_value'><p>{AddValue(FilterClassDRE(requests, 'Locação')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddValue(FilterClassDRE(requests, 'Locação')))}%</p></div>
                             </li>
 
                             <li>
                                 <div className='container_item'>
                                     <p>Royalties Ri Happy</p>
                                 </div>
-                                <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'Royalties Ri Happy')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'Royalties Ri Happy')))}%</p></div>
+                                <div className='container_value'><p>{AddValue(FilterClassDRE(requests, 'Royalties Ri Happy')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddValue(FilterClassDRE(requests, 'Royalties Ri Happy')))}%</p></div>
                             </li>
 
                             <li>
                                 <div className='container_item'>
                                     <p>Fundo de Propaganda Ri Happy</p>
                                 </div>
-                                <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'Fundo de Propaganda Ri Happy')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'Fundo de Propaganda Ri Happy')))}%</p></div>
+                                <div className='container_value'><p>{AddValue(FilterClassDRE(requests, 'Fundo de Propaganda Ri Happy')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddValue(FilterClassDRE(requests, 'Fundo de Propaganda Ri Happy')))}%</p></div>
                             </li>
 
                             <li>
                                 <div className='container_item'>
                                     <p>Folha de Pagamento</p>
                                 </div>
-                                <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'Folha de Pagamento')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'Folha de Pagamento')))}%</p></div>
+                                <div className='container_value'><p>{AddValue(FilterClassDRE(requests, 'Folha de Pagamento')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddValue(FilterClassDRE(requests, 'Folha de Pagamento')))}%</p></div>
                             </li>
 
                             <li>
                                 <div className='container_item'>
                                     <p>Despesas Financeiras</p>
                                 </div>
-                                <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'Despesas Financeiras')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'Despesas Financeiras')))}%</p></div>
+                                <div className='container_value'><p>{AddValue(FilterClassDRE(requests, 'Despesas Financeiras')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddValue(FilterClassDRE(requests, 'Despesas Financeiras')))}%</p></div>
                             </li>
 
                             <li className='featured_container_result'>
@@ -381,16 +381,16 @@ function DREReport(){
                                 <div className='container_item'>
                                     <p>DARF CSLL</p>
                                 </div>
-                                <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'DARF CSLL')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'DARF CSLL')))}%</p></div>
+                                <div className='container_value'><p>{AddValue(FilterClassDRE(requests, 'DARF CSLL')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddValue(FilterClassDRE(requests, 'DARF CSLL')))}%</p></div>
                             </li>
 
                             <li>
                                 <div className='container_item'>
                                     <p>DARF IRPJ</p>
                                 </div>
-                                <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'DARF IRPJ')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'DARF IRPJ')))}%</p></div>
+                                <div className='container_value'><p>{AddValue(FilterClassDRE(requests, 'DARF IRPJ')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddValue(FilterClassDRE(requests, 'DARF IRPJ')))}%</p></div>
                             </li>
 
                             <li className='featured_container_result'>
@@ -405,8 +405,8 @@ function DREReport(){
                                 <div className='container_item'>
                                     <p>Pró Labore</p>
                                 </div>
-                                <div className='container_value'><p>{AddRequests(FilterClassDRE(requests, 'Pró Labore')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
-                                <div className='container_percentage_value' ><p>{percentageRevenue(AddRequests(FilterClassDRE(requests, 'Pró Labore')))}%</p></div>
+                                <div className='container_value'><p>{AddValue(FilterClassDRE(requests, 'Pró Labore')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p></div>
+                                <div className='container_percentage_value' ><p>{percentageRevenue(AddValue(FilterClassDRE(requests, 'Pró Labore')))}%</p></div>
                             </li>
 
                             <li className='featured_container_result'>

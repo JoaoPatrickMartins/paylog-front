@@ -18,7 +18,7 @@ import { getRequestsPending, getRequestsSupervisor } from "../../services/api"
 
 import { AuthContext } from "../../context/auth"
 
-import SortNextDueDate from "../../utilities/SortNextDueDate"
+import SortDate from "../../utilities/SortDate"
 
 function RequestsPending(){
     const { user } = useContext(AuthContext);
@@ -38,7 +38,7 @@ function RequestsPending(){
             const response = await getRequestsPending(user?.id);
 
             const arr = response.data;
-            setRequests(SortNextDueDate(arr));
+            setRequests(SortDate(arr,'request'));
             setLoading(false);
         } catch (err) {
             setLoadingError(true);
@@ -50,7 +50,7 @@ function RequestsPending(){
             const response = await getRequestsSupervisor(user?.id);
 
             const arr = response.data;
-            setRequests(SortNextDueDate(arr));
+            setRequests(SortDate(arr,'request'));
             setLoading(false);
         } catch (err) {
             setLoadingError(true);

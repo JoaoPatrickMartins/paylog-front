@@ -8,9 +8,9 @@ import { getRequests } from "../../../services/api"
 
 import { AuthContext } from "../../../context/auth"
 
-import SortNextDueDate from "../../../utilities/SortNextDueDate"
+import SortDate from "../../../utilities/SortDate"
 
-import { AddRequests } from '../../../utilities/AddRequests'
+import { AddValue } from '../../../utilities/AddValue'
 
 
 function ExpenseReport(){
@@ -32,14 +32,14 @@ function ExpenseReport(){
             if(querySelect !== ''){
                 const response = await getRequests(user?.id,querySelect);
                 const arr = response.data;
-                setRequests(SortNextDueDate(arr));
+                setRequests(SortDate(arr,'request'));
                 //console.log(requests)
                 
                 //setLoading(false);
             }else{
                 const response = await getRequests(user?.id,query);
                 const arr = response.data;
-                setRequests(SortNextDueDate(arr));
+                setRequests(SortDate(arr,'request'));
                 //setLoading(false);
             }
             
@@ -57,8 +57,7 @@ function ExpenseReport(){
 
       const optionOrigin = [
         { value: 'Banco', label: 'Banco' },
-        { value: 'Caixa', label: 'Caixa' }, 
-        { value: 'Receita', label: 'Receita' },
+        { value: 'Caixa', label: 'Caixa' }
       ]
 
       const optionClassDRE = [
@@ -76,8 +75,7 @@ function ExpenseReport(){
         { value: 'DARF IRPJ', label: 'DARF IRPJ' },
         { value: 'Pró Labore', label: 'Pró Labore' },
         { value: 'Descontos', label: 'Descontos' },
-        { value: 'Impostos e Contribuições Incidentes sobre Vendas', label: 'Impostos e Contribuições Incidentes sobre Vendas' },
-        { value: 'Venda Mensal', label: 'Venda Mensal' }
+        { value: 'Impostos e Contribuições Incidentes sobre Vendas', label: 'Impostos e Contribuições Incidentes sobre Vendas' }
       ]
 
       const optionCompany = [
@@ -189,6 +187,12 @@ function ExpenseReport(){
                     <div className='report_title'>
                         <h1>Relatório de Despesas {nameCompany} </h1>
                     </div>
+
+                    <div className='total_expenses_container'>
+                        <h3>Total: {AddValue(requests).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h3>
+                        
+                    </div>
+                    
                     <div className='table_report'>
                         <div className='columns'>
 
@@ -259,10 +263,6 @@ function ExpenseReport(){
                             </div>
 
                         </div>
-                    </div>
-                    <div className='total_expenses_container'>
-                        <h3>Total: {AddRequests(requests).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h3>
-                        
                     </div>
                 </div>
 
