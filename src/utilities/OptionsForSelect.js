@@ -119,6 +119,7 @@ export const OptionsForSelect =(option) => {
       ]
 
       const option8 = [
+        { value: 'Aplicação', label: 'Aplicação' },
         { value: 'Rei do Mate', label: 'Rei do Mate' },
         { value: 'Ri Happy Macaé', label: 'Ri Happy Macaé' },
         { value: 'Ri Happy Cachoeiro de Itapemirim', label: 'Ri Happy Cachoeiro de Itapemirim' },
