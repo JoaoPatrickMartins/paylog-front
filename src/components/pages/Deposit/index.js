@@ -22,7 +22,7 @@ function Deposit(depositData){
         try {
             await createDeposit(user?.id, deposit.value, deposit.depositDate, user.company );
             console.log("new request created with sucess.")
-            navigate('/requests', { state: {message: 'Solicitação de pagamento criada com sucesso!'} });
+            navigate('/viewdeposits', { state: {message: 'Deposito informado com sucesso!'} });
         } catch (err) {
             console.error(err);
             setErrorMsg(true)
@@ -32,7 +32,6 @@ function Deposit(depositData){
     const submit = (e) => {
         e.preventDefault()
         createPost(deposit)
-        console.log("enviado")
     }
 
     async function handleChange(e){
@@ -68,8 +67,10 @@ function Deposit(depositData){
                         handleOnChange={handleChange}
                         value={deposit.depositDate ? deposit.depositDate : ''}
                     />
-
-                    <SubmitButton text={"Confirmar"}/>
+                    <div className='submit_container'>
+                        <SubmitButton text={"Confirmar"}/>
+                    </div>
+                    
                 </form>
                 <div className={"msg_container"}>
                     {errorMsg && (

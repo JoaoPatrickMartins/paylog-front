@@ -132,3 +132,18 @@ export const getDeposits = async(userId, query) => {
     return api.get(url);
 }
 
+export const editDeposit = async(userId, depositId, value, depositDate ) => {
+    const url = `/users/${userId}/deposit/${depositId}`;
+    
+    return api.put(url, { 
+        value: value,
+        depositDate: depositDate
+    })
+}
+
+export const destroyDeposit = async (userId, id) => {
+    const url = `/users/${userId}/deposit/${id}`;
+    
+    return api.delete(url);
+}
+

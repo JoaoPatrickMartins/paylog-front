@@ -225,12 +225,15 @@ export function MenuMobile({ plusoptionsIsVisible, setplusOptionsIsVisible, menu
                                         <IoWallet/>
                                         <button >Visualizar Depósitos</button>
                                     </li>
-                                    <li onClick={() => {
-                                        optionSelected('depositsreport');
-                                        }}>
-                                        <IoWallet/>
-                                        <button >Relatório de Depósitos</button>
-                                    </li>
+
+                                    {((user.permission === 'admin') || (user.permission === 'supervisor')) && (
+                                        <li onClick={() => {
+                                            optionSelected('depositsreport');
+                                            }}>
+                                            <IoWallet/>
+                                            <button >Relatório de Depósitos</button>
+                                        </li>
+                                    )}
                                     
                                 </ul>
                             )}

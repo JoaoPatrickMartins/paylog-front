@@ -12,8 +12,6 @@ import SortDate from "../../../utilities/SortDate"
 
 import { AddValue } from '../../../utilities/AddValue'
 
-import { FilterClassDRE } from '../../../utilities/FilterClassDRE'
-
 
 function DepositsReport(){
 
@@ -45,7 +43,6 @@ function DepositsReport(){
         } catch (err) {
             //setLoadingError(true);
         }
-        console.log(deposits)
         
     }
 
@@ -120,7 +117,7 @@ function DepositsReport(){
                             placeholder="Data de Inicio"
                             onChange={handleStartDate}
                         />
-                        {console.log(deposits)}
+            
 
                         <label className='labelEndDate' htmlFor={"end_date"}>{"Fim: "}</label>
                         <input className="input_end_data"
@@ -180,7 +177,7 @@ function DepositsReport(){
                                                 </div>
                                             </li>
                                         ))
-                                    }
+                             }
                             
                         </ul>                        
                     </div>

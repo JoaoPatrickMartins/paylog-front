@@ -6,8 +6,6 @@ import { useNavigate } from 'react-router-dom'
 
 import { IoTrashSharp, IoNewspaperOutline } from 'react-icons/io5'
 
-import { destroyRequest } from '../../services/api'
-
 import { useContext, useState } from 'react'
 
 import { AuthContext } from '../../context/auth'

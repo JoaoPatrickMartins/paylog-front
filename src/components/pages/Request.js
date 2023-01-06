@@ -9,7 +9,6 @@ import RequestForm from '../request/RequestForm'
 
 import {  useParams } from 'react-router-dom'
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
 import { BsCaretDownFill, BsCaretLeftFill, BsCaretUpFill, BsXLg, BsCheckLg, BsPencil } from 'react-icons/bs'
 import {IoShareOutline} from 'react-icons/io5'
  
@@ -30,7 +29,6 @@ function Request(){
     const [loading, setLoading] = useState(true)
     const [loadingError, setLoadingError] = useState(false)
     const [message, setMessage] = useState()
-    const navigate = useNavigate();
     
 
     const loadRequest = async(query = '') => {
@@ -84,7 +82,7 @@ function Request(){
         try {
             await editRequestSupervisor(requestUserId, requestId, request.forward_to_supervisor);
             loadRequest();
-            navigate('/requestspending');
+            window.history.back();
         } catch (err) {
             console.error(err);
             //fazer msg de erro
@@ -109,11 +107,16 @@ function Request(){
         setMessage( 'Solicitação reprovada com sucesso!' )
     }
 
+    const onClickBack = async (e) => {
+        e.preventDefault();
+        window.history.back();
+    }
+
     const editPost = async (request) => {
         try {
             await editRequest(requestUserId, requestId, request.title, request.value, request.origin_id, request.request_date, request.due_date, request.class_dre, request.subclass_dre, request.request_observatio);
             console.log("Request updated successfully")
-            navigate(`/requests`);
+            window.history.back();
         } catch (err) {
             console.error(err);
             //fazer msg de erro
@@ -125,7 +128,7 @@ function Request(){
            {!loading ? (
             <div className={styles.request_details_container}>
                 <div className={styles.option_container}>
-                    <Link className={styles.btn_back} to="/requests"><BsCaretLeftFill /> Voltar</Link>
+                    <button className={styles.btn_back} onClick={onClickBack}><BsCaretLeftFill /> Voltar</button>
                 </div>
 
 
