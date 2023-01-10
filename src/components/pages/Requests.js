@@ -31,6 +31,14 @@ function Requests (){
     const [requestMessage, setRequestMessage] = useState(''); //set mensagem de solicitação excluída
     const query = '';
 
+    const [page, setPage] = useState(1);
+    const ITEMS_PER_PAGE = 30;
+
+    const startIndex = (page - 1) * ITEMS_PER_PAGE;
+    const endIndex = page * ITEMS_PER_PAGE;
+
+    const paginatedItems = requests.slice(startIndex, endIndex);
+
     const location = useLocation()
     let message = ''
     if(location.state){
@@ -83,14 +91,15 @@ function Requests (){
             {requestMessage && <Message type="success" msg={requestMessage} />}
 
             <Container customClass= "start">
-                    {requests.length > 0 &&
-                        requests.map((request) => (
-                            <RequestCard 
-                                request={request} 
-                                key={request._id} 
-                                loadRequests={loadData} 
-                                msg={setRequestMessage} 
-                            />
+                    {paginatedItems.length > 0 &&
+                        paginatedItems.map((item, index) => (
+                        
+                                <RequestCard 
+                                    key={index}
+                                    request={item} 
+                                    loadRequests={loadData} 
+                                    msg={setRequestMessage} 
+                                />
                         ))
                     }
 
@@ -100,6 +109,28 @@ function Requests (){
                         <p>Não há Solicitações cadastradas!</p>
                     )}
             </Container>
+            <div className= {styles.navigation_button_container}>
+                        {(page !== 1) ? (
+                            <button className={styles.navigation_button} onClick={(e) =>{ 
+                                e.preventDefault()
+                                setLoading(true)
+                                 setPage(page - 1)
+                                 setTimeout(() => {
+                                    setLoading(false)
+                                  }, 300);
+                            }}>Anterior</button>
+                        ):(<div></div>)}
+                        
+                        <button className={styles.navigation_button} onClick={(e) => {
+                            e.preventDefault()
+                            setLoading(true)
+                            setPage(page + 1)
+                            setTimeout(() => {
+                                setLoading(false)
+                              }, 300);
+                            console.log(paginatedItems)
+                        }}>Próximo</button>
+                    </div>
        </div>
     )
 }

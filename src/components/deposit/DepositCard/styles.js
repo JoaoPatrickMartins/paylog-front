@@ -49,6 +49,7 @@ li{
 .central_container{
     display: flex;
     justify-content: space-between;
+    min-height: 70px;
 }
 
 .central_container h2,

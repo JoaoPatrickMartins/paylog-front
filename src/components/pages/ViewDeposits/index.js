@@ -22,7 +22,18 @@ function ViewDeposits(){
     const [company, setCompany] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
+    const [startDateValue, setStartDateValue] = useState('');
+    const [endDateValue, setEndDateValue] = useState('');
     const query = '';
+
+    const [page, setPage] = useState(1);
+    const ITEMS_PER_PAGE = 10;
+
+    const startIndex = (page - 1) * ITEMS_PER_PAGE;
+    const endIndex = page * ITEMS_PER_PAGE;
+
+    const paginatedItems = deposits.slice(startIndex, endIndex);
+
 
     const optionCompany = [
         { value: '195 - Ri Happy Macaé', label: '195 - Ri Happy Macaé' },
@@ -70,10 +81,12 @@ function ViewDeposits(){
     const handleStartDate = (event) =>{
         let data = `&start_date=${event.target.value}`;
         setStartDate(data)
+        setStartDateValue(event.target.value)
     }
     const handleEndDate = (event) =>{
         let data = `&end_date=${event.target.value}`;
         setEndDate(data)
+        setEndDateValue(event.target.value)
     }
 
     const submit = async(e) => {
@@ -117,6 +130,7 @@ function ViewDeposits(){
                                 name="start_date"
                                 placeholder="Data de Inicio"
                                 onChange={handleStartDate}
+                                value={startDateValue ? startDateValue : ''}
                             />
                             </div>
 
@@ -127,7 +141,7 @@ function ViewDeposits(){
                                 name="end_date"
                                 placeholder="Data de Fim"
                                 onChange={handleEndDate}
-                                                    
+                                value={endDateValue ? endDateValue : ''}      
                             />
                             </div>
                         </div>
@@ -138,12 +152,36 @@ function ViewDeposits(){
                     </form>
                     <div className='list_container'>
                         <ul>
-                            {deposits.length > 0 &&
-                                deposits.map((deposit) => (
-                                    <DepositCard user={user} forSetdeposit={deposit} setLoading={setLoading} loadDeposits={loadData} />
+                            {paginatedItems.length > 0 &&
+                                paginatedItems.map((item, index) => (
+                                    <div key={index} className='card_container'>
+                                        <DepositCard user={user} forSetdeposit={item} setLoading={setLoading} loadDeposits={loadData} />
+                                    </div>
                                 ))
                             }
                         </ul>
+                    </div>
+                    <div className='navigation_button_container'>
+                        {(page !== 1) ? (
+                            <button className='navigation_button' onClick={(e) =>{ 
+                                e.preventDefault()
+                                setLoading(true)
+                                 setPage(page - 1)
+                                 setTimeout(() => {
+                                    setLoading(false)
+                                  }, 300);
+                            }}>Anterior</button>
+                        ):(<div></div>)}
+                        
+                        <button className='navigation_button' onClick={(e) => {
+                            e.preventDefault()
+                            setLoading(true)
+                            setPage(page + 1)
+                            setTimeout(() => {
+                                setLoading(false)
+                              }, 300);
+                            console.log(paginatedItems)
+                        }}>Próximo</button>
                     </div>
                 </div>
             ):(
