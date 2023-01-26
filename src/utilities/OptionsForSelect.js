@@ -49,6 +49,7 @@ export const OptionsForSelect =(option) => {
         { value: 'Condomínio', label: 'Condomínio' },
         { value: 'Energia Elétrica', label: 'Energia Elétrica' },
         { value: 'Água', label: 'Água' },
+        { value: 'IPTU', label: 'IPTU' },
         { value: 'Fundo de Promoção', label: 'Fundo de Promoção' },
         { value: 'Conta Extra', label: 'Conta Extra' }                
       ]
