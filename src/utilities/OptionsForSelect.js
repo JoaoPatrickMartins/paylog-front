@@ -57,6 +57,7 @@ export const OptionsForSelect =(option) => {
     const option4 = [
         { value: 'Salário', label: 'Salário' },
         { value: '13º Salário', label: '13º Salário' },
+        { value: 'Adiantamento de Salário', label: 'Adiantamento de Salário' },
         { value: 'Adicional DC e Natal', label: 'Adicional DC e Natal' },
         { value: 'Rescisão', label: 'Rescisão' },
         { value: 'ASO Funcionário', label: 'ASO Funcionário' },
@@ -121,6 +122,7 @@ export const OptionsForSelect =(option) => {
 
       const option8 = [
         { value: 'Aplicação', label: 'Aplicação' },
+        { value: 'SmartTour', label: 'SmartTour' },
         { value: 'Rei do Mate', label: 'Rei do Mate' },
         { value: 'Ri Happy Macaé', label: 'Ri Happy Macaé' },
         { value: 'Ri Happy Cachoeiro de Itapemirim', label: 'Ri Happy Cachoeiro de Itapemirim' },
